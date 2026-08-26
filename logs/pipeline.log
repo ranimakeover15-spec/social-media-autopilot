@@ -1,0 +1,31 @@
+2026-08-27 00:37:58 | INFO     | AutopilotPipeline | vault:45: 📂 Local Content Vault scanned: 2 video(s) found in 'D:\Antigravity_Projects\social-media-autopilot\content_vault'.
+2026-08-27 00:37:58 | INFO     | AutopilotPipeline | test_upload_single:56: 🎯 Target video selected: sample_reel_01.mp4
+2026-08-27 00:37:58 | INFO     | AutopilotPipeline | transcoder:68: 🎬 Transcoding video: sample_reel_01.mp4 -> transcoded_sample_reel_01.mp4
+2026-08-27 00:37:58 | INFO     | AutopilotPipeline | transcoder:69: ⚙️ Target: 1080x1920 9:16 | Codec: libx264 (yuv420p) | Audio: aac (192k) | +faststart
+2026-08-27 00:38:00 | INFO     | AutopilotPipeline | transcoder:111: ✅ Transcoding complete: transcoded_sample_reel_01.mp4 (0.19 MB)
+2026-08-27 00:38:00 | INFO     | AutopilotPipeline | seo_engine:168: ✨ SEO Metadata Generated: 'Sample Mp - How Winners Actually Win Every Day 🏆🔥 #Shorts' (21 tags)
+2026-08-27 00:38:00 | INFO     | AutopilotPipeline | test_upload_single:74: 🏁 Dry run completed successfully! No uploads performed.
+2026-08-27 00:38:10 | INFO     | AutopilotPipeline | unified_master_autopilot:53: 🕒 Current Time (Asia/Kolkata): 2026-08-27 12:38:10 AM -> Slot: Evening
+2026-08-27 00:38:10 | INFO     | AutopilotPipeline | unified_master_autopilot:64: 📍 Active Execution Slot: [Evening]
+2026-08-27 00:38:10 | INFO     | AutopilotPipeline | vault:45: 📂 Local Content Vault scanned: 2 video(s) found in 'D:\Antigravity_Projects\social-media-autopilot\content_vault'.
+2026-08-27 00:38:10 | INFO     | AutopilotPipeline | unified_master_autopilot:86: 🎬 Selected Video for Slot [Evening]: 'sample_reel_01.mp4' (Remaining in cycle: 1)
+2026-08-27 00:38:10 | INFO     | AutopilotPipeline | transcoder:68: 🎬 Transcoding video: sample_reel_01.mp4 -> transcoded_sample_reel_01.mp4
+2026-08-27 00:38:10 | INFO     | AutopilotPipeline | transcoder:69: ⚙️ Target: 1080x1920 9:16 | Codec: libx264 (yuv420p) | Audio: aac (192k) | +faststart
+2026-08-27 00:38:12 | INFO     | AutopilotPipeline | transcoder:111: ✅ Transcoding complete: transcoded_sample_reel_01.mp4 (0.19 MB)
+2026-08-27 00:38:12 | INFO     | AutopilotPipeline | seo_engine:168: ✨ SEO Metadata Generated: 'Sample Mp - Turn Pain Into Power: Watch Till The End ⏳🔥 #Shorts' (21 tags)
+2026-08-27 00:38:12 | INFO     | AutopilotPipeline | unified_master_autopilot:105: 🧪 DRY RUN enabled. Video transcoded and SEO generated. Skipping uploads.
+2026-08-27 00:38:40 | INFO     | AutopilotPipeline | vault:45: 📂 Local Content Vault scanned: 2 video(s) found in 'D:\Antigravity_Projects\social-media-autopilot\content_vault'.
+2026-08-27 00:38:40 | INFO     | AutopilotPipeline | test_upload_single:56: 🎯 Target video selected: sample_reel_01.mp4
+2026-08-27 00:38:40 | INFO     | AutopilotPipeline | transcoder:68: 🎬 Transcoding video: sample_reel_01.mp4 -> transcoded_sample_reel_01.mp4
+2026-08-27 00:38:40 | INFO     | AutopilotPipeline | transcoder:69: ⚙️ Target: 1080x1920 9:16 | Codec: libx264 (yuv420p) | Audio: aac (192k) | +faststart
+2026-08-27 00:38:42 | INFO     | AutopilotPipeline | transcoder:111: ✅ Transcoding complete: transcoded_sample_reel_01.mp4 (0.19 MB)
+2026-08-27 00:38:42 | INFO     | AutopilotPipeline | seo_engine:168: ✨ SEO Metadata Generated: 'Sample Mp - What 99% Of People Learn Too Late in Life 🗝️📖 #Shorts' (21 tags)
+2026-08-27 00:38:42 | INFO     | AutopilotPipeline | test_upload_single:74: 🏁 Dry run completed successfully! No uploads performed.
+2026-08-27 00:39:07 | INFO     | AutopilotPipeline | vault:45: 📂 Local Content Vault scanned: 2 video(s) found in 'D:\Antigravity_Projects\social-media-autopilot\content_vault'.
+2026-08-27 00:39:07 | INFO     | AutopilotPipeline | test_upload_single:56: 🎯 Target video selected: sample_reel_01.mp4
+2026-08-27 00:39:07 | INFO     | AutopilotPipeline | transcoder:68: 🎬 Transcoding video: sample_reel_01.mp4 -> transcoded_sample_reel_01.mp4
+2026-08-27 00:39:07 | INFO     | AutopilotPipeline | transcoder:69: ⚙️ Target: 1080x1920 9:16 | Codec: libx264 (yuv420p) | Audio: aac (192k) | +faststart
+2026-08-27 00:39:09 | INFO     | AutopilotPipeline | transcoder:111: ✅ Transcoding complete: transcoded_sample_reel_01.mp4 (0.19 MB)
+2026-08-27 00:39:09 | INFO     | AutopilotPipeline | seo_engine:168: ✨ SEO Metadata Generated: 'Sample Mp - This Will Change How You Think Forever 🧠⚡ #Shorts' (21 tags)
+2026-08-27 00:39:09 | INFO     | AutopilotPipeline | test_upload_single:74: 🏁 Dry run completed successfully! No uploads performed.
+2026-08-27 01:15:24 | INFO     | AutopilotPipeline | youtube_uploader:69: ✅ YouTube Data API v3 client initialized.

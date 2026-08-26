@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Portable Tools
+mingit/
+mingit.zip
+
+# Secrets & Credentials (DO NOT COMMIT)
+.env
+*.pickle
+token.pickle
+token.json
+client_secrets.json
+service_account.json
+credentials.json
+
+# Transcoder & Temp artifacts
+temp/
+*.tmp
+*.mp4
+!content_vault/.gitkeep
+!content_vault/*.mp4.sample
+
+# System & IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

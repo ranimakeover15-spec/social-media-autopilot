@@ -1,0 +1,65 @@
+# ==============================================================================
+# 24/7 AUTONOMOUS SOCIAL MEDIA PIPELINE CONFIGURATION
+# ==============================================================================
+
+# Timezone Configuration
+TIMEZONE=Asia/Kolkata
+
+# Content Vault Configuration
+# Options: 'local' (content_vault folder) or 'gdrive' (Google Drive Cloud Vault)
+VAULT_TYPE=local
+LOCAL_VAULT_PATH=content_vault
+GDRIVE_FOLDER_ID=your_google_drive_folder_id_here
+# Base64 encoded Google Service Account JSON (required if VAULT_TYPE=gdrive)
+GDRIVE_SERVICE_ACCOUNT_B64=
+
+# ------------------------------------------------------------------------------
+# 1. YOUTUBE SHORTS API CONFIGURATION (Data API v3)
+# ------------------------------------------------------------------------------
+# Base64 encoded token.pickle obtained from running scripts/generate_youtube_token.py
+YOUTUBE_TOKEN_PICKLE_B64=
+# Base64 encoded client_secrets.json (OAuth Client ID & Secret from Google Cloud Console)
+YOUTUBE_CLIENT_SECRETS_B64=
+YOUTUBE_PRIVACY_STATUS=public
+YOUTUBE_CATEGORY_ID=22
+YOUTUBE_MADE_FOR_KIDS=false
+
+# ------------------------------------------------------------------------------
+# 2. INSTAGRAM REELS CONFIGURATION (Instagram Graph API)
+# ------------------------------------------------------------------------------
+# Instagram Professional Account ID (Connected to Facebook Page)
+INSTAGRAM_ACCOUNT_ID=your_instagram_business_account_id
+# Facebook/Instagram Long-Lived Graph API Access Token (Never-expiring page/system user token)
+INSTAGRAM_ACCESS_TOKEN=your_instagram_graph_access_token
+# Publicly accessible hosting base URL or storage bucket if using direct container URL upload
+PUBLIC_MEDIA_HOST_URL=
+
+# ------------------------------------------------------------------------------
+# 3. FACEBOOK REELS CONFIGURATION (Facebook Graph API Pages Video Reels v19.0)
+# ------------------------------------------------------------------------------
+# Facebook Page ID
+FACEBOOK_PAGE_ID=your_facebook_page_id
+# Facebook Page Access Token (with pages_manage_posts, pages_read_engagement permissions)
+FACEBOOK_PAGE_ACCESS_TOKEN=your_facebook_page_access_token
+
+# ------------------------------------------------------------------------------
+# 4. TRANSCODER & VIDEO SETTINGS
+# ------------------------------------------------------------------------------
+TARGET_WIDTH=1080
+TARGET_HEIGHT=1920
+MAX_VIDEO_DURATION_SEC=60
+VIDEO_CODEC=libx264
+PIXEL_FORMAT=yuv420p
+AUDIO_CODEC=aac
+AUDIO_BITRATE=192k
+AUDIO_SAMPLE_RATE=44100
+CRF=20
+PRESET=fast
+
+# ------------------------------------------------------------------------------
+# 5. NICHE & SEO ENGINE DEFAULTS
+# ------------------------------------------------------------------------------
+NICHE_CATEGORY=motivation
+BRAND_NAME=AutoClips
+CALL_TO_ACTION=Follow for daily high-voltage motivation! 🚀🔥
+INCLUDE_SLOT_TAG=true
