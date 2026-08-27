@@ -245,3 +245,7 @@
 2026-08-27 15:14:58 | INFO     | AutopilotPipeline | youtube_uploader:106: 📤 Uploading to YouTube Shorts: 'Rani Makeover • ✨ SIGNATURE SMOKEY & HOODED EYE GLAM ✨ ✨ #Shorts #Viral #Shorts' [public]...
 2026-08-27 15:15:01 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 71%
 2026-08-27 15:15:03 | INFO     | AutopilotPipeline | youtube_uploader:142: 🎉 YouTube Short published successfully! URL: https://youtube.com/shorts/UcfTiRQcQkc
+2026-08-27 15:24:55 | INFO     | AutopilotPipeline | youtube_uploader:69: ✅ YouTube Data API v3 client initialized.
+2026-08-27 15:24:55 | INFO     | AutopilotPipeline | youtube_uploader:106: 📤 Uploading to YouTube Shorts: 'Rani Makeover • 🎁 5-IN-1 FESTIVE BEAUTY PACKAGE 🎁 ✨ #Shorts #Viral #Shorts' [public]...
+2026-08-27 15:24:59 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 72%
+2026-08-27 15:25:01 | INFO     | AutopilotPipeline | youtube_uploader:142: 🎉 YouTube Short published successfully! URL: https://youtube.com/shorts/EGE8sGOctqk
