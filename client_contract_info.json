@@ -1,0 +1,22 @@
+{
+  "client_name": "Rani Makeover & Beauty Lounge",
+  "client_handle_instagram": "@Lovelyrani53",
+  "client_handle_youtube": "@Ranimakeover-f3f",
+  "client_hotline": "+91 9334668807",
+  "client_address": "Shop No. G-38, RC Plaza, Kirari Chowk, Nangloi, Delhi - 110086",
+  "contract_start_date": "2026-08-26",
+  "contract_start_date_formatted": "26 August 2026",
+  "service_type": "24/7 Automated Video Branding, Canva Poster Production & Multi-Platform Social Media Publishing Autopilot",
+  "publishing_schedule_ist": [
+    "09:00 AM IST (Morning Slot)",
+    "02:00 PM IST (Afternoon Slot - Alternate Day Canva Poster)",
+    "07:00 PM IST (Evening Slot)"
+  ],
+  "cloud_platforms": {
+    "github_repository": "https://github.com/ranimakeover15-spec/social-media-autopilot",
+    "google_drive_vault": "https://drive.google.com/drive/folders/1ZCBGwrQ9h6WoqmACKIzQ0eV7IFRNlSjs",
+    "telegram_bot": "@RaniMakeover_reel_bot",
+    "cron_trigger": "cron-job.org"
+  },
+  "status": "ACTIVE_PRODUCTION_LIVE"
+}
