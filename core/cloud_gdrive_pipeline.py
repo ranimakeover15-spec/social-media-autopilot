@@ -157,7 +157,8 @@ class CloudGDrivePipeline:
             output_video_path=branded_video,
             headline=headline,
             subheadline=subheadline,
-            duration=15
+            duration=15,
+            music_path=bundle.get("music_path")
         )
 
         # 5. Universal H.264 Transcode

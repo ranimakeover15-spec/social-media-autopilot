@@ -188,7 +188,8 @@ class UltimateRaniMasterEngine:
         output_video_path: Path,
         headline: str = "100% FLAWLESS HD GLOW-UP",
         subheadline: str = "Luxury Salon Experience • Mirror Shine & Glass Skin",
-        duration: int = 15
+        duration: int = 15,
+        music_path: Path = None
     ) -> Path:
         temp_overlay = BASE_DIR / "temp" / "flawless_overlay.png"
         self.generate_flawless_overlay(
@@ -197,9 +198,13 @@ class UltimateRaniMasterEngine:
             output_png=temp_overlay
         )
 
-        # Pick Music Track
-        music_tracks = list(self.music_dir.glob("*.mp3"))
-        selected_music = music_tracks[0] if music_tracks else None
+        # Dynamic Music Track Selection
+        if music_path and Path(music_path).exists():
+            selected_music = Path(music_path)
+        else:
+            music_tracks = list(self.music_dir.glob("*.mp3"))
+            selected_music = random.choice(music_tracks) if music_tracks else None
+
 
         # FFmpeg filter:
         # 1. Background blur + Center Video Fit (Y: 175 to 1260)
