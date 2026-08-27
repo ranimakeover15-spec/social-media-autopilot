@@ -72,6 +72,7 @@ jobs:
           TIMEZONE: "Asia/Kolkata"
           VAULT_TYPE: ${{ secrets.VAULT_TYPE || 'local' }}
           GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+          GDRIVE_TOKEN_PICKLE_B64: ${{ secrets.GDRIVE_TOKEN_PICKLE_B64 }}
           GDRIVE_SERVICE_ACCOUNT_B64: ${{ secrets.GDRIVE_SERVICE_ACCOUNT_B64 }}
           YOUTUBE_TOKEN_PICKLE_B64: ${{ secrets.YOUTUBE_TOKEN_PICKLE_B64 }}
           YOUTUBE_CLIENT_SECRETS_B64: ${{ secrets.YOUTUBE_CLIENT_SECRETS_B64 }}
@@ -108,7 +109,6 @@ jobs:
             echo "No changes in used_reels.json to commit."
           else
             git commit -m "🤖 [Autopilot] Update deduplication history [skip ci]"
-            # Pull latest changes to avoid conflicts, then push
             git pull --rebase origin main || git pull --rebase origin master || true
             git push origin HEAD
             echo "✅ Successfully synced logs/used_reels.json to repository."

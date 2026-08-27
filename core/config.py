@@ -27,6 +27,9 @@ class AppConfig(BaseModel):
     gdrive_service_account_b64: str = Field(
         default_factory=lambda: os.getenv("GDRIVE_SERVICE_ACCOUNT_B64", "")
     )
+    gdrive_token_pickle_b64: str = Field(
+        default_factory=lambda: os.getenv("GDRIVE_TOKEN_PICKLE_B64", "")
+    )
 
     # YouTube Shorts
     youtube_token_pickle_b64: str = Field(
@@ -115,6 +118,14 @@ class AppConfig(BaseModel):
                 restored["youtube_client_secrets"] = str(secrets_path)
             except Exception as e:
                 print(f"Failed to decode YOUTUBE_CLIENT_SECRETS_B64: {e}")
+
+        if self.gdrive_token_pickle_b64:
+            gdrive_pickle = self.temp_dir / "gdrive_token.pickle"
+            try:
+                gdrive_pickle.write_bytes(base64.b64decode(self.gdrive_token_pickle_b64))
+                restored["gdrive_token_pickle"] = str(gdrive_pickle)
+            except Exception as e:
+                print(f"Failed to decode GDRIVE_TOKEN_PICKLE_B64: {e}")
 
         if self.gdrive_service_account_b64:
             sa_path = self.temp_dir / "service_account.json"
