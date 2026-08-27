@@ -1,4 +1,4 @@
-name: 24/7 Social Media Autopilot Pipeline
+name: 👑 Rani Makeover 24/7 Cloud Autopilot Pipeline
 
 on:
   schedule:
@@ -6,49 +6,22 @@ on:
     - cron: '30 3 * * *'
     # 02:00 PM IST = 08:30 AM UTC
     - cron: '30 8 * * *'
-    # 07:00 PM IST = 01:30 PM UTC
+    # 07:00 PM IST = 13:30 PM UTC
     - cron: '30 13 * * *'
-
-  # External Cloud Webhook Trigger (e.g. Cron-Job.org / Cloud Scheduler)
-  repository_dispatch:
-    types: [trigger_autopilot]
-
-  # Manual Trigger from GitHub UI
   workflow_dispatch:
-    inputs:
-      slot:
-        description: 'Target Slot (Auto / Morning / Afternoon / Evening)'
-        required: false
-        default: 'Auto'
-        type: choice
-        options:
-          - Auto
-          - Morning
-          - Afternoon
-          - Evening
-      dry_run:
-        description: 'Dry Run (Test transcoding & SEO without publishing)'
-        required: false
-        default: false
-        type: boolean
-
-concurrency:
-  group: autopilot-execution
-  cancel-in-progress: false
 
 permissions:
   contents: write
 
 jobs:
-  run-pipeline:
+  run_autopilot_cycle:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 25
 
     steps:
-      - name: 📥 Checkout Repository
+      - name: 📥 Check out repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
       - name: 🐍 Set up Python 3.11
@@ -57,59 +30,40 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
 
-      - name: 🎬 Install FFmpeg
-        uses: FedericoCarboni/setup-ffmpeg@v3
-        with:
-          ffmpeg-version: 'release'
+      - name: 🎬 Install FFmpeg & Fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg fonts-dejavu-core fonts-freefont-ttf
 
       - name: 📦 Install Python Dependencies
         run: |
-          python -m pip install --upgrade pip
+          pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: 🚀 Execute Master Autopilot Runner
+      - name: 🔑 Restore Cloud Credentials from GitHub Secrets
         env:
-          TIMEZONE: "Asia/Kolkata"
-          VAULT_TYPE: ${{ secrets.VAULT_TYPE || 'local' }}
-          GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
-          GDRIVE_TOKEN_PICKLE_B64: ${{ secrets.GDRIVE_TOKEN_PICKLE_B64 }}
-          GDRIVE_SERVICE_ACCOUNT_B64: ${{ secrets.GDRIVE_SERVICE_ACCOUNT_B64 }}
-          YOUTUBE_TOKEN_PICKLE_B64: ${{ secrets.YOUTUBE_TOKEN_PICKLE_B64 }}
-          YOUTUBE_CLIENT_SECRETS_B64: ${{ secrets.YOUTUBE_CLIENT_SECRETS_B64 }}
-          YOUTUBE_PRIVACY_STATUS: ${{ secrets.YOUTUBE_PRIVACY_STATUS || 'public' }}
-          YOUTUBE_CATEGORY_ID: ${{ secrets.YOUTUBE_CATEGORY_ID || '22' }}
-          INSTAGRAM_ACCOUNT_ID: ${{ secrets.INSTAGRAM_ACCOUNT_ID }}
-          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
-          FACEBOOK_PAGE_ID: ${{ secrets.FACEBOOK_PAGE_ID }}
-          FACEBOOK_PAGE_ACCESS_TOKEN: ${{ secrets.FACEBOOK_PAGE_ACCESS_TOKEN }}
-          NICHE_CATEGORY: ${{ secrets.NICHE_CATEGORY || 'motivation' }}
-          BRAND_NAME: ${{ secrets.BRAND_NAME || 'AutoClips' }}
-          CALL_TO_ACTION: ${{ secrets.CALL_TO_ACTION || 'Follow for daily high-voltage motivation! 🚀🔥' }}
+          TOKEN_PICKLE_BASE64: ${{ secrets.TOKEN_PICKLE_BASE64 }}
+          GDRIVE_TOKEN_BASE64: ${{ secrets.GDRIVE_TOKEN_BASE64 }}
+          INSTAGRAM_SESSION: ${{ secrets.INSTAGRAM_SESSION }}
         run: |
-          SLOT_ARG=""
-          if [ "${{ inputs.slot }}" != "Auto" ] && [ -n "${{ inputs.slot }}" ]; then
-            SLOT_ARG="--slot ${{ inputs.slot }}"
+          if [ -n "$TOKEN_PICKLE_BASE64" ]; then
+            echo "$TOKEN_PICKLE_BASE64" | base64 -d > token.pickle
+          fi
+          if [ -n "$GDRIVE_TOKEN_BASE64" ]; then
+            echo "$GDRIVE_TOKEN_BASE64" | base64 -d > gdrive_token.pickle
+          fi
+          if [ -n "$INSTAGRAM_SESSION" ]; then
+            echo "$INSTAGRAM_SESSION" > instagram_session.json
           fi
 
-          DRY_RUN_ARG=""
-          if [ "${{ inputs.dry_run }}" = "true" ]; then
-            DRY_RUN_ARG="--dry-run"
-          fi
-
-          python unified_master_autopilot.py $SLOT_ARG $DRY_RUN_ARG
-
-      - name: 💾 Commit & Push Deduplication State
-        if: always()
+      - name: 🚀 Run 100% Cloud-Native GDrive Stream & Publishing Pipeline
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
-          git add logs/used_reels.json
-          if git diff --staged --quiet; then
-            echo "No changes in used_reels.json to commit."
-          else
-            git commit -m "🤖 [Autopilot] Update deduplication history [skip ci]"
-            git pull --rebase origin main || git pull --rebase origin master || true
-            git push origin HEAD
-            echo "✅ Successfully synced logs/used_reels.json to repository."
-          fi
+          python core/cloud_gdrive_pipeline.py
+
+      - name: 💾 Deduplication Persistence (Git Auto-Commit History)
+        run: |
+          git config --global user.name "Autopilot-Bot"
+          git config --global user.email "bot@autopilot.local"
+          git add logs/
+          git commit -m "Update deduplication history [skip ci]" || true
+          git push || true

@@ -239,3 +239,9 @@
 2026-08-27 09:29:46 | ERROR    | AutopilotPipeline | telegram_bot_daemon:45: Telegram API Error (getUpdates): HTTP Error 409: Conflict
 2026-08-27 09:29:52 | ERROR    | AutopilotPipeline | telegram_bot_daemon:45: Telegram API Error (getUpdates): HTTP Error 409: Conflict
 2026-08-27 09:30:38 | ERROR    | AutopilotPipeline | telegram_bot_daemon:45: Telegram API Error (getUpdates): The read operation timed out
+2026-08-27 15:14:57 | INFO     | AutopilotPipeline | youtube_uploader:49: 🔄 Refreshing expired YouTube OAuth token...
+2026-08-27 15:14:58 | INFO     | AutopilotPipeline | youtube_uploader:58: ✅ YouTube OAuth token refreshed successfully.
+2026-08-27 15:14:58 | INFO     | AutopilotPipeline | youtube_uploader:69: ✅ YouTube Data API v3 client initialized.
+2026-08-27 15:14:58 | INFO     | AutopilotPipeline | youtube_uploader:106: 📤 Uploading to YouTube Shorts: 'Rani Makeover • ✨ SIGNATURE SMOKEY & HOODED EYE GLAM ✨ ✨ #Shorts #Viral #Shorts' [public]...
+2026-08-27 15:15:01 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 71%
+2026-08-27 15:15:03 | INFO     | AutopilotPipeline | youtube_uploader:142: 🎉 YouTube Short published successfully! URL: https://youtube.com/shorts/UcfTiRQcQkc
