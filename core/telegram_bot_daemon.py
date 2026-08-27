@@ -1,12 +1,19 @@
 """
-👑 RANI MAKEOVER — 24/7 TELEGRAM ASSET INGESTION BOT & CLOUD DAEMON
-Includes lightweight HTTP Health-Check Server on $PORT for Render.com Web Services.
+👑 RANI MAKEOVER — 24/7 TELEGRAM ASSET INGESTION BOT & CLOUD AUTOPILOT DAEMON
+Runs 24/7 on Render.com Cloud.
+Features:
+1. Lightweight HTTP Health Check Server for Render Web Services.
+2. 24/7 Background Scheduler Thread for 09:00 AM, 02:00 PM, 07:00 PM IST.
+3. Priority 1 Ingestion of Raw Videos & Offers sent on Telegram.
+4. Auto-Publishing to YouTube Shorts, Instagram Reels & Story, and Facebook.
+5. Instant Live Link Telegram Dispatch.
 """
 
 import os
 import sys
 import time
 import json
+import datetime
 import threading
 import http.server
 import socketserver
@@ -24,23 +31,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BASE_DIR))
 
 from core.logger import logger
-from scripts.render_canva_html_poster import generate_canva_html, render_html_to_png, render_reel, image_to_base64
+from core.telegram_priority_unified_pipeline import TelegramPriorityPipeline
 
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "8997636217:AAGnU3XP9GgmiS60zitBnxe_4vy99n-F-ug")
 API_URL = f"https://api.telegram.org/bot{BOT_TOKEN}"
 
 # ------------------------------------------------------------------------------
-# LIGHTWEIGHT HTTP HEALTH CHECK SERVER FOR RENDER.COM CLOUD
+# 1. LIGHTWEIGHT HTTP HEALTH CHECK SERVER FOR RENDER.COM CLOUD
 # ------------------------------------------------------------------------------
 class HealthCheckHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
         self.send_header("Content-type", "text/plain")
         self.end_headers()
-        self.wfile.write(b"Rani Makeover 24/7 Telegram Cloud Bot is Live and Healthy! OK\n")
+        self.wfile.write(b"Rani Makeover 24/7 Telegram Cloud Bot & Autopilot is Live and Healthy! OK\n")
 
     def log_message(self, format, *args):
-        pass  # Suppress health check access logs
+        pass
 
 def start_health_check_server():
     port = int(os.getenv("PORT", "10000"))
@@ -52,7 +59,50 @@ def start_health_check_server():
         logger.warning(f"Health server note: {e}")
 
 # ------------------------------------------------------------------------------
-# TELEGRAM API HELPERS
+# 2. 24/7 BACKGROUND CLOUD SCHEDULER THREAD (IST 09:00 AM, 02:00 PM, 07:00 PM)
+# ------------------------------------------------------------------------------
+def background_cloud_scheduler():
+    logger.info("⏰ 24/7 Cloud Background Scheduler Thread Started...")
+    last_triggered_minute = ""
+
+    while True:
+        try:
+            # Calculate current IST Time (UTC + 5:30)
+            now_utc = datetime.datetime.now(datetime.timezone.utc)
+            ist_offset = datetime.timedelta(hours=5, minutes=30)
+            now_ist = now_utc + ist_offset
+
+            current_time_str = now_ist.strftime("%H:%M")
+            current_date_str = now_ist.strftime("%Y-%m-%d")
+            time_key = f"{current_date_str}_{current_time_str}"
+
+            # Slots: 09:00 AM, 14:00 (02:00 PM), 19:00 (07:00 PM) IST
+            if time_key != last_triggered_minute:
+                if current_time_str == "09:00":
+                    logger.info("🌅 [09:00 AM IST TRIGGER] Executing Morning Scheduled Slot...")
+                    last_triggered_minute = time_key
+                    pipeline = TelegramPriorityPipeline()
+                    pipeline.execute_pipeline("morning")
+
+                elif current_time_str == "14:00":
+                    logger.info("☀️ [02:00 PM IST TRIGGER] Executing Afternoon Scheduled Slot...")
+                    last_triggered_minute = time_key
+                    pipeline = TelegramPriorityPipeline()
+                    pipeline.execute_pipeline("afternoon")
+
+                elif current_time_str == "19:00":
+                    logger.info("🌆 [07:00 PM IST TRIGGER] Executing Evening Scheduled Slot...")
+                    last_triggered_minute = time_key
+                    pipeline = TelegramPriorityPipeline()
+                    pipeline.execute_pipeline("evening")
+
+            time.sleep(25)  # Check every 25 seconds
+        except Exception as e:
+            logger.error(f"Scheduler loop note: {e}")
+            time.sleep(30)
+
+# ------------------------------------------------------------------------------
+# 3. TELEGRAM API HELPERS
 # ------------------------------------------------------------------------------
 def api_call(method: str, params: dict = None, data: bytes = None, headers: dict = None) -> dict:
     url = f"{API_URL}/{method}"
@@ -69,138 +119,39 @@ def api_call(method: str, params: dict = None, data: bytes = None, headers: dict
         logger.error(f"Telegram API Error ({method}): {e}")
         return {"ok": False, "error": str(e)}
 
-def send_message(chat_id: int, text: str, parse_mode: str = "Markdown") -> dict:
+def send_message(chat_id: int, text: str, parse_mode: str = "HTML") -> dict:
     return api_call("sendMessage", {
         "chat_id": chat_id,
         "text": text,
         "parse_mode": parse_mode
     })
 
-def send_photo(chat_id: int, photo_path: Path, caption: str = ""):
-    boundary = "----WebKitFormBoundary7MA4YWxkTrZu0gW"
-    body = bytearray()
-
-    def add_field(name, val):
-        body.extend(f"--{boundary}\r\nContent-Disposition: form-data; name=\"{name}\"\r\n\r\n{val}\r\n".encode("utf-8"))
-
-    add_field("chat_id", str(chat_id))
-    if caption:
-        add_field("caption", caption)
-
-    filename = photo_path.name
-    body.extend(f"--{boundary}\r\nContent-Disposition: form-data; name=\"photo\"; filename=\"{filename}\"\r\nContent-Type: image/png\r\n\r\n".encode("utf-8"))
-    body.extend(photo_path.read_bytes())
-    body.extend(f"\r\n--{boundary}--\r\n".encode("utf-8"))
-
-    headers = {
-        "Content-Type": f"multipart/form-data; boundary={boundary}",
-        "User-Agent": "Mozilla/5.0"
-    }
-    return api_call("sendPhoto", data=bytes(body), headers=headers)
-
-def send_video(chat_id: int, video_path: Path, caption: str = ""):
-    boundary = "----WebKitFormBoundary7MA4YWxkTrZu0gW"
-    body = bytearray()
-
-    def add_field(name, val):
-        body.extend(f"--{boundary}\r\nContent-Disposition: form-data; name=\"{name}\"\r\n\r\n{val}\r\n".encode("utf-8"))
-
-    add_field("chat_id", str(chat_id))
-    if caption:
-        add_field("caption", caption)
-
-    filename = video_path.name
-    body.extend(f"--{boundary}\r\nContent-Disposition: form-data; name=\"video\"; filename=\"{filename}\"\r\nContent-Type: video/mp4\r\n\r\n".encode("utf-8"))
-    body.extend(video_path.read_bytes())
-    body.extend(f"\r\n--{boundary}--\r\n".encode("utf-8"))
-
-    headers = {
-        "Content-Type": f"multipart/form-data; boundary={boundary}",
-        "User-Agent": "Mozilla/5.0"
-    }
-    return api_call("sendVideo", data=bytes(body), headers=headers)
-
-def download_file(file_id: str, dest_path: Path) -> Path:
-    res = api_call("getFile", {"file_id": file_id})
-    if not res.get("ok"):
-        raise Exception(f"Failed to get file info: {res}")
-    file_path = res["result"]["file_path"]
-    download_url = f"https://api.telegram.org/file/bot{BOT_TOKEN}/{file_path}"
-
-    dest_path.parent.mkdir(parents=True, exist_ok=True)
-    req = urllib.request.Request(download_url, headers={"User-Agent": "Mozilla/5.0"})
-    with urllib.request.urlopen(req) as resp, open(dest_path, "wb") as f:
-        f.write(resp.read())
-    return dest_path
-
+# ------------------------------------------------------------------------------
+# 4. TELEGRAM INTERACTIVE HANDLERS
+# ------------------------------------------------------------------------------
 def handle_text_offer(chat_id: int, text: str):
-    send_message(chat_id, "🎨 *Aapka Request Mil Gaya Hai!* 10/10 Canva-Grade Poster aur 9:16 Video Reel banna shuru ho gaya hai...")
-
-    photo_dir = BASE_DIR / "assets" / "salon_photos"
-    hero_b64 = image_to_base64(photo_dir / "facial_hero.jpg")
-    hair_b64 = image_to_base64(photo_dir / "hair_wash.jpg")
-    nail_b64 = image_to_base64(photo_dir / "nail_art.jpg")
-
-    clean_name = "".join(c for c in text[:20] if c.isalnum() or c in " _-").strip().replace(" ", "_").lower()
-    if not clean_name:
-        clean_name = f"offer_{int(time.time())}"
-
-    out_poster = BASE_DIR / "posters_showcase" / f"{clean_name}_poster.png"
-    out_reel = BASE_DIR / "content_vault" / f"{clean_name}_reel.mp4"
-
-    html = generate_canva_html(
-        hero_b64=hero_b64,
-        hair_b64=hair_b64,
-        nail_b64=nail_b64,
-        offer_title=f"🎁 {text.upper()[:35]}",
-        price_deal="ONLY ₹599/-",
-        price_original="₹1,999",
-        discount="70% OFF"
-    )
-
-    render_html_to_png(html, out_poster)
-    render_reel(out_poster, out_reel, duration=15)
-
-    # Sync to GDrive
-    try:
-        from scripts.upload_to_gdrive_clint import main as sync_gdrive
-        sync_gdrive()
-    except Exception as e:
-        logger.warning(f"GDrive Sync warning: {e}")
-
-    # Send preview back to client
-    send_photo(chat_id, out_poster, caption=f"✅ *Luxury Graphic Poster Ready!*\n🎁 Offer: {text}\n📍 Saved to Google Drive CLINT Vault & 24/7 Autopilot!")
-    send_video(chat_id, out_reel, caption=f"🎬 *9:16 Full HD Motion Reel Ready!*\n🚀 Ready for YouTube Shorts & Instagram Reels!")
+    send_message(chat_id, "⏳ <b>Processing your request...</b>\nBranding with Official RM Logo & Publishing across all channels!")
+    pipeline = TelegramPriorityPipeline()
+    pipeline.execute_pipeline("afternoon")
 
 def handle_video_upload(chat_id: int, file_id: str, file_name: str, caption: str = ""):
-    send_message(chat_id, f"📹 *Raw Video Receive Ho Gaya:* `{file_name}`\nTranscoding and adding Rani Makeover branding...")
-
-    raw_path = BASE_DIR / "temp" / f"raw_{int(time.time())}_{file_name}"
-    download_file(file_id, raw_path)
-
-    from core.transcoder import VideoTranscoder
-    out_reel = BASE_DIR / "content_vault" / f"client_reel_{raw_path.stem}.mp4"
-    transcoder = VideoTranscoder()
-    transcoder.transcode(raw_path, out_reel)
-
-    # Sync to GDrive
-    try:
-        from scripts.upload_to_gdrive_clint import main as sync_gdrive
-        sync_gdrive()
-    except Exception:
-        pass
-
-    send_video(chat_id, out_reel, caption=f"🎉 *Aapka Master 9:16 Video Reel Taiyar Hai!*\n📁 Location: content_vault & Google Drive\n🚀 Scheduled for 24/7 Auto-Publishing!")
+    send_message(chat_id, f"📥 <b>Raw Video Received!</b>\nApplying Master 9:16 Branding, Music & Auto-Publishing...")
+    pipeline = TelegramPriorityPipeline()
+    pipeline.execute_pipeline("afternoon")
 
 def run_bot():
     print("=" * 80)
-    print("🤖 RANI MAKEOVER TELEGRAM BOT DAEMON IS RUNNING...")
+    print("🤖 RANI MAKEOVER 24/7 TELEGRAM & AUTOPILOT DAEMON IS RUNNING...")
     print(f"👉 Bot: @RaniMakeover_reel_bot")
     print("=" * 80)
 
-    # Start HTTP Health Server in background thread for Render.com
-    t = threading.Thread(target=start_health_check_server, daemon=True)
-    t.start()
+    # 1. Start HTTP Health Server in background thread for Render.com
+    t_health = threading.Thread(target=start_health_check_server, daemon=True)
+    t_health.start()
+
+    # 2. Start Background 24/7 Scheduler Thread for 09:00 AM, 02:00 PM, 07:00 PM IST
+    t_sched = threading.Thread(target=background_cloud_scheduler, daemon=True)
+    t_sched.start()
 
     offset = 0
     while True:
@@ -214,20 +165,21 @@ def run_bot():
                     if not chat_id:
                         continue
 
-                    # 1. Text command / offer
                     if "text" in msg:
                         text = msg["text"].strip()
                         if text == "/start":
-                            send_message(chat_id, "👑 *Namaste & Welcome to Rani Makeover & Beauty Lounge Bot!*\n\n👉 Aap yahan:\n1️⃣ *Raw Video bhejiye:* Hum use 9:16 Master Reel bana denge.\n2️⃣ *Festive Offer / Topic likhiye ya Voice Note bhejiye:* Hum turant 10/10 Canva Poster aur Video Reel bana denge!\n\n🚀 *Sabhi content 24/7 Google Drive aur Social Media Autopilot me sync hota hai.*")
+                            send_message(chat_id, "👑 <b>Namaste & Welcome to Rani Makeover & Beauty Lounge Autopilot!</b>\n\n👉 <b>Aap yahan:</b>\n1️⃣ <b>Raw Video bhejiye:</b> Master 9:16 Reel bankar YouTube & Insta par post ho jayegi.\n2️⃣ <b>Festive Offer likhiye:</b> Turant Canva Poster & Reel publish ho jayenge!\n\n🚀 <b>Schedule:</b> 09:00 AM, 02:00 PM, 07:00 PM IST par auto-publish hota hai.")
+                        elif text == "/publish_now":
+                            send_message(chat_id, "🚀 <b>Triggering Instant Publication...</b>")
+                            pipeline = TelegramPriorityPipeline()
+                            pipeline.execute_pipeline("afternoon")
                         else:
                             handle_text_offer(chat_id, text)
 
-                    # 2. Video file
                     elif "video" in msg:
                         v = msg["video"]
                         handle_video_upload(chat_id, v["file_id"], v.get("file_name", "video.mp4"), msg.get("caption", ""))
 
-                    # 3. Document (video)
                     elif "document" in msg:
                         d = msg["document"]
                         if d.get("mime_type", "").startswith("video/"):
