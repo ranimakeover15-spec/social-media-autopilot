@@ -1,12 +1,11 @@
 """
-👑 RANI MAKEOVER — DIRECT 1-CLICK INSTAGRAM LINKER (NO FACEBOOK REQUIRED)
+👑 RANI MAKEOVER — DIRECT 1-CLICK INSTAGRAM LINKER (CLEAN VISIBLE INPUT)
 Logs in directly to Instagram (@Lovelyrani53) and generates permanent instagram_session.json
 """
 
 import os
 import sys
 import json
-import getpass
 from pathlib import Path
 from instagrapi import Client
 
@@ -28,22 +27,23 @@ def main():
     cl = Client()
     cl.delay_range = [2, 5]
 
-    # Check if existing session works
+    # Check existing session
     if SESSION_FILE.exists():
         try:
-            print(f"🔍 Found existing session at '{SESSION_FILE.name}', verifying...")
+            print(f"🔍 Found existing session, verifying...")
             cl.load_settings(SESSION_FILE)
             user_info = cl.user_info_by_username("Lovelyrani53")
             print(f"✅ Instagram already connected as: @{user_info.username} ({user_info.full_name})")
             return
         except Exception as e:
-            print(f"Session expired or needs re-login: {e}\n")
+            print(f"Session expired or needs fresh login: {e}\n")
 
     username = input("Enter Instagram Username [default: Lovelyrani53]: ").strip()
     if not username:
         username = "Lovelyrani53"
 
-    password = getpass.getpass(f"Enter Instagram Password for @{username}: ")
+    # Use clean standard input so user can see what they type
+    password = input(f"Enter Instagram Password for @{username}: ").strip()
 
     print(f"\n⏳ Logging in directly to Instagram as @{username}...")
     try:
@@ -56,9 +56,9 @@ def main():
         print("=" * 80)
     except Exception as e:
         print(f"\n❌ Login note: {e}")
-        # Check if 2FA is needed
-        if "two_factor_required" in str(e).lower() or "challenge" in str(e).lower():
-            code = input("\nEnter the 6-digit 2FA / Security Code sent to your phone/authenticator: ").strip()
+        # Check if 2FA or checkpoint code is needed
+        if "two_factor_required" in str(e).lower() or "challenge" in str(e).lower() or "checkpoint" in str(e).lower():
+            code = input("\nEnter the 6-digit Security Code sent to your phone/SMS: ").strip()
             try:
                 cl.login(username, password, verification_code=code)
                 cl.dump_settings(SESSION_FILE)
