@@ -1,9 +1,10 @@
 """
-👑 RANI MAKEOVER — CLOUD-NATIVE GOOGLE DRIVE STREAM PIPELINE
-1. 0% Local Path Dependency: Streams source video from Google Drive via MediaIoBaseDownload.
-2. Universal H.264 Encoding: High-profile level 4.2, yuv420p, movflags +faststart.
-3. Deduplication Persistence: Tracks used video IDs in `logs/used_reels.json`.
-4. Multi-Platform Auto-Publish: YouTube Data API v3 + Instagram Reels & Story + Facebook.
+👑 RANI MAKEOVER — CLOUD-NATIVE GOOGLE DRIVE STREAM PIPELINE (STRICT RAW ONLY)
+1. 0% Double Branding: STRICTLY filters only PURE RAW unbranded footage.
+2. 0% Local Path Dependency: Streams source video from Google Drive via MediaIoBaseDownload.
+3. Universal H.264 Encoding: High-profile level 4.2, yuv420p, movflags +faststart.
+4. Deduplication Persistence: Tracks used video IDs in `logs/used_reels.json`.
+5. Multi-Platform Auto-Publish: YouTube Data API v3 + Instagram Reels & Story + Facebook.
 """
 
 import os
@@ -33,6 +34,19 @@ GDRIVE_MAP_FILE = BASE_DIR / "gdrive_map.json"
 TEMP_DIR = BASE_DIR / "temp"
 TEMP_DIR.mkdir(parents=True, exist_ok=True)
 
+EXCLUDED_BRANDED_KEYWORDS = [
+    "branded", "master", "demo_", "scheduled_", "live_publish_", 
+    "auto_reel_", "perfect_", "raksha_bandhan", "rani_makeover_",
+    "final_reel", "output", "client_reel", "exact_reference"
+]
+
+def is_valid_raw_clip(clip_name: str) -> bool:
+    name_l = clip_name.lower()
+    for kw in EXCLUDED_BRANDED_KEYWORDS:
+        if kw in name_l:
+            return False
+    return name_l.endswith(".mp4")
+
 class CloudGDrivePipeline:
     def __init__(self):
         self._load_gdrive_service()
@@ -59,7 +73,7 @@ class CloudGDrivePipeline:
         USED_REELS_FILE.write_text(json.dumps(self.used_history, indent=2), encoding="utf-8")
 
     def download_clip_from_gdrive(self, file_id: str, dest_path: Path):
-        print(f"☁️ [GDRIVE STREAM] Downloading video ID '{file_id}' from Google Drive...")
+        print(f"☁️ [GDRIVE STREAM] Downloading Pure Raw Video ID '{file_id}' from Google Drive...")
         request = self.drive_service.files().get_media(fileId=file_id)
         with open(dest_path, "wb") as f:
             downloader = MediaIoBaseDownload(f, request, chunksize=1024*1024*5)
@@ -68,7 +82,7 @@ class CloudGDrivePipeline:
                 status, done = downloader.next_chunk()
                 if status:
                     print(f"📊 Download progress: {int(status.progress() * 100)}%")
-        print(f"✅ Video downloaded successfully: {dest_path.name} ({dest_path.stat().st_size / (1024*1024):.2f} MB)")
+        print(f"✅ Pure Raw video downloaded: {dest_path.name} ({dest_path.stat().st_size / (1024*1024):.2f} MB)")
         return dest_path
 
     def transcode_universal_h264(self, input_video: Path, output_video: Path) -> Path:
@@ -95,25 +109,33 @@ class CloudGDrivePipeline:
 
     def run_cloud_cycle(self):
         print("=" * 80)
-        print("☁️ RANI MAKEOVER: 100% CLOUD-NATIVE AUTOPILOT CYCLE")
+        print("☁️ RANI MAKEOVER: STRICT PURE RAW CLOUD AUTOPILOT CYCLE")
         print("=" * 80)
 
-        # 1. Load map and pick next unused file from GDrive
         if not GDRIVE_MAP_FILE.exists():
             raise FileNotFoundError("gdrive_map.json not found!")
 
         map_data = json.loads(GDRIVE_MAP_FILE.read_text(encoding="utf-8"))
-        clips = map_data.get("clips", [])
+        all_clips = map_data.get("clips", [])
 
-        unused_clips = [c for c in clips if c["id"] not in self.used_history["used_ids"]]
+        # Strict Filter for Pure Raw Clips Only
+        pure_raw_clips = [c for c in all_clips if is_valid_raw_clip(c["name"])]
+
+        if not pure_raw_clips:
+            print("⚠️ No valid raw unbranded clips found in map!")
+            return
+
+        unused_clips = [c for c in pure_raw_clips if c["id"] not in self.used_history["used_ids"]]
         if not unused_clips:
-            print("🔄 All clips cycled! Resetting used history...")
+            print("🔄 All 22 pure raw clips cycled! Resetting used history for next fresh iteration...")
             self.used_history["used_ids"] = []
-            unused_clips = clips
+            unused_clips = pure_raw_clips
 
         selected_clip = random.choice(unused_clips)
         file_id = selected_clip["id"]
         raw_name = selected_clip["name"]
+
+        print(f"🎯 Selected Pure Raw Video: '{raw_name}' (ID: {file_id})")
 
         # 2. Download from Google Drive into temp directory
         downloaded_raw = TEMP_DIR / f"raw_{file_id}.mp4"
@@ -126,7 +148,7 @@ class CloudGDrivePipeline:
         headline = bundle["headline"]
         subheadline = bundle["subheadline"]
 
-        # 4. Brand Master Short using Master Engine
+        # 4. Brand Master Short using Master Engine (Only on Pure Raw)
         from core.ultimate_master_reel_engine import UltimateRaniMasterEngine
         engine = UltimateRaniMasterEngine()
         branded_video = TEMP_DIR / f"branded_{file_id}.mp4"
@@ -207,7 +229,7 @@ class CloudGDrivePipeline:
             print(f"Telegram dispatch note: {e}")
 
         print("\n" + "=" * 80)
-        print("🎉 CLOUD-NATIVE CYCLE COMPLETED SUCCESSFULLY!")
+        print("🎉 STRICT PURE RAW CLOUD CYCLE COMPLETED SUCCESSFULLY!")
         print("=" * 80)
 
 if __name__ == "__main__":
