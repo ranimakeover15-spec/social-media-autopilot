@@ -1,16 +1,15 @@
 """
-👑 RANI MAKEOVER — 24/7 TELEGRAM ASSET INGESTION BOT & AUTOMATION DAEMON
-Handles:
-1. /start: Welcome greetings & menu for Rani Makeover Beauty Lounge.
-2. Raw Video Upload: Downloads, transcodes to 9:16 Full HD, saves to content_vault, syncs to GDrive.
-3. Text Message / Voice Note: Renders Canva-Grade Poster & 9:16 Video Reel, replies on Telegram with preview!
-4. Status & Queue reports.
+👑 RANI MAKEOVER — 24/7 TELEGRAM ASSET INGESTION BOT & CLOUD DAEMON
+Includes lightweight HTTP Health-Check Server on $PORT for Render.com Web Services.
 """
 
 import os
 import sys
 import time
 import json
+import threading
+import http.server
+import socketserver
 import urllib.request
 import urllib.parse
 from pathlib import Path
@@ -30,6 +29,31 @@ from scripts.render_canva_html_poster import generate_canva_html, render_html_to
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "8997636217:AAGnU3XP9GgmiS60zitBnxe_4vy99n-F-ug")
 API_URL = f"https://api.telegram.org/bot{BOT_TOKEN}"
 
+# ------------------------------------------------------------------------------
+# LIGHTWEIGHT HTTP HEALTH CHECK SERVER FOR RENDER.COM CLOUD
+# ------------------------------------------------------------------------------
+class HealthCheckHandler(http.server.SimpleHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header("Content-type", "text/plain")
+        self.end_headers()
+        self.wfile.write(b"Rani Makeover 24/7 Telegram Cloud Bot is Live and Healthy! OK\n")
+
+    def log_message(self, format, *args):
+        pass  # Suppress health check access logs
+
+def start_health_check_server():
+    port = int(os.getenv("PORT", "10000"))
+    try:
+        with socketserver.TCPServer(("0.0.0.0", port), HealthCheckHandler) as httpd:
+            logger.info(f"🌐 Cloud Health Check Server running on port {port}...")
+            httpd.serve_forever()
+    except Exception as e:
+        logger.warning(f"Health server note: {e}")
+
+# ------------------------------------------------------------------------------
+# TELEGRAM API HELPERS
+# ------------------------------------------------------------------------------
 def api_call(method: str, params: dict = None, data: bytes = None, headers: dict = None) -> dict:
     url = f"{API_URL}/{method}"
     if params and not data:
@@ -53,8 +77,6 @@ def send_message(chat_id: int, text: str, parse_mode: str = "Markdown") -> dict:
     })
 
 def send_photo(chat_id: int, photo_path: Path, caption: str = ""):
-    """Uploads photo to Telegram chat using multipart/form-data."""
-    import mimetypes
     boundary = "----WebKitFormBoundary7MA4YWxkTrZu0gW"
     body = bytearray()
 
@@ -77,7 +99,6 @@ def send_photo(chat_id: int, photo_path: Path, caption: str = ""):
     return api_call("sendPhoto", data=bytes(body), headers=headers)
 
 def send_video(chat_id: int, video_path: Path, caption: str = ""):
-    """Uploads video to Telegram chat using multipart/form-data."""
     boundary = "----WebKitFormBoundary7MA4YWxkTrZu0gW"
     body = bytearray()
 
@@ -127,7 +148,6 @@ def handle_text_offer(chat_id: int, text: str):
     out_poster = BASE_DIR / "posters_showcase" / f"{clean_name}_poster.png"
     out_reel = BASE_DIR / "content_vault" / f"{clean_name}_reel.mp4"
 
-    # Generate Canva HTML & PNG
     html = generate_canva_html(
         hero_b64=hero_b64,
         hair_b64=hair_b64,
@@ -177,6 +197,10 @@ def run_bot():
     print("🤖 RANI MAKEOVER TELEGRAM BOT DAEMON IS RUNNING...")
     print(f"👉 Bot: @RaniMakeover_reel_bot")
     print("=" * 80)
+
+    # Start HTTP Health Server in background thread for Render.com
+    t = threading.Thread(target=start_health_check_server, daemon=True)
+    t.start()
 
     offset = 0
     while True:
