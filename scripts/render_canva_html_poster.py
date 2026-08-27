@@ -1,15 +1,11 @@
 """
 Canva-Grade Pixel-Perfect Luxury Salon HTML/CSS Renderer.
-Uses Headless Chrome to guarantee:
-- 0% text overlapping
-- 0% box clipping
-- Google Fonts (Playfair Display, Montserrat, Poppins)
-- Native SVG Vector Icons
-- Perfect Flexbox and Grid alignment
+Cross-Platform (Windows & Linux Cloud) Headless Chrome/Chromium.
 """
 
 import os
 import sys
+import shutil
 import base64
 import subprocess
 from pathlib import Path
@@ -21,6 +17,28 @@ if hasattr(sys.stderr, "reconfigure"):
     sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+def find_chrome_executable() -> str:
+    """Finds Chrome, Chromium, or Edge across Windows and Linux."""
+    candidates = [
+        # Windows
+        r"C:\Program Files\Google\Chrome\Application\chrome.exe",
+        r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
+        r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
+        r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
+        # Linux / Docker
+        "/usr/bin/chromium",
+        "/usr/bin/chromium-browser",
+        "/usr/bin/google-chrome",
+        "/usr/bin/google-chrome-stable",
+        shutil.which("chromium"),
+        shutil.which("google-chrome"),
+        shutil.which("chrome")
+    ]
+    for c in candidates:
+        if c and Path(c).exists():
+            return str(c)
+    return "chrome"
 
 def image_to_base64(path: Path) -> str:
     if not path.exists():
@@ -510,9 +528,7 @@ def render_html_to_png(html_content: str, output_png_path: Path) -> Path:
     temp_html.parent.mkdir(parents=True, exist_ok=True)
     temp_html.write_text(html_content, encoding="utf-8")
 
-    chrome_path = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
-    if not Path(chrome_path).exists():
-        chrome_path = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+    chrome_path = find_chrome_executable()
 
     cmd = [
         chrome_path,
@@ -544,58 +560,3 @@ def render_reel(poster_path: Path, output_mp4: Path, duration: int = 15):
     ]
     subprocess.run(cmd, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     return output_mp4
-
-def main():
-    print("=" * 80)
-    print("👑 CANVA-GRADE 10/10 MASTER AGENCY POSTER & REEL GENERATION")
-    print("=" * 80)
-
-    photo_dir = BASE_DIR / "assets" / "salon_photos"
-    hero_b64 = image_to_base64(photo_dir / "facial_hero.jpg")
-    hair_b64 = image_to_base64(photo_dir / "hair_wash.jpg")
-    nail_b64 = image_to_base64(photo_dir / "nail_art.jpg")
-
-    html = generate_canva_html(
-        hero_b64=hero_b64,
-        hair_b64=hair_b64,
-        nail_b64=nail_b64,
-        brand_title="Beauty",
-        brand_sub="Salon",
-        tagline="Beauty is being comfortable in your own skin. Pamper it well.",
-        offer_title="🎁 RAKSHA BANDHAN 5-IN-1 SPECIAL",
-        price_deal="ONLY ₹599/-",
-        price_original="₹1,999",
-        discount="70% OFF",
-        phone="+91 9334668807",
-        instagram="@Lovelyrani53",
-        address_l1="Shop No. G-38, RC Plaza,",
-        address_l2="Kirari Chowk, Nangloi,",
-        address_l3="Delhi - 110086",
-        services=[
-            "Radiance Glow Facial",
-            "Professional Eyebrows",
-            "Forehead Threading",
-            "Upper Lips Care",
-            "Full Arms Glow Waxing"
-        ]
-    )
-
-    out_poster = BASE_DIR / "posters_showcase" / "raksha_bandhan_canva_master.png"
-    out_reel = BASE_DIR / "content_vault" / "raksha_bandhan_canva_master.mp4"
-    out_poster.parent.mkdir(parents=True, exist_ok=True)
-    out_reel.parent.mkdir(parents=True, exist_ok=True)
-
-    print("🎨 Rendering HTML/CSS Canvas via Chrome Headless...")
-    render_html_to_png(html, out_poster)
-    print(f"✅ Master Poster Rendered: {out_poster} ({out_poster.stat().st_size / 1024:.1f} KB)")
-
-    print("🎬 Rendering 9:16 Full HD Motion Reel...")
-    render_reel(out_poster, out_reel, duration=15)
-    print(f"✅ Master 9:16 Reel Rendered: {out_reel} ({out_reel.stat().st_size / (1024*1024):.2f} MB)")
-
-    print("\n" + "=" * 80)
-    print("🎉 100% CANVA-PERFECTION COMPLETE WITH ZERO OVERFLOW OR OVERLAP!")
-    print("=" * 80)
-
-if __name__ == "__main__":
-    main()

@@ -34,3 +34,14 @@
 2026-08-27 07:26:45 | INFO     | AutopilotPipeline | generate_and_vault_rani_reels:45: 🎬 Rendering Full HD 9:16 Reel with Ken Burns Motion Effect...
 2026-08-27 07:26:51 | INFO     | AutopilotPipeline | generate_and_vault_rani_reels:54: 🎉 MASTER REEL SUCCESSFULLY CREATED AND SAVED TO VAULT!
 2026-08-27 07:26:51 | INFO     | AutopilotPipeline | generate_and_vault_rani_reels:55: 📁 Video Location: D:\Antigravity_Projects\social-media-autopilot\content_vault\rani_makeover_festive_offer_599.mp4 (2.87 MB)
+2026-08-27 08:38:50 | ERROR    | AutopilotPipeline | telegram_bot_daemon:45: Telegram API Error (getFile): HTTP Error 400: Bad Request
+2026-08-27 08:38:50 | ERROR    | AutopilotPipeline | telegram_bot_daemon:217: Polling loop error: Failed to get file info: {'ok': False, 'error': 'HTTP Error 400: Bad Request'}
+2026-08-27 08:39:16 | ERROR    | AutopilotPipeline | telegram_bot_daemon:45: Telegram API Error (getFile): HTTP Error 400: Bad Request
+2026-08-27 08:39:16 | ERROR    | AutopilotPipeline | telegram_bot_daemon:217: Polling loop error: Failed to get file info: {'ok': False, 'error': 'HTTP Error 400: Bad Request'}
+2026-08-27 08:39:21 | ERROR    | AutopilotPipeline | telegram_bot_daemon:45: Telegram API Error (getFile): HTTP Error 400: Bad Request
+2026-08-27 08:39:21 | ERROR    | AutopilotPipeline | telegram_bot_daemon:217: Polling loop error: Failed to get file info: {'ok': False, 'error': 'HTTP Error 400: Bad Request'}
+2026-08-27 08:40:17 | ERROR    | AutopilotPipeline | telegram_bot_daemon:217: Polling loop error: cannot import name 'VideoTranscoder' from 'core.transcoder' (D:\Antigravity_Projects\social-media-autopilot\core\transcoder.py)
+2026-08-27 08:40:47 | ERROR    | AutopilotPipeline | telegram_bot_daemon:217: Polling loop error: cannot import name 'VideoTranscoder' from 'core.transcoder' (D:\Antigravity_Projects\social-media-autopilot\core\transcoder.py)
+2026-08-27 08:41:08 | ERROR    | AutopilotPipeline | telegram_bot_daemon:217: Polling loop error: cannot import name 'VideoTranscoder' from 'core.transcoder' (D:\Antigravity_Projects\social-media-autopilot\core\transcoder.py)
+2026-08-27 08:42:25 | ERROR    | AutopilotPipeline | telegram_bot_daemon:217: Polling loop error: cannot import name 'VideoTranscoder' from 'core.transcoder' (D:\Antigravity_Projects\social-media-autopilot\core\transcoder.py)
+2026-08-27 08:42:32 | ERROR    | AutopilotPipeline | telegram_bot_daemon:217: Polling loop error: cannot import name 'VideoTranscoder' from 'core.transcoder' (D:\Antigravity_Projects\social-media-autopilot\core\transcoder.py)
