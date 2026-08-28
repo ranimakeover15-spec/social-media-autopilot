@@ -254,3 +254,9 @@
 2026-08-27 19:58:48 | INFO     | AutopilotPipeline | youtube_uploader:69: ✅ YouTube Data API v3 client initialized.
 2026-08-27 19:58:48 | INFO     | AutopilotPipeline | youtube_uploader:106: 📤 Uploading to YouTube Shorts: 'Rani Makeover • 👑 ROYAL BRIDAL MAKEOVER SPECIAL 👑 ✨ #Shorts #Viral #Shorts' [public]...
 2026-08-27 19:58:52 | INFO     | AutopilotPipeline | youtube_uploader:142: 🎉 YouTube Short published successfully! URL: https://youtube.com/shorts/8tvVTEWhTS0
+2026-08-28 09:45:01 | INFO     | AutopilotPipeline | youtube_uploader:49: 🔄 Refreshing expired YouTube OAuth token...
+2026-08-28 09:45:03 | INFO     | AutopilotPipeline | youtube_uploader:58: ✅ YouTube OAuth token refreshed successfully.
+2026-08-28 09:45:03 | INFO     | AutopilotPipeline | youtube_uploader:69: ✅ YouTube Data API v3 client initialized.
+2026-08-28 09:45:03 | INFO     | AutopilotPipeline | youtube_uploader:106: 📤 Uploading to YouTube Shorts: 'Rani Makeover • 🌸 HERBAL DE-TAN & SKIN BRIGHTENING 🌸 ✨ #Shorts #Viral #Shorts' [public]...
+2026-08-28 09:45:09 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 55%
+2026-08-28 09:45:10 | INFO     | AutopilotPipeline | youtube_uploader:142: 🎉 YouTube Short published successfully! URL: https://youtube.com/shorts/UGfpvurfcJE
