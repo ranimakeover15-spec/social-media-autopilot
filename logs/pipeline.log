@@ -266,3 +266,7 @@
 2026-08-28 16:01:48 | INFO     | AutopilotPipeline | youtube_uploader:106: 📤 Uploading to YouTube Shorts: 'Rani Makeover • 👑 ROYAL QUEEN MAKEOVER STUDIO 👑 ✨ #Shorts #Viral #Shorts' [public]...
 2026-08-28 16:01:51 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 89%
 2026-08-28 16:01:53 | INFO     | AutopilotPipeline | youtube_uploader:142: 🎉 YouTube Short published successfully! URL: https://youtube.com/shorts/3nmYvdZ_4-Q
+2026-08-28 10:46:11 | INFO     | AutopilotPipeline | youtube_uploader:69: ✅ YouTube Data API v3 client initialized.
+2026-08-28 10:46:11 | INFO     | AutopilotPipeline | youtube_uploader:106: 📤 Uploading to YouTube Shorts: 'Rani Makeover • 💅 LUXURY NAIL ART & GEL EXTENSIONS 💅 ✨ #Shorts #Viral #Shorts' [public]...
+2026-08-28 10:46:12 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 98%
+2026-08-28 10:46:13 | INFO     | AutopilotPipeline | youtube_uploader:142: 🎉 YouTube Short published successfully! URL: https://youtube.com/shorts/j5nEY22qUvw
