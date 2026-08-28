@@ -81,15 +81,16 @@ class ContentRotator:
             raw_videos = list(self.vault_dir.glob("*.mp4"))
 
         # Find videos not yet used in this cycle
-        unused_videos = [v for v in raw_videos if v.name not in self.history["used_videos"]]
-        if not unused_videos:
-            # If all 22 videos used, reset video cycle but keep headline variation
-            print("🔄 All raw video clips cycled once! Starting next fresh iteration with new themes.")
-            self.history["used_videos"] = []
-            unused_videos = raw_videos
-
-        selected_video = random.choice(unused_videos)
-        self.history["used_videos"].append(selected_video.name)
+        selected_video = None
+        if raw_videos:
+            unused_videos = [v for v in raw_videos if v.name not in self.history["used_videos"]]
+            if not unused_videos:
+                print("🔄 All raw video clips cycled once! Starting next fresh iteration with new themes.")
+                self.history["used_videos"] = []
+                unused_videos = raw_videos
+            if unused_videos:
+                selected_video = random.choice(unused_videos)
+                self.history["used_videos"].append(selected_video.name)
 
         # Select next unique headline
         unused_headlines = [h for h in LUXURY_HEADLINES if h[0] not in self.history["used_headlines"]]
