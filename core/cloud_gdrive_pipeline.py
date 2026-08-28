@@ -49,6 +49,12 @@ def is_valid_raw_clip(clip_name: str) -> bool:
 
 class CloudGDrivePipeline:
     def __init__(self):
+        try:
+            from core.cloud_credentials_vault import ensure_cloud_credentials
+            ensure_cloud_credentials()
+        except Exception as e:
+            print(f"Credentials vault note: {e}")
+
         self._load_gdrive_service()
         self._load_used_reels()
 
