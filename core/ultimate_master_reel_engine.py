@@ -226,7 +226,7 @@ class UltimateRaniMasterEngine:
         if selected_music and selected_music.exists():
             cmd.extend([
                 "-i", str(selected_music),
-                "-filter_complex", f"{vf};[2:a]afade=t=out:st={duration-2}:d=2,volume=0.85[aout]",
+                "-filter_complex", f"{vf};[2:a]aloop=loop=-1:size=2e+09,afade=t=out:st={duration-2}:d=2,volume=1.0[aout]",
                 "-map", "[vout]",
                 "-map", "[aout]"
             ])

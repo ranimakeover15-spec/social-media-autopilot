@@ -148,22 +148,19 @@ class CloudGDrivePipeline:
         headline = bundle["headline"]
         subheadline = bundle["subheadline"]
 
-        # 4. Brand Master Short using Master Engine (Only on Pure Raw)
+        # 4. Brand Master Short using Master Engine with 320k BGM & H.264 Universal Standard
         from core.ultimate_master_reel_engine import UltimateRaniMasterEngine
         engine = UltimateRaniMasterEngine()
-        branded_video = TEMP_DIR / f"branded_{file_id}.mp4"
+        final_video = TEMP_DIR / f"final_reel_{file_id}.mp4"
         engine.render_master_reel_with_music(
             raw_video_path=downloaded_raw,
-            output_video_path=branded_video,
+            output_video_path=final_video,
             headline=headline,
             subheadline=subheadline,
             duration=15,
             music_path=bundle.get("music_path")
         )
-
-        # 5. Universal H.264 Transcode
-        final_video = TEMP_DIR / f"final_reel_{file_id}.mp4"
-        self.transcode_universal_h264(branded_video, final_video)
+        print(f"✅ Master Short Rendered with High-Quality BGM: {final_video.name}")
 
         # 6. Publish to YouTube Shorts
         yt_url = ""
