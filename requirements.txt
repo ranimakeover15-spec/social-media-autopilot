@@ -11,3 +11,4 @@ pytz>=2024.1
 rich>=13.7.1
 pillow>=10.2.0
 tqdm>=4.66.2
+instagrapi>=2.1.2
