@@ -281,3 +281,9 @@
 2026-08-28 21:49:49 | INFO     | AutopilotPipeline | youtube_uploader:106: 📤 Uploading to YouTube Shorts: 'Rani Makeover • 💅 LUXURY NAIL ART & GEL EXTENSIONS 💅 ✨ #Shorts #Viral #Trending #Shorts' [public]...
 2026-08-28 21:49:50 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 72%
 2026-08-28 21:49:50 | INFO     | AutopilotPipeline | youtube_uploader:142: 🎉 YouTube Short published successfully! URL: https://youtube.com/shorts/QV1NwYOjidc
+2026-08-29 03:37:00 | INFO     | AutopilotPipeline | youtube_uploader:49: 🔄 Refreshing expired YouTube OAuth token...
+2026-08-29 03:37:00 | INFO     | AutopilotPipeline | youtube_uploader:58: ✅ YouTube OAuth token refreshed successfully.
+2026-08-29 03:37:00 | INFO     | AutopilotPipeline | youtube_uploader:69: ✅ YouTube Data API v3 client initialized.
+2026-08-29 03:37:00 | INFO     | AutopilotPipeline | youtube_uploader:106: 📤 Uploading to YouTube Shorts: 'Rani Makeover • ★ 100% FLAWLESS HD GLOW-UP ★ ✨ #Shorts #Viral #Trending #Shorts' [public]...
+2026-08-29 03:37:01 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 81%
+2026-08-29 03:37:01 | INFO     | AutopilotPipeline | youtube_uploader:142: 🎉 YouTube Short published successfully! URL: https://youtube.com/shorts/pAbuR8RUv1A
