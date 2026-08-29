@@ -84,15 +84,15 @@ class YouTubeUploader:
             raise FileNotFoundError(f"Video not found: {video_path}")
 
         yt_meta = metadata.get("youtube", {})
-        title = yt_meta.get("title", f"{metadata.get('title', 'Video')} #Shorts")
-        description = yt_meta.get("description", metadata.get("hashtags_string", ""))
-        tags = yt_meta.get("tags", metadata.get("tags", []))
+        title = yt_meta.get("title") or metadata.get("title") or "Rani Makeover • Festive & Bridal Glamour ✨ #Shorts"
+        description = yt_meta.get("description") or metadata.get("description") or metadata.get("hashtags_string", "")
+        tags = yt_meta.get("tags") or metadata.get("tags") or ["Rani Makeover", "Shorts", "Trending", "Beauty Salon"]
         category_id = str(yt_meta.get("category_id", config.youtube_category_id))
         privacy_status = yt_meta.get("privacy_status", config.youtube_privacy_status)
 
         body = {
             "snippet": {
-                "title": title[:100], # YouTube title character limit
+                "title": title[:100],
                 "description": description[:5000],
                 "tags": tags,
                 "categoryId": category_id
