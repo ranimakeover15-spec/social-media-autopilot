@@ -1,38 +1,30 @@
 """
-👑 RANI MAKEOVER — ULTIMATE MASTER VIDEO BRANDING & MUSIC ENGINE
-Guarantees:
-1. Exact Original Uploaded RM Golden Monogram Logo pasted in Top Left.
-2. Premium Trending Background Music (viral_luxury_fashion_beat.mp3 / instagram_viral_beauty_lounge.mp3) blended with audio ducking and smooth 2-sec fade-out.
-3. Clean Top Header: "RANI MAKEOVER" (Gold) + "@Ranimakeover-f3f • Exclusive Festive Studio".
-4. Zero Broken Glyphs / Zero Box Glyphs: Pure clean typography: "★ 100% FLAWLESS HD GLOW-UP ★".
-5. Real Vector Icons: WhatsApp Green, Instagram Magenta, YouTube Red, and Map Pin.
+👑 RANI MAKEOVER — ULTIMATE MASTER REEL ENGINE (LUXURY V2)
+Senior Video Architect Implementation
+
+Fixes Applied:
+1. Bundled TrueType Fonts (assets/fonts/): Guarantees bold, crisp, full-size typography on both Windows and Linux runners (zero microscopic 10px fallback).
+2. Modern Luxury Full-Vertical 9:16 Framing: Dynamic blurred backdrop + crisp foreground.
+3. High-CTR Branding: Top Floating Gold RM Monogram Header, Mid-Lower Headline Capsule, and Elevated Bottom Booking Hub.
+4. 320kbps High-Quality Audio Transcoding with smooth 2s fadeout.
 """
 
 import os
 import sys
-import random
 import subprocess
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
-# Enforce UTF-8
-if hasattr(sys.stdout, "reconfigure"):
-    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-if hasattr(sys.stderr, "reconfigure"):
-    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
-
 BASE_DIR = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(BASE_DIR))
 
 class UltimateRaniMasterEngine:
     WIDTH = 1080
     HEIGHT = 1920
 
-    # Master Color Palette
     GOLD_PRIMARY = (212, 175, 55)
     GOLD_BRIGHT = (255, 215, 0)
-    DARK_BG = (12, 10, 16)
-    CARD_BG = (22, 14, 28)
+    DARK_BG = (15, 12, 20)
+    TRANSLUCENT_BG = (18, 14, 24, 235)
     WHATSAPP_GREEN = (37, 211, 102)
     YOUTUBE_RED = (255, 0, 0)
     PURE_WHITE = (255, 255, 255)
@@ -44,48 +36,63 @@ class UltimateRaniMasterEngine:
         self.logo_path = BASE_DIR / "assets" / "salon_photos" / "official_rm_logo.png"
 
     def _load_fonts(self):
-        def try_font(names, size):
-            for n in names:
+        font_dir = BASE_DIR / "assets" / "fonts"
+        
+        def get_font(size, bold=True, serif=False):
+            candidates = []
+            if font_dir.exists():
+                if serif:
+                    candidates.append(str(font_dir / "georgiab.ttf"))
+                candidates.append(str(font_dir / "arialbd.ttf"))
+                candidates.append(str(font_dir / "arial.ttf"))
+            
+            # Linux system fallbacks
+            candidates.extend([
+                "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+                "/usr/share/fonts/truetype/freefont/FreeSansBold.ttf",
+                "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+                "arialbd.ttf",
+                "georgiab.ttf"
+            ])
+
+            for c in candidates:
                 try:
-                    return ImageFont.truetype(n, size)
+                    return ImageFont.truetype(c, size)
                 except Exception:
                     pass
-            return ImageFont.load_default()
+            return ImageFont.load_default(size=size) if hasattr(ImageFont, "load_default") else ImageFont.load_default()
 
-        self.font_brand = try_font(["georgiab.ttf", "arialbd.ttf"], 44)
-        self.font_sub = try_font(["arialbd.ttf", "Arial-Bold.ttf"], 22)
-        self.font_glow_title = try_font(["georgiab.ttf", "Georgia-Bold.ttf", "arialbd.ttf"], 42)
-        self.font_glow_sub = try_font(["arialbd.ttf", "Arial-Bold.ttf"], 24)
-        self.font_phone_big = try_font(["arialbd.ttf", "Arial-Bold.ttf"], 46)
-        self.font_phone_sub = try_font(["arialbd.ttf", "Arial-Bold.ttf"], 20)
-        self.font_addr = try_font(["arialbd.ttf", "Arial-Bold.ttf"], 23)
-        self.font_pill = try_font(["arialbd.ttf", "Arial-Bold.ttf"], 24)
+        self.font_brand = get_font(44, bold=True, serif=True)
+        self.font_sub = get_font(24, bold=True)
+        self.font_glow_title = get_font(44, bold=True, serif=True)
+        self.font_glow_sub = get_font(26, bold=True)
+        self.font_phone_big = get_font(48, bold=True)
+        self.font_phone_sub = get_font(22, bold=True)
+        self.font_addr = get_font(24, bold=True)
+        self.font_pill = get_font(26, bold=True)
 
-    # --------------------------------------------------------------------------
-    # REAL VECTOR ICONS
-    # --------------------------------------------------------------------------
-    def draw_whatsapp_icon(self, draw: ImageDraw.Draw, x: int, y: int, radius: int = 28):
+    def draw_whatsapp_icon(self, draw: ImageDraw.Draw, x: int, y: int, radius: int = 30):
         draw.ellipse([x - radius, y - radius, x + radius, y + radius], fill=self.WHATSAPP_GREEN)
-        draw.polygon([(x - 16, y + 8), (x - 24, y + 26), (x - 6, y + 20)], fill=self.WHATSAPP_GREEN)
-        draw.rounded_rectangle([x - 12, y - 11, x - 5, y + 11], radius=3, fill=self.PURE_WHITE)
-        draw.rounded_rectangle([x + 5, y - 11, x + 12, y + 11], radius=3, fill=self.PURE_WHITE)
-        draw.rounded_rectangle([x - 9, y - 3, x + 9, y + 5], radius=2, fill=self.PURE_WHITE)
+        draw.polygon([(x - 18, y + 10), (x - 26, y + 28), (x - 8, y + 22)], fill=self.WHATSAPP_GREEN)
+        draw.rounded_rectangle([x - 14, y - 13, x - 6, y + 13], radius=4, fill=self.PURE_WHITE)
+        draw.rounded_rectangle([x + 6, y - 13, x + 14, y + 13], radius=4, fill=self.PURE_WHITE)
+        draw.rounded_rectangle([x - 10, y - 4, x + 10, y + 6], radius=3, fill=self.PURE_WHITE)
 
-    def draw_instagram_icon(self, draw: ImageDraw.Draw, x: int, y: int, radius: int = 22):
-        draw.rounded_rectangle([x - radius, y - radius, x + radius, y + radius], radius=11, fill=(225, 0, 115))
-        draw.rounded_rectangle([x - 14, y - 14, x + 14, y + 14], radius=6, outline=self.PURE_WHITE, width=2)
-        draw.ellipse([x - 6, y - 6, x + 6, y + 6], outline=self.PURE_WHITE, width=2)
-        draw.ellipse([x + 7, y - 8, x + 10, y - 5], fill=self.PURE_WHITE)
+    def draw_instagram_icon(self, draw: ImageDraw.Draw, x: int, y: int, radius: int = 24):
+        draw.rounded_rectangle([x - radius, y - radius, x + radius, y + radius], radius=12, fill=(225, 0, 115))
+        draw.rounded_rectangle([x - 15, y - 15, x + 15, y + 15], radius=7, outline=self.PURE_WHITE, width=3)
+        draw.ellipse([x - 7, y - 7, x + 7, y + 7], outline=self.PURE_WHITE, width=3)
+        draw.ellipse([x + 8, y - 9, x + 11, y - 6], fill=self.PURE_WHITE)
 
-    def draw_youtube_icon(self, draw: ImageDraw.Draw, x: int, y: int, radius: int = 22):
-        draw.rounded_rectangle([x - 26, y - 18, x + 26, y + 18], radius=8, fill=self.YOUTUBE_RED)
-        draw.polygon([(x - 7, y - 9), (x - 7, y + 9), (x + 9, y)], fill=self.PURE_WHITE)
+    def draw_youtube_icon(self, draw: ImageDraw.Draw, x: int, y: int, radius: int = 24):
+        draw.rounded_rectangle([x - 28, y - 20, x + 28, y + 20], radius=10, fill=self.YOUTUBE_RED)
+        draw.polygon([(x - 8, y - 10), (x - 8, y + 10), (x + 10, y)], fill=self.PURE_WHITE)
 
-    def draw_location_pin(self, draw: ImageDraw.Draw, x: int, y: int, radius: int = 18):
+    def draw_location_pin(self, draw: ImageDraw.Draw, x: int, y: int, radius: int = 20):
         draw.ellipse([x - radius, y - radius, x + radius, y + radius], fill=(235, 40, 40))
-        draw.ellipse([x - 7, y - 9, x + 7, y + 4], fill=self.PURE_WHITE)
-        draw.polygon([(x - 6, y), (x + 6, y), (x, y + 11)], fill=(235, 40, 40))
-        draw.ellipse([x - 3, y - 5, x + 3, y + 1], fill=(235, 40, 40))
+        draw.ellipse([x - 8, y - 10, x + 8, y + 5], fill=self.PURE_WHITE)
+        draw.polygon([(x - 7, y), (x + 7, y), (x, y + 13)], fill=(235, 40, 40))
+        draw.ellipse([x - 4, y - 6, x + 4, y + 2], fill=(235, 40, 40))
 
     def generate_flawless_overlay(
         self,
@@ -97,149 +104,134 @@ class UltimateRaniMasterEngine:
         draw = ImageDraw.Draw(canvas)
 
         # ----------------------------------------------------------------------
-        # 1. TOP HEADER LAYER (Y: 0 to 175) - EXACT ORIGINAL RM LOGO
+        # 1. TOP FLOATING LUXURY HEADER (Y: 30 to 195)
         # ----------------------------------------------------------------------
-        draw.rectangle([0, 0, self.WIDTH, 175], fill=(12, 10, 16, 255))
-        draw.line([(0, 175), (self.WIDTH, 175)], fill=self.GOLD_PRIMARY, width=4)
-
-        # Paste the real original circular RM Logo
-        if self.logo_path.exists():
-            logo_img = Image.open(self.logo_path).convert("RGBA").resize((115, 115))
-            canvas.paste(logo_img, (45, 30), logo_img)
-        else:
-            draw.ellipse([45, 30, 160, 145], fill=(0, 0, 0), outline=self.GOLD_PRIMARY, width=3)
-            draw.text((65, 55), "RM", font=self.font_brand, fill=self.GOLD_BRIGHT)
-
-        # Short Brand Name & Handle
-        draw.text((175, 45), "RANI MAKEOVER", font=self.font_brand, fill=self.GOLD_BRIGHT)
-        draw.text((178, 105), "@Ranimakeover-f3f  •  Exclusive Festive Studio", font=self.font_sub, fill=self.PURE_WHITE)
-
-        # ----------------------------------------------------------------------
-        # 2. LOWER-MIDDLE GLOW-UP CARD (Y: 1260 to 1420) - PURE CLEAN TYPOGRAPHY
-        # ----------------------------------------------------------------------
-        card_w = 980
-        card_h = 150
-        card_x = (self.WIDTH - card_w) // 2
-        card_y = 1260
+        top_w = 1000
+        top_h = 150
+        top_x = (self.WIDTH - top_w) // 2
+        top_y = 35
 
         draw.rounded_rectangle(
-            [card_x, card_y, card_x + card_w, card_y + card_h],
-            radius=20,
-            fill=(22, 14, 28, 255),
+            [top_x, top_y, top_x + top_w, top_y + top_h],
+            radius=24,
+            fill=self.TRANSLUCENT_BG,
             outline=self.GOLD_PRIMARY,
             width=3
         )
 
-        # PURE TEXT ONLY (Zero broken square glyphs)
+        if self.logo_path.exists():
+            logo_img = Image.open(self.logo_path).convert("RGBA").resize((115, 115))
+            canvas.paste(logo_img, (top_x + 20, top_y + 18), logo_img)
+        else:
+            draw.ellipse([top_x + 20, top_y + 18, top_x + 135, top_y + 133], fill=(0, 0, 0), outline=self.GOLD_PRIMARY, width=3)
+            draw.text((top_x + 45, top_y + 45), "RM", font=self.font_brand, fill=self.GOLD_BRIGHT)
+
+        draw.text((top_x + 155, top_y + 30), "RANI MAKEOVER", font=self.font_brand, fill=self.GOLD_BRIGHT)
+        draw.text((top_x + 158, top_y + 90), "@Ranimakeover-f3f  •  Exclusive Bridal & Beauty Studio", font=self.font_sub, fill=self.PURE_WHITE)
+
+        # ----------------------------------------------------------------------
+        # 2. MID-LOWER GLOW-UP HEADLINE CAPSULE (Y: 1300 to 1460)
+        # ----------------------------------------------------------------------
+        card_w = 1000
+        card_h = 145
+        card_x = (self.WIDTH - card_w) // 2
+        card_y = 1300
+
+        draw.rounded_rectangle(
+            [card_x, card_y, card_x + card_w, card_y + card_h],
+            radius=22,
+            fill=self.TRANSLUCENT_BG,
+            outline=self.GOLD_PRIMARY,
+            width=3
+        )
+
         bbox_head = self.font_glow_title.getbbox(headline)
         hw = bbox_head[2] - bbox_head[0]
-        draw.text((card_x + (card_w - hw) // 2, card_y + 24), headline, font=self.font_glow_title, fill=self.GOLD_BRIGHT)
+        draw.text((card_x + (card_w - hw) // 2, card_y + 22), headline, font=self.font_glow_title, fill=self.GOLD_BRIGHT)
 
         bbox_sub = self.font_glow_sub.getbbox(subheadline)
         sw = bbox_sub[2] - bbox_sub[0]
-        draw.text((card_x + (card_w - sw) // 2, card_y + 86), subheadline, font=self.font_glow_sub, fill=self.PURE_WHITE)
+        draw.text((card_x + (card_w - sw) // 2, card_y + 84), subheadline, font=self.font_glow_sub, fill=self.PURE_WHITE)
 
         # ----------------------------------------------------------------------
-        # 3. BOTTOM CONTACT & BOOKING HUB (Y: 1450 to 1920)
+        # 3. BOTTOM CONTACT & BOOKING HUB (Y: 1480 to 1880)
         # ----------------------------------------------------------------------
-        draw.rectangle([0, 1450, self.WIDTH, self.HEIGHT], fill=(12, 10, 16, 255))
-        draw.line([(0, 1450), (self.WIDTH, 1450)], fill=self.GOLD_PRIMARY, width=4)
-
-        # Row 1: Real WhatsApp Icon + Large Phone
-        self.draw_whatsapp_icon(draw, 330, 1530, radius=28)
-        draw.text((380, 1495), "+91 9334668807", font=self.font_phone_big, fill=self.PURE_WHITE)
-        draw.text((385, 1555), "CALL / WHATSAPP FOR APPOINTMENTS", font=self.font_phone_sub, fill=self.GOLD_PRIMARY)
-
-        # Row 2: Real Location Pin + Address
-        self.draw_location_pin(draw, 65, 1640, radius=18)
-        draw.text((98, 1625), "Shop No. G-38, RC Plaza, Kirari Chowk, Nangloi, Delhi - 110086", font=self.font_addr, fill=self.PURE_WHITE)
-
-        # Row 3: Dual Social Media Capsules
-        pill_w = 980
-        pill_h = 95
-        pill_x = (self.WIDTH - pill_w) // 2
-        pill_y = 1715
+        bot_w = 1000
+        bot_h = 380
+        bot_x = (self.WIDTH - bot_w) // 2
+        bot_y = 1480
 
         draw.rounded_rectangle(
-            [pill_x, pill_y, pill_x + pill_w, pill_y + pill_h],
-            radius=18,
-            fill=(22, 14, 28, 255),
+            [bot_x, bot_y, bot_x + bot_w, bot_y + bot_h],
+            radius=24,
+            fill=self.TRANSLUCENT_BG,
             outline=self.GOLD_PRIMARY,
-            width=2
+            width=3
         )
 
-        draw.line([(self.WIDTH // 2, pill_y + 15), (self.WIDTH // 2, pill_y + pill_h - 15)], fill=(120, 100, 110), width=2)
+        # Row 1: WhatsApp Icon + Big Phone
+        self.draw_whatsapp_icon(draw, bot_x + 310, bot_y + 65, radius=32)
+        draw.text((bot_x + 360, bot_y + 28), "+91 9334668807", font=self.font_phone_big, fill=self.PURE_WHITE)
+        draw.text((bot_x + 365, bot_y + 88), "CALL / WHATSAPP FOR APPOINTMENTS", font=self.font_phone_sub, fill=self.GOLD_BRIGHT)
 
-        # Left: Real Instagram Icon
-        self.draw_instagram_icon(draw, pill_x + 65, pill_y + 48, radius=20)
-        draw.text((pill_x + 105, pill_y + 34), "Instagram: @Lovelyrani53", font=self.font_pill, fill=self.PURE_WHITE)
+        draw.line([(bot_x + 40, bot_y + 140), (bot_x + bot_w - 40, bot_y + 140)], fill=(80, 65, 75), width=2)
 
-        # Right: Real YouTube Icon
-        self.draw_youtube_icon(draw, self.WIDTH // 2 + 65, pill_y + 48, radius=20)
-        draw.text((self.WIDTH // 2 + 105, pill_y + 34), "YouTube: Rani makeover", font=self.font_pill, fill=self.PURE_WHITE)
+        # Row 2: Location Pin + Address
+        self.draw_location_pin(draw, bot_x + 55, bot_y + 185, radius=22)
+        draw.text((bot_x + 95, bot_y + 172), "Shop No. G-38, RC Plaza, Kirari Chowk, Nangloi, Delhi - 110086", font=self.font_addr, fill=self.PURE_WHITE)
+
+        draw.line([(bot_x + 40, bot_y + 235), (bot_x + bot_w - 40, bot_y + 235)], fill=(80, 65, 75), width=2)
+
+        # Row 3: Dual Social Media Badges
+        # Left: Instagram
+        self.draw_instagram_icon(draw, bot_x + 90, bot_y + 300, radius=24)
+        draw.text((bot_x + 130, bot_y + 285), "Instagram: @Lovelyrani53", font=self.font_pill, fill=self.PURE_WHITE)
+
+        # Separator line
+        draw.line([(bot_x + bot_w // 2, bot_y + 255), (bot_x + bot_w // 2, bot_y + 345)], fill=(120, 100, 110), width=2)
+
+        # Right: YouTube
+        self.draw_youtube_icon(draw, bot_x + bot_w // 2 + 60, bot_y + 300, radius=24)
+        draw.text((bot_x + bot_w // 2 + 100, bot_y + 285), "YouTube: Rani makeover", font=self.font_pill, fill=self.PURE_WHITE)
 
         output_png.parent.mkdir(parents=True, exist_ok=True)
-        canvas.save(output_png)
+        canvas.save(output_png, "PNG")
         return output_png
 
     def render_master_reel_with_music(
         self,
         raw_video_path: Path,
         output_video_path: Path,
-        headline: str = "100% FLAWLESS HD GLOW-UP",
-        subheadline: str = "Luxury Salon Experience • Mirror Shine & Glass Skin",
+        headline: str,
+        subheadline: str,
         duration: int = 15,
         music_path: Path = None
     ) -> Path:
-        temp_overlay = BASE_DIR / "temp" / "flawless_overlay.png"
-        self.generate_flawless_overlay(
-            headline=headline,
-            subheadline=subheadline,
-            output_png=temp_overlay
-        )
+        overlay_png = BASE_DIR / "temp" / "flawless_overlay.png"
+        self.generate_flawless_overlay(headline, subheadline, overlay_png)
 
-        # Dynamic Music Track Selection
-        if music_path and Path(music_path).exists():
-            selected_music = Path(music_path)
-        else:
-            music_tracks = list(self.music_dir.glob("*.mp3"))
-            selected_music = random.choice(music_tracks) if music_tracks else None
+        if not music_path or not Path(music_path).exists():
+            tracks = list(self.music_dir.glob("*.mp3"))
+            music_path = tracks[0] if tracks else None
 
-
-        # FFmpeg filter:
-        # 1. Background blur + Center Video Fit (Y: 175 to 1260)
-        # 2. Overlay Graphic Template
-        # 3. Audio: Blend video audio + Background music with smooth fade-out
-        vf = (
-            "[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,gblur=sigma=22[vbg];"
-            "[0:v]scale=1080:1085:force_original_aspect_ratio=decrease[vfg];"
-            "[vbg][vfg]overlay=(W-w)/2:175[vmerged];"
-            "[vmerged][1:v]overlay=0:0[vout]"
+        filter_complex = (
+            "[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,gblur=sigma=20[vbg];"
+            "[0:v]scale=1080:1920:force_original_aspect_ratio=decrease[vfg];"
+            "[vbg][vfg]overlay=(W-w)/2:(H-h)/2[vmerged];"
+            "[vmerged][1:v]overlay=0:0[vout];"
+            f"[2:a]aloop=loop=-1:size=2e+09,afade=t=out:st={duration-2}:d=2,volume=1.0[aout]"
         )
 
         cmd = [
             "ffmpeg", "-y",
             "-i", str(raw_video_path),
-            "-i", str(temp_overlay)
-        ]
-
-        if selected_music and selected_music.exists():
-            cmd.extend([
-                "-i", str(selected_music),
-                "-filter_complex", f"{vf};[2:a]aloop=loop=-1:size=2e+09,afade=t=out:st={duration-2}:d=2,volume=1.0[aout]",
-                "-map", "[vout]",
-                "-map", "[aout]"
-            ])
-        else:
-            cmd.extend([
-                "-filter_complex", vf,
-                "-map", "[vout]",
-                "-map", "0:a?"
-            ])
-
-        cmd.extend([
+            "-i", str(overlay_png),
+            "-i", str(music_path),
+            "-filter_complex", filter_complex,
+            "-map", "[vout]",
+            "-map", "[aout]",
             "-c:v", "libx264",
-            "-preset", "medium",
+            "-preset", "veryfast",
             "-crf", "18",
             "-pix_fmt", "yuv420p",
             "-c:a", "aac",
@@ -247,58 +239,11 @@ class UltimateRaniMasterEngine:
             "-t", str(duration),
             "-movflags", "+faststart",
             str(output_video_path)
-        ])
+        ]
 
-        output_video_path.parent.mkdir(parents=True, exist_ok=True)
-        res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        res = subprocess.run(cmd, capture_output=True, text=True)
         if res.returncode != 0:
-            print("FFmpeg error:", res.stderr.decode("utf-8", errors="replace")[-500:])
+            print("FFmpeg error:", res.stderr[-500:])
             res.check_returncode()
 
         return output_video_path
-
-def main():
-    print("=" * 80)
-    print("👑 RANI MAKEOVER — MASTER PIPELINE REEL WITH MUSIC & REAL RM LOGO")
-    print("=" * 80)
-
-    engine = UltimateRaniMasterEngine()
-    vault = BASE_DIR / "content_vault"
-    raw_video = vault / "viral_beauty_04_09_Best Salon Services at Ekam Makeovers Academy Hy_uolQeVRWxo8.mp4"
-    if not raw_video.exists():
-        raw_video = next(vault.glob("viral_beauty_*.mp4"))
-
-    output_video = vault / "RANI_MAKEOVER_MASTER_REEL_WITH_MUSIC.mp4"
-
-    engine.render_master_reel_with_music(
-        raw_video_path=raw_video,
-        output_video_path=output_video,
-        headline="100% FLAWLESS HD GLOW-UP",
-        subheadline="Luxury Salon Experience • Mirror Shine & Glass Skin",
-        duration=15
-    )
-
-    size_mb = output_video.stat().st_size / (1024 * 1024)
-    print(f"✅ Master Reel with Music Created: {output_video.name} ({size_mb:.2f} MB)")
-
-    # Save to Desktop
-    desktop_copy = Path(r"C:\Users\EDITI\OneDrive\Desktop\RANI_MAKEOVER_MASTER_REEL_WITH_MUSIC.mp4")
-    import shutil
-    shutil.copy2(output_video, desktop_copy)
-    print(f"💻 Saved to Desktop: '{desktop_copy.name}'")
-
-    # Upload to Google Drive
-    try:
-        from scripts.upload_to_gdrive_clint import get_gdrive_service, find_or_create_folder, upload_file
-        service = get_gdrive_service()
-        clint_id = find_or_create_folder(service, "CLINT")
-        vid_id = find_or_create_folder(service, "01_RANI_MAKEOVER_VIDEOS", parent_id=clint_id)
-        upload_file(service, output_video, vid_id, mime_type="video/mp4")
-        print("☁️ Uploaded to Google Drive 'CLINT' Folder!")
-    except Exception as e:
-        print(f"GDrive note: {e}")
-
-    print("=" * 80)
-
-if __name__ == "__main__":
-    main()
