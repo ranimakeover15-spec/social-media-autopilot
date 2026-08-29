@@ -103,13 +103,19 @@ class CloudGDrivePipeline:
         USED_REELS_FILE.write_text(json.dumps(self.used_history, indent=2), encoding="utf-8")
 
     def check_slot_deduplication(self, force: bool = False) -> bool:
-        """Fast Slot Deduplication: Returns True if allowed to publish, False if already published this slot."""
+        """Fast Slot Deduplication: Enforces strictly 3 daily slots (09:00 AM, 02:00 PM, 07:00 PM IST)."""
         if force or os.getenv("FORCE_RUN") == "1":
             return True
 
         ist_now = get_current_ist_time()
         today_str = ist_now.strftime("%Y-%m-%d")
         slot_name = get_current_slot_name(ist_now)
+
+        # Reject any off-hour trigger (e.g., night runs)
+        if slot_name.startswith("ON_DEMAND_"):
+            print(f"🌙 [OFF-SCHEDULE WINDOW] Current time {ist_now.strftime('%I:%M %p IST')} is outside 09 AM, 02 PM, 07 PM slots. Exiting cleanly.")
+            return False
+
         slot_key = f"{today_str}_{slot_name}"
 
         if SLOT_LOCK_FILE.exists():
