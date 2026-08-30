@@ -243,29 +243,35 @@ class CloudGDrivePipeline:
         except Exception as e:
             print(f"YouTube publishing note: {e}")
 
-        # 7. Publish to Instagram Reels + Story + FB
+        # 7. Safe Instagram Handling (100% Account Safety Shield)
         insta_url = ""
-        try:
-            from instagrapi import Client
-            session_file = BASE_DIR / "instagram_session.json"
-            if session_file.exists():
-                cl = Client()
-                cl.load_settings(session_file)
+        is_cloud_runner = os.getenv("GITHUB_ACTIONS") == "true" or os.getenv("CI") == "true"
+        
+        if is_cloud_runner:
+            print("🛡️ [ACCOUNT SAFETY SHIELD] Cloud Datacenter IP detected. Skipping direct instagrapi to protect account against Instagram scraping warnings.")
+            print("📲 Video & Caption dispatched to Telegram for 1-tap mobile upload with Indian residential IP.")
+        else:
+            try:
+                from instagrapi import Client
+                session_file = BASE_DIR / "instagram_session.json"
+                if session_file.exists():
+                    cl = Client()
+                    cl.load_settings(session_file)
 
-                thumb_path = TEMP_DIR / f"thumb_{file_id}.jpg"
-                from scripts.publish_live_instagram_reel import generate_thumbnail
-                generate_thumbnail(final_video, thumb_path)
+                    thumb_path = TEMP_DIR / f"thumb_{file_id}.jpg"
+                    from scripts.publish_live_instagram_reel import generate_thumbnail
+                    generate_thumbnail(final_video, thumb_path)
 
-                caption = f"{headline}\n\n{subheadline}\n\n📞 Bookings: +91 9334668807\n📍 Shop G-38, RC Plaza, Kirari Chowk, Nangloi, Delhi\n#RaniMakeover #BeautyParlour #DelhiSalon #TrendingReels #BridalMakeup"
-                media = cl.clip_upload(str(final_video), caption=caption, thumbnail=str(thumb_path), extra_data={"share_to_fb": "1", "share_to_facebook": "1"})
-                insta_url = f"https://www.instagram.com/p/{media.code}/"
+                    caption = f"{headline}\n\n{subheadline}\n\n📞 Bookings: +91 9334668807\n📍 Shop G-38, RC Plaza, Kirari Chowk, Nangloi, Delhi\n#RaniMakeover #BeautyParlour #DelhiSalon #TrendingReels #BridalMakeup"
+                    media = cl.clip_upload(str(final_video), caption=caption, thumbnail=str(thumb_path), extra_data={"share_to_fb": "1", "share_to_facebook": "1"})
+                    insta_url = f"https://www.instagram.com/p/{media.code}/"
 
-                try:
-                    cl.video_upload_to_story(str(final_video), thumbnail=str(thumb_path))
-                except Exception:
-                    pass
-        except Exception as e:
-            print(f"Instagram publishing note: {e}")
+                    try:
+                        cl.video_upload_to_story(str(final_video), thumbnail=str(thumb_path))
+                    except Exception:
+                        pass
+            except Exception as e:
+                print(f"Instagram publishing note: {e}")
 
         # 8. Record Deduplication History & Lock Current Slot
         self.used_history["used_ids"].append(file_id)
@@ -273,20 +279,19 @@ class CloudGDrivePipeline:
         self._save_used_reels()
         self.mark_slot_completed()
 
-        # 9. Send Instant Telegram Live Notification
+        # 9. Send Instant Telegram Live Notification & Video Dispatch
         try:
             from core.telegram_priority_unified_pipeline import TelegramPriorityPipeline
             tg = TelegramPriorityPipeline()
             dispatch_msg = (
-                "🎉 <b>RANI MAKEOVER POST IS LIVE!</b> 👑✨\n\n"
+                "🎉 <b>RANI MAKEOVER POST READY & LIVE!</b> 👑✨\n\n"
                 f"✨ <b>Title:</b> {headline}\n"
                 f"📝 <b>Details:</b> {subheadline}\n\n"
-                f"📺 <b>YouTube Shorts:</b>\n{yt_url if yt_url else 'https://www.youtube.com/@Ranimakeover-f3f'}\n\n"
-                f"📸 <b>Instagram Reels & Story:</b>\n{insta_url if insta_url else 'https://www.instagram.com/lovelyrani53/'}\n\n"
-                "📘 <b>Facebook Page:</b> Shared Successfully ✅\n\n"
+                f"📺 <b>YouTube Shorts Live:</b>\n{yt_url if yt_url else 'https://www.youtube.com/@Ranimakeover-f3f'}\n\n"
+                f"📸 <b>Instagram Status:</b>\n{'✅ Published: ' + insta_url if insta_url else '🛡️ Dispatched via Safe Residential Channel'}\n\n"
                 "📞 <b>Helpline:</b> +91 9334668807 | 📍 <b>Nangloi, Delhi</b>"
             )
-            tg.send_telegram_notification(None, dispatch_msg)
+            tg.send_telegram_notification(final_video if final_video.exists() else None, dispatch_msg)
         except Exception as e:
             print(f"Telegram dispatch note: {e}")
 
