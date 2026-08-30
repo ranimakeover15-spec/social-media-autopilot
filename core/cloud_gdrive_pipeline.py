@@ -243,35 +243,52 @@ class CloudGDrivePipeline:
         except Exception as e:
             print(f"YouTube publishing note: {e}")
 
-        # 7. Safe Instagram Handling (100% Account Safety Shield)
+        # 7. 100% Fully Autonomous Instagram Reels + Story + FB Publishing
         insta_url = ""
-        is_cloud_runner = os.getenv("GITHUB_ACTIONS") == "true" or os.getenv("CI") == "true"
-        
-        if is_cloud_runner:
-            print("🛡️ [ACCOUNT SAFETY SHIELD] Cloud Datacenter IP detected. Skipping direct instagrapi to protect account against Instagram scraping warnings.")
-            print("📲 Video & Caption dispatched to Telegram for 1-tap mobile upload with Indian residential IP.")
-        else:
-            try:
-                from instagrapi import Client
-                session_file = BASE_DIR / "instagram_session.json"
-                if session_file.exists():
-                    cl = Client()
-                    cl.load_settings(session_file)
+        try:
+            from instagrapi import Client
+            import time
+            session_file = BASE_DIR / "instagram_session.json"
+            if session_file.exists():
+                cl = Client()
+                # Humanized mobile device settings
+                cl.set_user_agent("Instagram 315.0.0.38.109 Android (33/13; 420dpi; 1080x2400; samsung; SM-S911B; dm3q; qcom; en_IN; 560124844)")
+                cl.load_settings(session_file)
 
-                    thumb_path = TEMP_DIR / f"thumb_{file_id}.jpg"
-                    from scripts.publish_live_instagram_reel import generate_thumbnail
-                    generate_thumbnail(final_video, thumb_path)
+                # Realistic human jitter delay
+                time.sleep(random.uniform(3, 7))
 
-                    caption = f"{headline}\n\n{subheadline}\n\n📞 Bookings: +91 9334668807\n📍 Shop G-38, RC Plaza, Kirari Chowk, Nangloi, Delhi\n#RaniMakeover #BeautyParlour #DelhiSalon #TrendingReels #BridalMakeup"
-                    media = cl.clip_upload(str(final_video), caption=caption, thumbnail=str(thumb_path), extra_data={"share_to_fb": "1", "share_to_facebook": "1"})
-                    insta_url = f"https://www.instagram.com/p/{media.code}/"
+                thumb_path = TEMP_DIR / f"thumb_{file_id}.jpg"
+                from scripts.publish_live_instagram_reel import generate_thumbnail
+                generate_thumbnail(final_video, thumb_path)
 
-                    try:
-                        cl.video_upload_to_story(str(final_video), thumbnail=str(thumb_path))
-                    except Exception:
-                        pass
-            except Exception as e:
-                print(f"Instagram publishing note: {e}")
+                caption = (
+                    f"{headline}\n\n"
+                    f"{subheadline}\n\n"
+                    "✨ Experience Luxury Salon & Bridal Transformation at Rani Makeover! 👑💄\n\n"
+                    "📞 Bookings / WhatsApp: +91 9334668807\n"
+                    "📍 Location: Shop No. G-38, RC Plaza, Kirari Chowk, Nangloi, Delhi - 110086\n\n"
+                    "#RaniMakeover #BeautySalon #BridalGlow #NangloiSalon #DelhiMakeupArtist #TrendingReels #InstaReels #ViralReels"
+                )
+                
+                print("📸 [INSTAGRAM AUTO-POST] Uploading Reel to @Lovelyrani53 with Facebook cross-post...")
+                media = cl.clip_upload(
+                    str(final_video),
+                    caption=caption,
+                    thumbnail=str(thumb_path),
+                    extra_data={"share_to_fb": "1", "share_to_facebook": "1"}
+                )
+                insta_url = f"https://www.instagram.com/p/{media.code}/"
+                print(f"🎉 Instagram Reel Published: {insta_url}")
+
+                try:
+                    time.sleep(3)
+                    cl.video_upload_to_story(str(final_video), thumbnail=str(thumb_path))
+                    print("🎉 Instagram Story Published Successfully!")
+                except Exception as e_story:
+                    print(f"Story upload note: {e_story}")
+        except Exception as e:
+            print(f"Instagram publishing note: {e}")
 
         # 8. Record Deduplication History & Lock Current Slot
         self.used_history["used_ids"].append(file_id)
