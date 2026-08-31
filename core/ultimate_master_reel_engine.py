@@ -127,7 +127,7 @@ class UltimateRaniMasterEngine:
             draw.text((top_x + 45, top_y + 45), "RM", font=self.font_brand, fill=self.GOLD_BRIGHT)
 
         draw.text((top_x + 155, top_y + 30), "RANI MAKEOVER", font=self.font_brand, fill=self.GOLD_BRIGHT)
-        draw.text((top_x + 158, top_y + 90), "@Ranimakeover-f3f  •  Exclusive Bridal & Beauty Studio", font=self.font_sub, fill=self.PURE_WHITE)
+        draw.text((top_x + 158, top_y + 90), "Bridal Makeup  •  Hair Cutting  •  Hair Spa  •  Hydra Facial", font=self.font_sub, fill=self.PURE_WHITE)
 
         # ----------------------------------------------------------------------
         # 2. MID-LOWER GLOW-UP HEADLINE CAPSULE (Y: 1300 to 1460)
