@@ -28,16 +28,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 HISTORY_FILE = BASE_DIR / "content_vault" / "published_history.json"
 
 LUXURY_HEADLINES = [
-    ("★ 100% FLAWLESS HD GLOW-UP ★", "Luxury Salon Experience • Mirror Shine & Glass Skin", "✨"),
-    ("👑 ROYAL BRIDAL MAKEOVER SPECIAL 👑", "Signature HD Bridal Makeup & 3D Contouring", "💄"),
+    ("✂️ ADVANCED HAIR CUTTING & STYLING ✂️", "Trendy Layer Cut, Feather Cut & Signature Hair Spa", "💇‍♀️"),
+    ("💆‍♀️ LUXURY HAIR SPA & KERATIN REPAIR 💆‍♀️", "Hair Cutting, Deep Conditioning & Frizz-Free Shine", "✨"),
+    ("👑 ROYAL BRIDAL & HAIR TRANSFORMATION 👑", "HD Bridal Makeup, Hair Cutting & Luxury Hair Spa", "💄"),
     ("🌟 KOREAN GLASS SKIN HYDRA FACIAL 🌟", "Deep Pore Cleansing & Instant Collagen Boost", "🌸"),
-    ("💎 LUXURY HAIR SPA & KERATIN GLOW 💎", "Silky Smooth Finish • Frizz-Free Shine", "💇‍♀️"),
-    ("🎁 5-IN-1 FESTIVE BEAUTY PACKAGE 🎁", "Facial + Waxing + Threading + Hair Care Special", "🎉"),
-    ("🔥 CELEBRITY PARTY GLAMOUR LOOK 🔥", "Waterproof HD Makeup & Trendy Hairstyling", "✨"),
+    ("★ 100% FLAWLESS HD GLOW-UP ★", "Hair Cutting, Hair Spa & Complete Makeover Experience", "✨"),
+    ("🎁 5-IN-1 FESTIVE BEAUTY PACKAGE 🎁", "Hair Cutting + Hair Spa + Facial + Waxing Special", "🎉"),
+    ("🔥 CELEBRITY PARTY GLAMOUR LOOK 🔥", "Waterproof HD Makeup, Hair Cutting & Trendy Styling", "✨"),
     ("💅 LUXURY NAIL ART & GEL EXTENSIONS 💅", "Custom Aesthetic Nails & Long-Lasting Shine", "💎"),
     ("🌸 HERBAL DE-TAN & SKIN BRIGHTENING 🌸", "100% Organic Glow & Sun Damage Repair", "🌿"),
-    ("✨ SIGNATURE SMOKEY & HOODED EYE GLAM ✨", "Precision Eyeliner, Lashes & Velvet Blending", "👁️"),
-    ("👑 ROYAL QUEEN MAKEOVER STUDIO 👑", "Complete Head-to-Toe Beauty Pampering", "👸")
+    ("👑 ROYAL QUEEN MAKEOVER STUDIO 👑", "Bridal Makeup, Hair Cutting & Hair Spa Pampering", "👸")
 ]
 
 OFFERS_LIST = [
