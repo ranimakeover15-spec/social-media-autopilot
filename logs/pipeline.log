@@ -331,3 +331,8 @@
 2026-08-31 08:37:38 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 64%
 2026-08-31 08:37:38 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 96%
 2026-08-31 08:37:38 | INFO     | AutopilotPipeline | youtube_uploader:142: 🎉 YouTube Short published successfully! URL: https://youtube.com/shorts/eLJn83Y9ssA
+2026-08-31 13:35:22 | INFO     | AutopilotPipeline | youtube_uploader:49: 🔄 Refreshing expired YouTube OAuth token...
+2026-08-31 13:35:23 | INFO     | AutopilotPipeline | youtube_uploader:58: ✅ YouTube OAuth token refreshed successfully.
+2026-08-31 13:35:23 | INFO     | AutopilotPipeline | youtube_uploader:69: ✅ YouTube Data API v3 client initialized.
+2026-08-31 13:35:23 | INFO     | AutopilotPipeline | youtube_uploader:106: 📤 Uploading to YouTube Shorts: 'Rani Makeover • 🔥 CELEBRITY PARTY GLAMOUR LOOK 🔥 ✨ #Shorts #Viral #Trending' [public]...
+2026-08-31 13:35:24 | INFO     | AutopilotPipeline | youtube_uploader:142: 🎉 YouTube Short published successfully! URL: https://youtube.com/shorts/b0YeIwqysgY
