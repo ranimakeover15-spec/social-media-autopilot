@@ -308,7 +308,7 @@ class CloudGDrivePipeline:
                 f"📸 <b>Instagram Status:</b>\n{'✅ Published: ' + insta_url if insta_url else '🛡️ Dispatched via Safe Residential Channel'}\n\n"
                 "📞 <b>Helpline:</b> +91 9334668807 | 📍 <b>Nangloi, Delhi</b>"
             )
-            tg.send_telegram_notification(final_video if final_video.exists() else None, dispatch_msg)
+            tg.send_telegram_notification(message=dispatch_msg, video_path=final_video if final_video.exists() else None)
         except Exception as e:
             print(f"Telegram dispatch note: {e}")
 
