@@ -323,3 +323,11 @@
 2026-08-31 03:37:03 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 48%
 2026-08-31 03:37:04 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 96%
 2026-08-31 03:37:04 | INFO     | AutopilotPipeline | youtube_uploader:142: 🎉 YouTube Short published successfully! URL: https://youtube.com/shorts/HvMtQRpsVas
+2026-08-31 08:37:36 | INFO     | AutopilotPipeline | youtube_uploader:49: 🔄 Refreshing expired YouTube OAuth token...
+2026-08-31 08:37:36 | INFO     | AutopilotPipeline | youtube_uploader:58: ✅ YouTube OAuth token refreshed successfully.
+2026-08-31 08:37:36 | INFO     | AutopilotPipeline | youtube_uploader:69: ✅ YouTube Data API v3 client initialized.
+2026-08-31 08:37:36 | INFO     | AutopilotPipeline | youtube_uploader:106: 📤 Uploading to YouTube Shorts: 'Rani Makeover • 💎 LUXURY HAIR SPA & KERATIN GLOW 💎 ✨ #Shorts #Viral #Trending' [public]...
+2026-08-31 08:37:37 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 32%
+2026-08-31 08:37:38 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 64%
+2026-08-31 08:37:38 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 96%
+2026-08-31 08:37:38 | INFO     | AutopilotPipeline | youtube_uploader:142: 🎉 YouTube Short published successfully! URL: https://youtube.com/shorts/eLJn83Y9ssA
