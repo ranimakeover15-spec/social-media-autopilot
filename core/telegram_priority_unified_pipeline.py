@@ -74,19 +74,23 @@ class TelegramPriorityPipeline:
             print(f"Telegram polling note: {e}")
         return None
 
-    def send_telegram_notification(self, chat_id: Optional[int], message: str):
-        """Dispatches live link notification back to Telegram."""
+    def send_telegram_notification(self, message: str, video_path: Optional[Path] = None, chat_id: Optional[int] = None):
+        """Dispatches live notification and optional video to Telegram."""
         if not chat_id:
-            # Broadcast to known admin chat or fetch latest chat
             try:
                 res = requests.get(f"{TELEGRAM_API_URL}/getUpdates?limit=5", timeout=10).json()
                 if res.get("ok") and res.get("result"):
-                    chat_id = res["result"][-1].get("message", {}).get("chat", {}).get("id")
+                    for upd in reversed(res["result"]):
+                        c = upd.get("message", {}).get("chat", {})
+                        if c.get("id"):
+                            chat_id = c["id"]
+                            break
             except Exception:
                 pass
 
         if chat_id:
             try:
+                # 1. Send Text Message
                 payload = {
                     "chat_id": chat_id,
                     "text": message,
@@ -95,6 +99,14 @@ class TelegramPriorityPipeline:
                 }
                 requests.post(f"{TELEGRAM_API_URL}/sendMessage", json=payload, timeout=10)
                 print(f"📲 [TELEGRAM DISPATCH] Live Links successfully sent to Telegram Chat {chat_id}!")
+
+                # 2. Optionally Send Video File if provided
+                if video_path and Path(video_path).exists():
+                    with open(video_path, "rb") as vf:
+                        files = {"video": vf}
+                        data = {"chat_id": chat_id, "caption": "🎬 Master Reel Video"}
+                        requests.post(f"{TELEGRAM_API_URL}/sendVideo", data=data, files=files, timeout=30)
+                        print("📲 [TELEGRAM DISPATCH] Master Reel Video sent to Telegram!")
             except Exception as e:
                 print(f"Telegram dispatch note: {e}")
 
