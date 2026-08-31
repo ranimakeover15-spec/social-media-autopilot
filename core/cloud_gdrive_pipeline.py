@@ -68,7 +68,7 @@ def is_valid_raw_clip(clip_name: str) -> bool:
     for kw in EXCLUDED_BRANDED_KEYWORDS:
         if kw in name_l:
             return False
-    return name_l.endswith(".mp4")
+    return name_l.endswith(".mp4") or name_l.endswith(".mov")
 
 class CloudGDrivePipeline:
     def __init__(self):
