@@ -221,13 +221,13 @@ class CloudGDrivePipeline:
         yt_title = f"Rani Makeover • {headline} ✨ #Shorts #Viral #Trending"[:100]
         yt_desc = (
             f"{subheadline}\n\n"
-            "✨ Experience Luxury Salon & Bridal Glow at Rani Makeover! 👑💄\n\n"
+            "✨ Specialist in: Bridal Makeup • Hair Cutting • Hair Spa • Hydra Facial 👑💄\n\n"
             "📞 Call / WhatsApp For Appointments: +91 9334668807\n"
             "📍 Address: Shop No. G-38, RC Plaza, Kirari Chowk, Nangloi, Delhi - 110086\n"
             "📸 Follow Instagram: https://www.instagram.com/lovelyrani53/\n\n"
-            "#RaniMakeover #BeautySalon #BridalGlow #NangloiSalon #DelhiMakeupArtist #Shorts #Viral #Trending"
+            "#RaniMakeover #HairCutting #HairSpa #BeautySalon #BridalGlow #NangloiSalon #DelhiMakeupArtist #Shorts #Viral #Trending"
         )
-        yt_tags = ["Rani Makeover", "Beauty Parlour Nangloi", "Delhi Salon", "Bridal Makeup Delhi", "Hair Care", "Facial Glow", "Shorts", "Trending"]
+        yt_tags = ["Rani Makeover", "Hair Cutting", "Hair Spa", "Beauty Parlour Nangloi", "Delhi Salon", "Bridal Makeup Delhi", "Hair Care", "Facial Glow", "Shorts", "Trending"]
 
         # 6. Publish to YouTube Shorts
         yt_url = ""
@@ -265,10 +265,10 @@ class CloudGDrivePipeline:
                 caption = (
                     f"{headline}\n\n"
                     f"{subheadline}\n\n"
-                    "✨ Experience Luxury Salon & Bridal Transformation at Rani Makeover! 👑💄\n\n"
+                    "✨ Services: Bridal Makeup • Hair Cutting • Hair Spa • Hydra Facial 👑💄\n\n"
                     "📞 Bookings / WhatsApp: +91 9334668807\n"
                     "📍 Location: Shop No. G-38, RC Plaza, Kirari Chowk, Nangloi, Delhi - 110086\n\n"
-                    "#RaniMakeover #BeautySalon #BridalGlow #NangloiSalon #DelhiMakeupArtist #TrendingReels #InstaReels #ViralReels"
+                    "#RaniMakeover #HairCutting #HairSpa #BeautySalon #BridalGlow #NangloiSalon #DelhiMakeupArtist #TrendingReels #InstaReels #ViralReels"
                 )
                 
                 print("📸 [INSTAGRAM AUTO-POST] Uploading Reel to @Lovelyrani53 with Facebook cross-post...")
