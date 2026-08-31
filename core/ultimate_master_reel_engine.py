@@ -12,6 +12,7 @@ Fixes Applied:
 import os
 import sys
 import subprocess
+import re
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
@@ -31,12 +32,36 @@ class UltimateRaniMasterEngine:
     SOFT_WHITE = (240, 235, 240)
 
     def __init__(self):
+        self.font_dir = BASE_DIR / "assets" / "fonts"
+        self.font_serif_path = self.font_dir / "georgiab.ttf" if (self.font_dir / "georgiab.ttf").exists() else "georgiab.ttf"
+        self.font_sans_path = self.font_dir / "arialbd.ttf" if (self.font_dir / "arialbd.ttf").exists() else "arialbd.ttf"
         self._load_fonts()
         self.music_dir = BASE_DIR / "assets" / "music"
         self.logo_path = BASE_DIR / "assets" / "salon_photos" / "official_rm_logo.png"
 
+    def _get_fitted_font(self, text: str, font_path, max_size: int, max_width: int):
+        """Calculates fitted font size so text NEVER overflows container width."""
+        size = max_size
+        while size >= 18:
+            try:
+                f = ImageFont.truetype(str(font_path), size)
+                bbox = f.getbbox(text)
+                w = bbox[2] - bbox[0]
+                if w <= max_width:
+                    return f, w
+            except Exception:
+                pass
+            size -= 2
+        try:
+            f = ImageFont.truetype(str(font_path), 18)
+            bbox = f.getbbox(text)
+            return f, bbox[2] - bbox[0]
+        except Exception:
+            f = ImageFont.load_default()
+            return f, len(text) * 10
+
     def _load_fonts(self):
-        font_dir = BASE_DIR / "assets" / "fonts"
+        font_dir = self.font_dir
         
         def get_font(size, bold=True, serif=False):
             candidates = []
@@ -64,7 +89,7 @@ class UltimateRaniMasterEngine:
 
         self.font_brand = get_font(44, bold=True, serif=True)
         self.font_sub = get_font(24, bold=True)
-        self.font_glow_title = get_font(44, bold=True, serif=True)
+        self.font_glow_title = get_font(40, bold=True, serif=True)
         self.font_glow_sub = get_font(26, bold=True)
         self.font_phone_big = get_font(48, bold=True)
         self.font_phone_sub = get_font(22, bold=True)
@@ -145,13 +170,22 @@ class UltimateRaniMasterEngine:
             width=3
         )
 
-        bbox_head = self.font_glow_title.getbbox(headline)
-        hw = bbox_head[2] - bbox_head[0]
-        draw.text((card_x + (card_w - hw) // 2, card_y + 22), headline, font=self.font_glow_title, fill=self.GOLD_BRIGHT)
+        # Sanitize emojis (remove unrenderable glyph box symbols)
+        clean_headline = re.sub(r'[\U00010000-\U0010ffff]', '', headline)
+        clean_headline = re.sub(r'[✂️💇‍♀️💆‍♀️👑🌟🎁🔥💅🌸✨👁️👸💎💄✂️]', '', clean_headline).strip()
+        if not clean_headline.startswith("★") and not clean_headline.startswith("•"):
+            clean_headline = f"★ {clean_headline} ★"
 
-        bbox_sub = self.font_glow_sub.getbbox(subheadline)
-        sw = bbox_sub[2] - bbox_sub[0]
-        draw.text((card_x + (card_w - sw) // 2, card_y + 84), subheadline, font=self.font_glow_sub, fill=self.PURE_WHITE)
+        clean_sub = re.sub(r'[\U00010000-\U0010ffff]', '', subheadline)
+        clean_sub = re.sub(r'[✂️💇‍♀️💆‍♀️👑🌟🎁🔥💅🌸✨👁️👸💎💄✂️]', '', clean_sub).strip()
+
+        # Dynamic Font Auto-Fit: Title (never overflows 920px width)
+        font_head_fitted, hw = self._get_fitted_font(clean_headline, self.font_serif_path, max_size=40, max_width=920)
+        draw.text((card_x + (card_w - hw) // 2, card_y + 24), clean_headline, font=font_head_fitted, fill=self.GOLD_BRIGHT)
+
+        # Dynamic Font Auto-Fit: Subtitle
+        font_sub_fitted, sw = self._get_fitted_font(clean_sub, self.font_sans_path, max_size=26, max_width=920)
+        draw.text((card_x + (card_w - sw) // 2, card_y + 86), clean_sub, font=font_sub_fitted, fill=self.PURE_WHITE)
 
         # ----------------------------------------------------------------------
         # 3. BOTTOM CONTACT & BOOKING HUB (Y: 1480 to 1880)
