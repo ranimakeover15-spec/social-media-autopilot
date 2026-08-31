@@ -28,8 +28,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 HISTORY_FILE = BASE_DIR / "content_vault" / "published_history.json"
 
 LUXURY_HEADLINES = [
-    ("✂️ ADVANCED HAIR CUTTING & STYLING ✂️", "Trendy Layer Cut, Feather Cut & Signature Hair Spa", "💇‍♀️"),
-    ("💆‍♀️ LUXURY HAIR SPA & KERATIN REPAIR 💆‍♀️", "Hair Cutting, Deep Conditioning & Frizz-Free Shine", "✨"),
+    ("✂️ ADVANCED HAIR CUT & STYLING ✂️", "Trendy Layer Cut, Feather Cut & Signature Hair Spa", "💇‍♀️"),
+    ("💆‍♀️ LUXURY HAIR SPA & HAIR CUT GLOW 💆‍♀️", "Signature Hair Spa, Deep Conditioning & Trendy Hair Cut", "✨"),
     ("👑 ROYAL BRIDAL & HAIR TRANSFORMATION 👑", "HD Bridal Makeup, Hair Cutting & Luxury Hair Spa", "💄"),
     ("🌟 KOREAN GLASS SKIN HYDRA FACIAL 🌟", "Deep Pore Cleansing & Instant Collagen Boost", "🌸"),
     ("★ 100% FLAWLESS HD GLOW-UP ★", "Hair Cutting, Hair Spa & Complete Makeover Experience", "✨"),
@@ -44,7 +44,7 @@ OFFERS_LIST = [
     ("🎁 FESTIVE 5-IN-1 SPECIAL", "ONLY ₹599/-", "₹1,999", "70% OFF"),
     ("💎 BRIDAL PRE-BOOKING OFFER", "FLAT 40% OFF", "₹9,999", "LIMITED SLOTS"),
     ("🌟 HYDRA GLOW FACIAL COMBO", "ONLY ₹899/-", "₹2,499", "65% OFF"),
-    ("💇‍♀️ KERATIN & HAIR SPA SPECIAL", "FLAT ₹1,499/-", "₹3,999", "MEGA DEAL"),
+    ("💇‍♀️ HAIR SPA & HAIR CUT SPECIAL", "FLAT ₹999/-", "₹2,499", "MEGA DEAL"),
     ("💄 PARTY MAKEUP & HAIRSTYLE", "ONLY ₹1,199/-", "₹2,999", "60% OFF")
 ]
 
