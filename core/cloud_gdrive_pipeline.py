@@ -251,12 +251,13 @@ class CloudGDrivePipeline:
             session_file = BASE_DIR / "instagram_session.json"
             if session_file.exists():
                 cl = Client()
-                # Humanized mobile device settings
-                cl.set_user_agent("Instagram 315.0.0.38.109 Android (33/13; 420dpi; 1080x2400; samsung; SM-S911B; dm3q; qcom; en_IN; 560124844)")
+                # Use authentic Chrome Desktop User-Agent matching session cookies (Zero-detection)
+                cl.set_user_agent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36")
                 cl.load_settings(session_file)
+                cl.delay_range = [3, 6]
 
                 # Realistic human jitter delay
-                time.sleep(random.uniform(3, 7))
+                time.sleep(random.uniform(4, 8))
 
                 thumb_path = TEMP_DIR / f"thumb_{file_id}.jpg"
                 from scripts.publish_live_instagram_reel import generate_thumbnail
