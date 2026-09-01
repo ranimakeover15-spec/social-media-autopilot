@@ -84,11 +84,19 @@ class CloudGDrivePipeline:
 
     def _load_gdrive_service(self):
         gtoken_path = BASE_DIR / "gdrive_token.pickle"
-        if not gtoken_path.exists():
-            raise FileNotFoundError("gdrive_token.pickle not found.")
-        with open(gtoken_path, "rb") as f:
-            creds = pickle.load(f)
-        self.drive_service = build("drive", "v3", credentials=creds)
+        self.drive_service = None
+        if gtoken_path.exists():
+            try:
+                with open(gtoken_path, "rb") as f:
+                    creds = pickle.load(f)
+                if creds and creds.valid:
+                    self.drive_service = build("drive", "v3", credentials=creds)
+                elif creds and creds.expired and creds.refresh_token:
+                    from google.auth.transport.requests import Request
+                    creds.refresh(Request())
+                    self.drive_service = build("drive", "v3", credentials=creds)
+            except Exception as e:
+                print(f"GDrive OAuth service note: {e} (Will use direct resilient stream)")
 
     def _load_used_reels(self):
         if USED_REELS_FILE.exists():
@@ -148,15 +156,40 @@ class CloudGDrivePipeline:
 
     def download_clip_from_gdrive(self, file_id: str, dest_path: Path):
         print(f"☁️ [GDRIVE STREAM] Streaming Pure Raw Video ID '{file_id}' from Google Drive...")
-        request = self.drive_service.files().get_media(fileId=file_id)
+        
+        # 1. Try OAuth client if active
+        if self.drive_service:
+            try:
+                request = self.drive_service.files().get_media(fileId=file_id)
+                with open(dest_path, "wb") as f:
+                    downloader = MediaIoBaseDownload(f, request, chunksize=1024*1024*5)
+                    done = False
+                    while not done:
+                        status, done = downloader.next_chunk()
+                print(f"✅ Downloaded via OAuth: {dest_path.name} ({dest_path.stat().st_size / (1024*1024):.2f} MB)")
+                return dest_path
+            except Exception as e:
+                print(f"OAuth stream note: {e} (Switching to direct HTTP stream)")
+
+        # 2. Resilient Direct HTTP Stream (Zero-OAuth requirement)
+        import requests
+        url = f"https://drive.google.com/uc?id={file_id}&export=download"
+        session = requests.Session()
+        res = session.get(url, stream=True)
+        token = None
+        for k, v in res.cookies.items():
+            if k.startswith("download_warning"):
+                token = v
+                break
+        if token:
+            res = session.get(url, params={"id": file_id, "export": "download", "confirm": token}, stream=True)
+
         with open(dest_path, "wb") as f:
-            downloader = MediaIoBaseDownload(f, request, chunksize=1024*1024*5)
-            done = False
-            while not done:
-                status, done = downloader.next_chunk()
-                if status:
-                    print(f"📊 Download progress: {int(status.progress() * 100)}%")
-        print(f"✅ Downloaded: {dest_path.name} ({dest_path.stat().st_size / (1024*1024):.2f} MB)")
+            for chunk in res.iter_content(65536):
+                if chunk:
+                    f.write(chunk)
+
+        print(f"✅ Downloaded via Direct Stream: {dest_path.name} ({dest_path.stat().st_size / (1024*1024):.2f} MB)")
         return dest_path
 
     def run_cloud_cycle(self, force: bool = False):
