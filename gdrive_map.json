@@ -5,6 +5,26 @@
   "total_clips": 27,
   "clips": [
     {
+      "id": "1yBg8EIfIZEayfMgwg-tK-x2iiFD85Fx0",
+      "name": "IMG_0835.MOV",
+      "type": "video"
+    },
+    {
+      "id": "1JFDm-Vk6_wDODW6mKEM2x0iwYzSzhn_W",
+      "name": "IMG_0836.jpg",
+      "type": "photo"
+    },
+    {
+      "id": "1RqebajQYbiAacN4yaJYQMFfDEL2xFZGN",
+      "name": "IMG_0838.MOV",
+      "type": "video"
+    },
+    {
+      "id": "1iFqn5AouQuh7100fuw3fn6DVmqdVdDEh",
+      "name": "IMG_0839.MOV",
+      "type": "video"
+    },
+    {
       "id": "1c9t2PcYBskHinoWLavZ2AXAuT1UMF5pf",
       "name": "IMG_0628.MP4",
       "size": 5284876
