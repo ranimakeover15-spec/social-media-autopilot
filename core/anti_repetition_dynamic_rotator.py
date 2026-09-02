@@ -29,13 +29,12 @@ HISTORY_FILE = BASE_DIR / "content_vault" / "published_history.json"
 
 LUXURY_HEADLINES = [
     ("✂️ THREADING, FOREHEAD & UPPER LIPS ✂️", "Precision Eyebrow Shaping, Forehead & Upper Lips Glow", "✨"),
-    ("💆‍♀️ LUXURY HAIR SPA & HAIR CUT GLOW 💆‍♀️", "Signature Hair Spa, Deep Conditioning & Trendy Hair Cut", "✨"),
+    ("💆‍♀️ LUXURY HAIR SPA & DEEP NOURISH GLOW 💆‍♀️", "Signature Hair Spa, Deep Conditioning & Silky Shine", "✨"),
     ("👑 ROYAL BRIDAL & BEAUTY MAKEOVER 👑", "HD Bridal Makeup, Threading, Forehead & Upper Lips", "💄"),
     ("🌟 KOREAN GLASS SKIN HYDRA FACIAL 🌟", "Deep Pore Cleansing & Instant Collagen Boost", "🌸"),
-    ("✂️ ADVANCED HAIR CUT & STYLING ✂️", "Trendy Layer Cut, Feather Cut & Signature Hair Spa", "💇‍♀️"),
     ("✨ PERFECT THREADING & FACIAL GLOW ✨", "Threading, Forehead, Upper Lips & Herbal De-Tan", "🌿"),
-    ("★ 100% FLAWLESS HD GLOW-UP ★", "Hair Cutting, Hair Spa & Complete Makeover Experience", "✨"),
-    ("🎁 5-IN-1 FESTIVE BEAUTY PACKAGE 🎁", "Threading + Upper Lips + Hair Cut + Hair Spa Special", "🎉"),
+    ("★ 100% FLAWLESS HD GLOW-UP ★", "Bridal Makeup, Hair Spa & Complete Makeover Experience", "✨"),
+    ("🎁 5-IN-1 FESTIVE BEAUTY PACKAGE 🎁", "Threading + Forehead + Upper Lips + Hair Spa Special", "🎉"),
     ("🔥 CELEBRITY PARTY GLAMOUR LOOK 🔥", "Waterproof HD Makeup, Hair Styling & Flawless Glow", "✨"),
     ("💅 LUXURY NAIL ART & GEL EXTENSIONS 💅", "Custom Aesthetic Nails & Long-Lasting Shine", "💎"),
     ("🌸 HERBAL DE-TAN & SKIN BRIGHTENING 🌸", "100% Organic Glow & Sun Damage Repair", "🌿"),
@@ -46,7 +45,7 @@ OFFERS_LIST = [
     ("🎁 FESTIVE 5-IN-1 SPECIAL", "ONLY ₹599/-", "₹1,999", "70% OFF"),
     ("💎 BRIDAL PRE-BOOKING OFFER", "FLAT 40% OFF", "₹9,999", "LIMITED SLOTS"),
     ("🌟 HYDRA GLOW FACIAL COMBO", "ONLY ₹899/-", "₹2,499", "65% OFF"),
-    ("💇‍♀️ HAIR SPA & HAIR CUT SPECIAL", "FLAT ₹999/-", "₹2,499", "MEGA DEAL"),
+    ("💆‍♀️ HAIR SPA & THREADING COMBO", "FLAT ₹799/-", "₹1,999", "MEGA DEAL"),
     ("💄 PARTY MAKEUP & HAIRSTYLE", "ONLY ₹1,199/-", "₹2,999", "60% OFF")
 ]
 
