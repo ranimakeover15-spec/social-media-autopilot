@@ -282,13 +282,13 @@ class CloudGDrivePipeline:
         yt_title = f"Rani Makeover • {headline} ✨ #Shorts #Viral #Trending"[:100]
         yt_desc = (
             f"{subheadline}\n\n"
-            "✨ Services: Bridal Makeup • Hair Cutting • Hair Spa • Hydra Facial • Threading, Forehead, Upper Lips 👑💄\n\n"
+            "✨ Services: Bridal Makeup • Hair Spa • Hydra Facial • Threading, Forehead, Upper Lips 👑💄\n\n"
             "📞 Call / WhatsApp For Appointments: +91 9334668807\n"
             "📍 Address: Shop No. G-38, RC Plaza, Kirari Chowk, Nangloi, Delhi - 110086\n"
             "📸 Follow Instagram: https://www.instagram.com/lovelyrani53/\n\n"
-            "#RaniMakeover #Threading #UpperLips #HairCutting #HairSpa #BeautySalon #BridalGlow #NangloiSalon #DelhiMakeupArtist #Shorts #Viral #Trending"
+            "#RaniMakeover #Threading #Forehead #UpperLips #HairSpa #HydraFacial #BeautySalon #BridalGlow #NangloiSalon #DelhiMakeupArtist #Shorts #Viral #Trending"
         )
-        yt_tags = ["Rani Makeover", "Threading", "Upper Lips", "Hair Cutting", "Hair Spa", "Beauty Parlour Nangloi", "Delhi Salon", "Bridal Makeup Delhi", "Shorts", "Trending"]
+        yt_tags = ["Rani Makeover", "Threading", "Forehead", "Upper Lips", "Hydra Facial", "Hair Spa", "Beauty Parlour Nangloi", "Delhi Salon", "Bridal Makeup Delhi", "Shorts", "Trending"]
 
         # 6. Publish to YouTube Shorts
         yt_url = ""
