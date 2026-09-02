@@ -152,7 +152,7 @@ class UltimateRaniMasterEngine:
             draw.text((top_x + 45, top_y + 45), "RM", font=self.font_brand, fill=self.GOLD_BRIGHT)
 
         draw.text((top_x + 155, top_y + 30), "RANI MAKEOVER", font=self.font_brand, fill=self.GOLD_BRIGHT)
-        draw.text((top_x + 158, top_y + 90), "Bridal Makeup  •  Hair Cutting  •  Hair Spa  •  Hydra Facial", font=self.font_sub, fill=self.PURE_WHITE)
+        draw.text((top_x + 158, top_y + 90), "Bridal Makeup • Hair Cutting • Hair Spa • Hydra Facial • Threading, Forehead, Upper Lips", font=self.font_sub, fill=self.PURE_WHITE)
 
         # ----------------------------------------------------------------------
         # 2. MID-LOWER GLOW-UP HEADLINE CAPSULE (Y: 1300 to 1460)
@@ -172,12 +172,12 @@ class UltimateRaniMasterEngine:
 
         # Sanitize emojis (remove unrenderable glyph box symbols)
         clean_headline = re.sub(r'[\U00010000-\U0010ffff]', '', headline)
-        clean_headline = re.sub(r'[✂️💇‍♀️💆‍♀️👑🌟🎁🔥💅🌸✨👁️👸💎💄✂️]', '', clean_headline).strip()
-        if not clean_headline.startswith("★") and not clean_headline.startswith("•"):
-            clean_headline = f"★ {clean_headline} ★"
+        clean_headline = re.sub(r'[✂️💇‍♀️💆‍♀️👑🌟🎁🔥💅🌸✨👁️👸💎💄✂️★]', '', clean_headline).strip()
+        if not clean_headline.startswith("•"):
+            clean_headline = f"• {clean_headline} •"
 
         clean_sub = re.sub(r'[\U00010000-\U0010ffff]', '', subheadline)
-        clean_sub = re.sub(r'[✂️💇‍♀️💆‍♀️👑🌟🎁🔥💅🌸✨👁️👸💎💄✂️]', '', clean_sub).strip()
+        clean_sub = re.sub(r'[✂️💇‍♀️💆‍♀️👑🌟🎁🔥💅🌸✨👁️👸💎💄✂️★]', '', clean_sub).strip()
 
         # Dynamic Font Auto-Fit: Title (never overflows 920px width)
         font_head_fitted, hw = self._get_fitted_font(clean_headline, self.font_serif_path, max_size=40, max_width=920)
