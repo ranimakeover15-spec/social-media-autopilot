@@ -282,13 +282,13 @@ class CloudGDrivePipeline:
         yt_title = f"Rani Makeover • {headline} ✨ #Shorts #Viral #Trending"[:100]
         yt_desc = (
             f"{subheadline}\n\n"
-            "✨ Specialist in: Bridal Makeup • Hair Cutting • Hair Spa • Hydra Facial 👑💄\n\n"
+            "✨ Services: Bridal Makeup • Hair Cutting • Hair Spa • Hydra Facial • Threading, Forehead, Upper Lips 👑💄\n\n"
             "📞 Call / WhatsApp For Appointments: +91 9334668807\n"
             "📍 Address: Shop No. G-38, RC Plaza, Kirari Chowk, Nangloi, Delhi - 110086\n"
             "📸 Follow Instagram: https://www.instagram.com/lovelyrani53/\n\n"
-            "#RaniMakeover #HairCutting #HairSpa #BeautySalon #BridalGlow #NangloiSalon #DelhiMakeupArtist #Shorts #Viral #Trending"
+            "#RaniMakeover #Threading #UpperLips #HairCutting #HairSpa #BeautySalon #BridalGlow #NangloiSalon #DelhiMakeupArtist #Shorts #Viral #Trending"
         )
-        yt_tags = ["Rani Makeover", "Hair Cutting", "Hair Spa", "Beauty Parlour Nangloi", "Delhi Salon", "Bridal Makeup Delhi", "Hair Care", "Facial Glow", "Shorts", "Trending"]
+        yt_tags = ["Rani Makeover", "Threading", "Upper Lips", "Hair Cutting", "Hair Spa", "Beauty Parlour Nangloi", "Delhi Salon", "Bridal Makeup Delhi", "Shorts", "Trending"]
 
         # 6. Publish to YouTube Shorts
         yt_url = ""
@@ -327,10 +327,10 @@ class CloudGDrivePipeline:
                 caption = (
                     f"{headline}\n\n"
                     f"{subheadline}\n\n"
-                    "✨ Services: Bridal Makeup • Hair Cutting • Hair Spa • Hydra Facial 👑💄\n\n"
+                    "✨ Services: Bridal Makeup • Hair Cutting • Hair Spa • Hydra Facial • Threading, Forehead, Upper Lips 👑💄\n\n"
                     "📞 Bookings / WhatsApp: +91 9334668807\n"
                     "📍 Location: Shop No. G-38, RC Plaza, Kirari Chowk, Nangloi, Delhi - 110086\n\n"
-                    "#RaniMakeover #HairCutting #HairSpa #BeautySalon #BridalGlow #NangloiSalon #DelhiMakeupArtist #TrendingReels #InstaReels #ViralReels"
+                    "#RaniMakeover #Threading #UpperLips #HairCutting #HairSpa #BeautySalon #BridalGlow #NangloiSalon #DelhiMakeupArtist #TrendingReels #InstaReels #ViralReels"
                 )
                 
                 print("📸 [INSTAGRAM AUTO-POST] Uploading Reel to @Lovelyrani53 with Facebook cross-post...")
