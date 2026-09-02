@@ -341,3 +341,12 @@
 2026-09-01 03:42:00 | INFO     | AutopilotPipeline | youtube_uploader:69: ✅ YouTube Data API v3 client initialized.
 2026-09-01 03:42:00 | INFO     | AutopilotPipeline | youtube_uploader:106: 📤 Uploading to YouTube Shorts: 'Rani Makeover • 💆‍♀️ LUXURY HAIR SPA & HAIR CUT GLOW 💆‍♀️ ✨ #Shorts #Viral #Trending' [public]...
 2026-09-01 03:42:02 | INFO     | AutopilotPipeline | youtube_uploader:142: 🎉 YouTube Short published successfully! URL: https://youtube.com/shorts/NUbFYSPA1WY
+2026-09-02 08:42:35 | INFO     | AutopilotPipeline | youtube_uploader:49: 🔄 Refreshing expired YouTube OAuth token...
+2026-09-02 08:42:35 | INFO     | AutopilotPipeline | youtube_uploader:58: ✅ YouTube OAuth token refreshed successfully.
+2026-09-02 08:42:35 | INFO     | AutopilotPipeline | youtube_uploader:69: ✅ YouTube Data API v3 client initialized.
+2026-09-02 08:42:35 | INFO     | AutopilotPipeline | youtube_uploader:106: 📤 Uploading to YouTube Shorts: 'Rani Makeover • 🔥 CELEBRITY PARTY GLAMOUR LOOK 🔥 ✨ #Shorts #Viral #Trending' [public]...
+2026-09-02 08:42:36 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 24%
+2026-09-02 08:42:37 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 49%
+2026-09-02 08:42:37 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 74%
+2026-09-02 08:42:37 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 99%
+2026-09-02 08:42:38 | INFO     | AutopilotPipeline | youtube_uploader:142: 🎉 YouTube Short published successfully! URL: https://youtube.com/shorts/WDVBTdpJmCw
