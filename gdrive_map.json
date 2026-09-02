@@ -1,193 +1,65 @@
 {
-  "folder_ids": [
-    "1T35lo4bIR9V0_q93ojtcE-hf6MNr7Adf"
-  ],
-  "total_clips": 27,
+  "release_tag": "v1.0-raw-vault",
   "clips": [
     {
-      "id": "gdrive_raw_40449a71974ed6f5",
-      "name": "IMG_2002.MOV",
-      "type": "video"
-    },
-    {
-      "id": "gdrive_raw_0f5b5cde3dff6964",
-      "name": "IMG_2003.MOV",
-      "type": "video"
-    },
-    {
-      "id": "gdrive_raw_677502b9e208a38f",
-      "name": "IMG_2004.MOV",
-      "type": "video"
-    },
-    {
-      "id": "gdrive_raw_3e6b9c76ca1404ff",
-      "name": "IMG_2005.MOV",
-      "type": "video"
-    },
-    {
-      "id": "gdrive_raw_a19b153b652353a1",
-      "name": "IMG_2006.MOV",
-      "type": "video"
-    },
-    {
-      "id": "gdrive_raw_75a375d0e7d35469",
-      "name": "IMG_2007.MOV",
-      "type": "video"
-    },
-    {
-      "id": "1yBg8EIfIZEayfMgwg-tK-x2iiFD85Fx0",
+      "id": "540487585",
       "name": "IMG_0835.MOV",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/IMG_0835.MOV",
       "type": "video"
     },
     {
-      "id": "1JFDm-Vk6_wDODW6mKEM2x0iwYzSzhn_W",
+      "id": "540487952",
       "name": "IMG_0836.jpg",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/IMG_0836.jpg",
       "type": "photo"
     },
     {
-      "id": "1RqebajQYbiAacN4yaJYQMFfDEL2xFZGN",
+      "id": "540488002",
       "name": "IMG_0838.MOV",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/IMG_0838.MOV",
       "type": "video"
     },
     {
-      "id": "1iFqn5AouQuh7100fuw3fn6DVmqdVdDEh",
+      "id": "540488124",
       "name": "IMG_0839.MOV",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/IMG_0839.MOV",
       "type": "video"
     },
     {
-      "id": "1c9t2PcYBskHinoWLavZ2AXAuT1UMF5pf",
-      "name": "IMG_0628.MP4",
-      "size": 5284876
+      "id": "540488320",
+      "name": "IMG_2002.MOV",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/IMG_2002.MOV",
+      "type": "video"
     },
     {
-      "id": "1RVxAf4iOrb3eFMBO4_BAUlMe79dBBLPe",
-      "name": "IMG_1943.MOV",
-      "size": 3713761
+      "id": "540488437",
+      "name": "IMG_2003.MOV",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/IMG_2003.MOV",
+      "type": "video"
     },
     {
-      "id": "1xXhYWevHl8hVzcp_J_ymunI3I5zaC_BD",
-      "name": "IMG_1955.MOV",
-      "size": 9119457
+      "id": "540488768",
+      "name": "IMG_2004.MOV",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/IMG_2004.MOV",
+      "type": "video"
     },
     {
-      "id": "1Yc1PC4NwJZdd9f54PhkYoR_NOO2Z1hoG",
-      "name": "IMG_1956.MOV",
-      "size": 24647177
+      "id": "540489000",
+      "name": "IMG_2005.MOV",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/IMG_2005.MOV",
+      "type": "video"
     },
     {
-      "id": "145k_Yll9U6x_WJOEfJRWfVb-j0pgTQ6P",
-      "name": "IMG_1957.MOV",
-      "size": 38518249
+      "id": "540489134",
+      "name": "IMG_2006.MOV",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/IMG_2006.MOV",
+      "type": "video"
     },
     {
-      "id": "1YS-Aog1_39nwps3lZzwSiFI3pZI0B6o3",
-      "name": "IMG_1958.MOV",
-      "size": 25958503
-    },
-    {
-      "id": "1IcxWS0K0Q1-BTb1jLvjc4W3WIWX1hZfd",
-      "name": "IMG_1959.MOV",
-      "size": 34531998
-    },
-    {
-      "id": "1U1_owbXxQPQQNVkOPvkG4mWn4K1lzKwF",
-      "name": "IMG_1960.MOV",
-      "size": 15344742
-    },
-    {
-      "id": "1Nm3teyuC3-XO_pfJjdjOl63ET8-iLupv",
-      "name": "IMG_1961.MOV",
-      "size": 1230094
-    },
-    {
-      "id": "1Wup83cTice-MWhK6cZk5ACev2CBCwSQz",
-      "name": "IMG_1963.MOV",
-      "size": 6372217
-    },
-    {
-      "id": "1m17wVoz--xW7HXDRKR9A6P9x1fHC8bmp",
-      "name": "IMG_1964.MOV",
-      "size": 1303042
-    },
-    {
-      "id": "1azgVXmDM6eGzzCTIVlt1kfJ-vy9SPgZo",
-      "name": "IMG_1965.MOV",
-      "size": 14689780
-    },
-    {
-      "id": "1BQumZLkzeARWiw1ppIOz7T5UwUmyeQGH",
-      "name": "IMG_1966.MOV",
-      "size": 11264299
-    },
-    {
-      "id": "1O_OgeSUn-0mkcP_MmXTd0AZ7FbFJLXEQ",
-      "name": "IMG_1967.MOV",
-      "size": 6314759
-    },
-    {
-      "id": "1TVX3Keycdzmq_dl3hGPF6yZNQzHD7d_5",
-      "name": "IMG_1968.MOV",
-      "size": 6289565
-    },
-    {
-      "id": "1mLlV7cRSpIBMZZH-nedAmuIP32d_ZuDF",
-      "name": "IMG_1996.MP4",
-      "size": 2016186
-    },
-    {
-      "id": "1kmFYpf7kFgaf5JaGon8lgfR1P2La-fXD",
-      "name": "raksha_bandhan_canva_master.mp4",
-      "size": 2393330
-    },
-    {
-      "id": "1_R89Eps7t5VW-gNCPlyIwfWcZFI5MRNn",
-      "name": "rani_makeover_festive_offer_599.mp4",
-      "size": 3009598
-    },
-    {
-      "id": "1-oRvZvlfJ67tCnYos_zfracWCWNru08E",
-      "name": "viral_beauty_01_05_Watch me pluck my sparse eyebrows Oddly Satisfyi_z2q6ljGntFU.mp4",
-      "size": 7669960
-    },
-    {
-      "id": "1lxq4R428ZcP1M4o76x73YNGLiRxXpil_",
-      "name": "viral_beauty_02_06_The most satisfying eyebrows threading_ybTwrVoNqxU.mp4",
-      "size": 9735985
-    },
-    {
-      "id": "1aYiFn1Qi-0K8Yf_kMG_MnEy4-2_31OIn",
-      "name": "viral_beauty_03_08_ GEL NAIL EXTENSIONS AT ALIZA PARLOUR MUST VI_02toL7eHK84.mp4",
-      "size": 17492432
-    },
-    {
-      "id": "1XB-4MFeljsi5vwFMfJTDZjr_J77n-8SN",
-      "name": "viral_beauty_05_13_Thalgo Source Marine Facial Siddhi Mehta thedr_YVj5x2OxCGY.mp4",
-      "size": 16121832
-    },
-    {
-      "id": "1CV0-kI-CEkgsZ8RcU8eG4CUC1yuctX5v",
-      "name": "viral_beauty_18_30_No one tells you how easy it is to smudge and blen_L-QJGJ_yhPk.mp4",
-      "size": 11751154
-    },
-    {
-      "id": "1zPf7XosuJIxH2tVBSptTvL_1EXGJSvJI",
-      "name": "viral_beauty_19_32_This HOODED Eyes technique is better than regular _nK1JSA-7qjs.mp4",
-      "size": 35434115
-    },
-    {
-      "id": "1g9luwvzilETYxaDFVljVuC6D3-a2sLpW",
-      "name": "viral_beauty_20_34_Wow This Eye Makeup Turned Out So Stunning_jd6J3zMYdjI.mp4",
-      "size": 39582081
-    },
-    {
-      "id": "1Dx-ACVFTRxa6mhN2r0rZUphjgP5ucgw7",
-      "name": "viral_beauty_21_38_Stunning Rashmika Mandannas bridal Makeup_LwvBQhjHNso.mp4",
-      "size": 26519560
-    },
-    {
-      "id": "1BDmaDDiVVJlMgvFicUOAkuattkfpZGaw",
-      "name": "viral_beauty_22_43_Hooded Eyes Makeup That Wont Crease Or Fade_WZCFe0yluq8.mp4",
-      "size": 16419168
+      "id": "540489178",
+      "name": "IMG_2007.MOV",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/IMG_2007.MOV",
+      "type": "video"
     }
   ]
 }
