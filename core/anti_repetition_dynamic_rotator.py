@@ -67,9 +67,11 @@ class ContentRotator:
             try:
                 self.history = json.loads(HISTORY_FILE.read_text(encoding="utf-8"))
             except Exception:
-                self.history = {"used_videos": [], "used_headlines": [], "published_count": 0}
+                self.history = {"used_videos": [], "used_headlines": [], "used_music": [], "published_count": 0}
         else:
-            self.history = {"used_videos": [], "used_headlines": [], "published_count": 0}
+            self.history = {"used_videos": [], "used_headlines": [], "used_music": [], "published_count": 0}
+        if "used_music" not in self.history:
+            self.history["used_music"] = []
 
     def _save_history(self):
         HISTORY_FILE.parent.mkdir(parents=True, exist_ok=True)
@@ -84,7 +86,7 @@ class ContentRotator:
         # Find videos not yet used in this cycle
         selected_video = None
         if raw_videos:
-            unused_videos = [v for v in raw_videos if v.name not in self.history["used_videos"]]
+            unused_videos = [v for v in raw_videos if v.name not in self.history.get("used_videos", [])]
             if not unused_videos:
                 print("🔄 All raw video clips cycled once! Starting next fresh iteration with new themes.")
                 self.history["used_videos"] = []
@@ -94,7 +96,7 @@ class ContentRotator:
                 self.history["used_videos"].append(selected_video.name)
 
         # Select next unique headline
-        unused_headlines = [h for h in LUXURY_HEADLINES if h[0] not in self.history["used_headlines"]]
+        unused_headlines = [h for h in LUXURY_HEADLINES if h[0] not in self.history.get("used_headlines", [])]
         if not unused_headlines:
             self.history["used_headlines"] = []
             unused_headlines = LUXURY_HEADLINES
@@ -102,9 +104,30 @@ class ContentRotator:
         selected_headline = random.choice(unused_headlines)
         self.history["used_headlines"].append(selected_headline[0])
 
-        # Pick random 320k music track
-        music_tracks = list(self.music_dir.glob("*.mp3"))
-        selected_music = random.choice(music_tracks) if music_tracks else None
+        # Curated top luxury salon tracks
+        curated_trending = [
+            "viral_luxury_fashion_beat.mp3",
+            "salon_luxury_bgm.mp3",
+            "salon_energetic_glam.mp3",
+            "instagram_viral_beauty_lounge.mp3",
+            "01_Audionautix Acoustic.mp3",
+            "08_BABES FOREVER.mp3",
+            "14_Wiggle.mp3",
+            "19_Slam Funk.mp3",
+            "salon_aesthetic_bg.mp3"
+        ]
+        available_tracks = [self.music_dir / name for name in curated_trending if (self.music_dir / name).exists()]
+        if not available_tracks:
+            available_tracks = list(self.music_dir.glob("*.mp3"))
+
+        unused_music = [m for m in available_tracks if m.name not in self.history.get("used_music", [])]
+        if not unused_music:
+            self.history["used_music"] = []
+            unused_music = available_tracks
+
+        selected_music = random.choice(unused_music) if unused_music else None
+        if selected_music:
+            self.history.setdefault("used_music", []).append(selected_music.name)
 
         # Pick random color theme and offer
         selected_theme = random.choice(COLOR_THEMES)
