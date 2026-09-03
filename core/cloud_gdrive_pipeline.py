@@ -327,10 +327,10 @@ class CloudGDrivePipeline:
                 caption = (
                     f"{headline}\n\n"
                     f"{subheadline}\n\n"
-                    "✨ Services: Bridal Makeup • Hair Cutting • Hair Spa • Hydra Facial • Threading, Forehead, Upper Lips 👑💄\n\n"
+                    "✨ Services: Bridal Makeup • Hair Spa • Hydra Facial • Threading, Forehead, Upper Lips 👑💄\n\n"
                     "📞 Bookings / WhatsApp: +91 9334668807\n"
                     "📍 Location: Shop No. G-38, RC Plaza, Kirari Chowk, Nangloi, Delhi - 110086\n\n"
-                    "#RaniMakeover #Threading #UpperLips #HairCutting #HairSpa #BeautySalon #BridalGlow #NangloiSalon #DelhiMakeupArtist #TrendingReels #InstaReels #ViralReels"
+                    "#RaniMakeover #Threading #Forehead #UpperLips #HairSpa #HydraFacial #BeautySalon #BridalGlow #NangloiSalon #DelhiMakeupArtist #TrendingReels #InstaReels #ViralReels"
                 )
                 
                 print("📸 [INSTAGRAM AUTO-POST] Uploading Reel to @Lovelyrani53 with Facebook cross-post...")
@@ -344,7 +344,7 @@ class CloudGDrivePipeline:
                 print(f"🎉 Instagram Reel Published: {insta_url}")
 
                 try:
-                    time.sleep(3)
+                    time.sleep(12)
                     cl.video_upload_to_story(str(final_video), thumbnail=str(thumb_path))
                     print("🎉 Instagram Story Published Successfully!")
                 except Exception as e_story:
