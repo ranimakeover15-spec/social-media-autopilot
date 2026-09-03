@@ -32,7 +32,7 @@ LUXURY_HEADLINES = [
     ("💆‍♀️ LUXURY HAIR SPA & DEEP NOURISH GLOW 💆‍♀️", "Signature Hair Spa, Deep Conditioning & Silky Shine", "✨"),
     ("👑 ROYAL BRIDAL & BEAUTY MAKEOVER 👑", "HD Bridal Makeup, Threading, Forehead & Upper Lips", "💄"),
     ("🌟 KOREAN GLASS SKIN HYDRA FACIAL 🌟", "Deep Pore Cleansing & Instant Collagen Boost", "🌸"),
-    ("✨ PERFECT THREADING & FACIAL GLOW ✨", "Threading, Forehead, Upper Lips & Herbal De-Tan", "🌿"),
+    ("✨ PERFECT THREADING & HAIRCUT ✨", "Threading, Forehead, Upper Lips & Trendy Haircut", "🌿"),
     ("★ 100% FLAWLESS HD GLOW-UP ★", "Bridal Makeup, Hair Spa & Complete Makeover Experience", "✨"),
     ("🎁 5-IN-1 FESTIVE BEAUTY PACKAGE 🎁", "Threading + Forehead + Upper Lips + Hair Spa Special", "🎉"),
     ("🔥 CELEBRITY PARTY GLAMOUR LOOK 🔥", "Waterproof HD Makeup, Hair Styling & Flawless Glow", "✨"),
