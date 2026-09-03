@@ -363,3 +363,7 @@
 2026-09-03 05:31:36 | ERROR    | AutopilotPipeline | youtube_uploader:60: ❌ Failed to refresh YouTube OAuth token: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})
 2026-09-03 05:31:36 | WARNING  | AutopilotPipeline | youtube_uploader:64: ⚠️ No valid YouTube credentials found. Run 'python scripts/generate_youtube_token.py' locally.
 2026-09-03 05:31:36 | ERROR    | AutopilotPipeline | youtube_uploader:80: YouTube service is not authenticated. Skipping YouTube upload.
+2026-09-03 08:43:33 | INFO     | AutopilotPipeline | youtube_uploader:49: 🔄 Refreshing expired YouTube OAuth token...
+2026-09-03 08:43:33 | ERROR    | AutopilotPipeline | youtube_uploader:60: ❌ Failed to refresh YouTube OAuth token: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})
+2026-09-03 08:43:33 | WARNING  | AutopilotPipeline | youtube_uploader:64: ⚠️ No valid YouTube credentials found. Run 'python scripts/generate_youtube_token.py' locally.
+2026-09-03 08:43:33 | ERROR    | AutopilotPipeline | youtube_uploader:80: YouTube service is not authenticated. Skipping YouTube upload.
