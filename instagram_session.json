@@ -1,21 +1,22 @@
 {
     "uuids": {
-        "phone_id": "f7a0310d-ea9f-475d-b3c8-ebd198ba34fe",
-        "uuid": "340eb629-5d0c-4d68-8eae-d14e3d186ec5",
-        "client_session_id": "843fec65-3151-45fe-8100-78e2238041ca",
-        "advertising_id": "80906ebd-14f8-4a2f-9840-7937546e2f51",
-        "android_device_id": "android-96f2785e95df2a16",
-        "request_id": "a0728c46-b8aa-4f22-a29e-7069dd48f432",
-        "tray_session_id": "e449bed0-75a7-49b5-9426-45a579327b59"
+        "phone_id": "23432202-5804-4E0D-99E9-516582FD823E",
+        "uuid": "23432202-5804-4E0D-99E9-516582FD823E",
+        "client_session_id": "23432202-5804-4E0D-99E9-516582FD823E",
+        "advertising_id": "23432202-5804-4E0D-99E9-516582FD823E",
+        "android_device_id": "android-154e07ee04c83669",
+        "request_id": "17615b2d-c419-4471-a029-cfae19335d4d",
+        "tray_session_id": "2bda4ffe-b7b2-4090-bfce-03de6bdad33f"
     },
     "mid": "ao879gALAAG6mJnQKdse3cWy6eY8",
     "ig_u_rur": null,
     "ig_www_claim": null,
     "authorization_data": {
-        "ds_user_id": "37979168548",
-        "sessionid": "37979168548%3ArHYZk0iBPIyoOU%3A20%3AAYgKg1BpAcEmEMG6Z5-VjFt-Z97yjW1O2IXh4d_uag"
+        "sessionid": "37979168548:BbUo1PBK3oASZZ:1:AYjmGUPy6uzspSrTpwvNahZGVKUrkqVOqDCRgSw9tg",
+        "ds_user_id": "37979168548"
     },
     "cookies": {
+        "csrftoken": "a4forb76mVGZX3H7mSBQOePm6lCpUE8r",
         "datr": "9juPavhJb4it082UnnCosuIt",
         "dpr": "1.25",
         "ds_user_id": "37979168548",
@@ -23,9 +24,8 @@
         "mid": "ao879gALAAG6mJnQKdse3cWy6eY8",
         "ps_l": "1",
         "ps_n": "1",
-        "rd_challenge": "Q_6hBQSRtzpVP5UWy9aLbNnhreswFzyvd4lzqYxHUYBoLu2SbG6eeENbk1wzcm-tPOH-n5HgmOHU7nOfa0YuNm2RiV2r43dFfgHs2DTzLPYmuf9Y6JQ4nv9I5gxWfuY",
-        "rur": "KND%2C17841437936447396%2C1789446302%3A01ff86fac446fdce53d5318fd587a13a321946ee42c03a1dd34c744dad3129e6f872cb0d",
-        "sessionid": "37979168548%3ArHYZk0iBPIyoOU%3A20%3AAYgKg1BpAcEmEMG6Z5-VjFt-Z97yjW1O2IXh4d_uag",
+        "rur": "NHA,17841437936447396,1789715037:01ff231dd04f64997bab3bd7cba9c7db8e92d7ad2ca0a61be318d046ea29f30f41ae978f",
+        "sessionid": "37979168548:BbUo1PBK3oASZZ:1:AYjmGUPy6uzspSrTpwvNahZGVKUrkqVOqDCRgSw9tg",
         "wd": "790x706"
     },
     "last_login": null,
