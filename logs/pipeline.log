@@ -375,3 +375,10 @@
 2026-09-04 03:40:35 | ERROR    | AutopilotPipeline | youtube_uploader:60: ❌ Failed to refresh YouTube OAuth token: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})
 2026-09-04 03:40:35 | WARNING  | AutopilotPipeline | youtube_uploader:64: ⚠️ No valid YouTube credentials found. Run 'python scripts/generate_youtube_token.py' locally.
 2026-09-04 03:40:35 | ERROR    | AutopilotPipeline | youtube_uploader:80: YouTube service is not authenticated. Skipping YouTube upload.
+2026-09-04 08:43:16 | INFO     | AutopilotPipeline | youtube_uploader:49: 🔄 Refreshing expired YouTube OAuth token...
+2026-09-04 08:43:16 | INFO     | AutopilotPipeline | youtube_uploader:58: ✅ YouTube OAuth token refreshed successfully.
+2026-09-04 08:43:16 | INFO     | AutopilotPipeline | youtube_uploader:69: ✅ YouTube Data API v3 client initialized.
+2026-09-04 08:43:16 | INFO     | AutopilotPipeline | youtube_uploader:106: 📤 Uploading to YouTube Shorts: 'Rani Makeover • ✨ PERFECT THREADING & HAIRCUT ✨ ✨ #Shorts #Viral #Trending' [public]...
+2026-09-04 08:43:18 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 34%
+2026-09-04 08:43:19 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 69%
+2026-09-04 08:43:21 | INFO     | AutopilotPipeline | youtube_uploader:142: 🎉 YouTube Short published successfully! URL: https://youtube.com/shorts/ybrYNforvjE
