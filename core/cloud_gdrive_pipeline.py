@@ -241,21 +241,59 @@ class CloudGDrivePipeline:
             print("⚠️ No valid raw clips found in map!")
             return
 
-        unused_clips = [c for c in pure_raw_clips if c["id"] not in self.used_history["used_ids"]]
-        if not unused_clips:
-            print("🔄 All 22 pure raw clips cycled! Resetting used history for next fresh iteration...")
-            self.used_history["used_ids"] = []
-            unused_clips = pure_raw_clips
+        # ----------------------------------------------------------------------
+        # 1. PRIORITY 1: CHECK TELEGRAM BOT FOR NEW CLIENT RAW FOOTAGE
+        # ----------------------------------------------------------------------
+        selected_clip = None
+        file_id = None
+        raw_name = None
+        downloaded_raw = None
 
-        selected_clip = random.choice(unused_clips)
-        file_id = selected_clip["id"]
-        raw_name = selected_clip["name"]
+        try:
+            tg_token = "8997636217:AAGnU3XP9GgmiS60zitBnxe_4vy99n-F-ug"
+            tg_res = requests.get(f"https://api.telegram.org/bot{tg_token}/getUpdates?limit=20", timeout=10).json()
+            if tg_res.get("ok"):
+                updates = tg_res.get("result", [])
+                for upd in reversed(updates):
+                    msg = upd.get("message", {})
+                    v_obj = msg.get("video") or msg.get("document")
+                    if v_obj and is_valid_raw_clip(v_obj.get("file_name", "clip.mp4")):
+                        tg_fid = v_obj.get("file_id")
+                        # Check if this telegram clip was already published
+                        if tg_fid not in self.used_history["used_ids"]:
+                            f_info = requests.get(f"https://api.telegram.org/bot{tg_token}/getFile?file_id={tg_fid}", timeout=10).json()
+                            if f_info.get("ok"):
+                                f_rel = f_info["result"]["file_path"]
+                                dl_url = f"https://api.telegram.org/file/bot{tg_token}/{f_rel}"
+                                file_id = tg_fid
+                                raw_name = v_obj.get("file_name", "telegram_raw.mp4")
+                                downloaded_raw = TEMP_DIR / f"raw_tg_{int(time.time())}.mp4"
+                                print(f"🔥 [TELEGRAM 1ST PRIORITY] Found New Client Video '{raw_name}' from Telegram! Streaming...")
+                                r_vid = requests.get(dl_url, timeout=60)
+                                with open(downloaded_raw, "wb") as f_out:
+                                    f_out.write(r_vid.content)
+                                print(f"✅ Downloaded Telegram Video: {downloaded_raw.name} ({round(downloaded_raw.stat().st_size/(1024*1024), 2)} MB)")
+                                break
+        except Exception as e_tg:
+            print(f"Telegram priority check note: {e_tg}")
 
-        print(f"🎯 Selected Pure Raw Clip: '{raw_name}' (ID: {file_id})")
+        # ----------------------------------------------------------------------
+        # 2. PRIORITY 2: FALLBACK TO RELEASE ASSETS VAULT IF NO NEW TELEGRAM DATA
+        # ----------------------------------------------------------------------
+        if not downloaded_raw or not downloaded_raw.exists():
+            unused_clips = [c for c in pure_raw_clips if c["id"] not in self.used_history["used_ids"]]
+            if not unused_clips:
+                print("🔄 All 22 pure raw clips cycled! Resetting used history for next fresh iteration...")
+                self.used_history["used_ids"] = []
+                unused_clips = pure_raw_clips
 
-        # 2. Download from Google Drive into temp
-        downloaded_raw = TEMP_DIR / f"raw_{file_id}.mp4"
-        self.download_clip_from_gdrive(file_id, downloaded_raw, clip_info=selected_clip)
+            selected_clip = random.choice(unused_clips)
+            file_id = selected_clip["id"]
+            raw_name = selected_clip["name"]
+
+            print(f"🎯 Selected Fallback Vault Clip: '{raw_name}' (ID: {file_id})")
+            downloaded_raw = TEMP_DIR / f"raw_{file_id}.mp4"
+            self.download_clip_from_gdrive(file_id, downloaded_raw, clip_info=selected_clip)
 
         # 3. Dynamic Headline, Music & Hook Rotation
         from core.anti_repetition_dynamic_rotator import ContentRotator
