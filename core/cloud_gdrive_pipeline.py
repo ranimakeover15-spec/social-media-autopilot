@@ -242,6 +242,16 @@ class CloudGDrivePipeline:
             return
 
         # ----------------------------------------------------------------------
+        # 0. PRIORITY 0: SCAN TELEGRAM FOR CLIENT VOICE NOTES & CUSTOM INSTRUCTIONS
+        # ----------------------------------------------------------------------
+        try:
+            from core.client_voice_listener import ClientVoiceListener
+            vl = ClientVoiceListener()
+            vl.check_and_process_all_voice_notes()
+        except Exception as e_vl:
+            print(f"Voice listener note: {e_vl}")
+
+        # ----------------------------------------------------------------------
         # 1. PRIORITY 1: CHECK TELEGRAM BOT FOR NEW CLIENT RAW FOOTAGE
         # ----------------------------------------------------------------------
         selected_clip = None
