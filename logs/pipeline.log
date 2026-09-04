@@ -382,3 +382,12 @@
 2026-09-04 08:43:18 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 34%
 2026-09-04 08:43:19 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 69%
 2026-09-04 08:43:21 | INFO     | AutopilotPipeline | youtube_uploader:142: 🎉 YouTube Short published successfully! URL: https://youtube.com/shorts/ybrYNforvjE
+2026-09-04 13:40:13 | INFO     | AutopilotPipeline | youtube_uploader:49: 🔄 Refreshing expired YouTube OAuth token...
+2026-09-04 13:40:13 | INFO     | AutopilotPipeline | youtube_uploader:58: ✅ YouTube OAuth token refreshed successfully.
+2026-09-04 13:40:13 | INFO     | AutopilotPipeline | youtube_uploader:69: ✅ YouTube Data API v3 client initialized.
+2026-09-04 13:40:13 | INFO     | AutopilotPipeline | youtube_uploader:106: 📤 Uploading to YouTube Shorts: 'Rani Makeover • 💆‍♀️ LUXURY HAIR SPA & DEEP NOURISH GLOW 💆‍♀️ ✨ #Shorts #Viral #Trending' [public]...
+2026-09-04 13:40:15 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 24%
+2026-09-04 13:40:16 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 49%
+2026-09-04 13:40:17 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 74%
+2026-09-04 13:40:17 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 99%
+2026-09-04 13:40:18 | INFO     | AutopilotPipeline | youtube_uploader:142: 🎉 YouTube Short published successfully! URL: https://youtube.com/shorts/BV123R3oXnA
