@@ -64,6 +64,6 @@ jobs:
         run: |
           git config --global user.name "Autopilot-Bot"
           git config --global user.email "bot@autopilot.local"
-          git add logs/
-          git commit -m "Update deduplication history [skip ci]" || true
+          git add logs/ content_vault/ gdrive_map.json
+          git commit -m "Update deduplication history & rotation state [skip ci]" || true
           git push || true
