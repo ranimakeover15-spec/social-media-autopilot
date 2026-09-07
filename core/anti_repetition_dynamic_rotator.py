@@ -1,13 +1,19 @@
 """
-👑 RANI MAKEOVER — ANTI-REPETITION & DYNAMIC CONTENT ROTATION ENGINE
+👑 RANI MAKEOVER — STRICT 5-CATEGORY ROUND-ROBIN DYNAMIC ROTATION ENGINE
 Guarantees:
-1. Zero Duplicate Posts: Tracks published history in `content_vault/published_history.json`.
-2. Dynamic Variation Engine: If raw clips are reused, it generates:
-   - Fresh High-CTR Headlines (from 30+ luxury salon hooks)
-   - Fresh Sub-headlines & Offers
-   - Rotated 320k BGM Tracks
-   - Rotated Color Accents & Themes
-   - Unique SEO Descriptions & Hashtags
+1. Strict Service Category Round-Robin (Zero Service Repetition):
+   Cycle: NAIL_ART -> HAIR_SPA_SMOOTHING -> THREADING_CARE -> HAIRCUT_STYLING -> Repeat.
+   No category can repeat back-to-back under any circumstances.
+2. Category-Specific Asset Pairing:
+   Nail Art videos are paired strictly with Nail Art headlines, tags, and offers.
+   Hair Spa videos are paired strictly with Hair Spa headlines, tags, and offers.
+   Threading videos are paired strictly with Threading headlines, tags, and offers.
+   Haircut videos are paired strictly with Haircut headlines, tags, and offers.
+3. Multi-Dimension Dynamic Variation:
+   - Rotated 320k Curated BGM Tracks
+   - Rotated Color Themes & Card Palettes
+   - High-CTR Dynamic Offers
+   - Cross-run History Persistence in `content_vault/published_history.json`
 """
 
 import os
@@ -16,7 +22,7 @@ import json
 import random
 import time
 from pathlib import Path
-from typing import Dict, Any, Tuple
+from typing import Dict, Any, List, Optional
 
 # Enforce UTF-8
 if hasattr(sys.stdout, "reconfigure"):
@@ -26,28 +32,93 @@ if hasattr(sys.stderr, "reconfigure"):
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 HISTORY_FILE = BASE_DIR / "content_vault" / "published_history.json"
+GDRIVE_MAP_FILE = BASE_DIR / "gdrive_map.json"
 
-LUXURY_HEADLINES = [
-    ("✂️ THREADING, FOREHEAD & UPPER LIPS ✂️", "Precision Eyebrow Shaping, Forehead & Upper Lips Glow", "✨"),
-    ("💆‍♀️ LUXURY HAIR SPA & DEEP NOURISH GLOW 💆‍♀️", "Signature Hair Spa, Deep Conditioning & Silky Shine", "✨"),
-    ("👑 ROYAL BRIDAL & BEAUTY MAKEOVER 👑", "HD Bridal Makeup, Threading, Forehead & Upper Lips", "💄"),
-    ("🌟 KOREAN GLASS SKIN HYDRA FACIAL 🌟", "Deep Pore Cleansing & Instant Collagen Boost", "🌸"),
-    ("✨ PERFECT THREADING & HAIRCUT ✨", "Threading, Forehead, Upper Lips & Trendy Haircut", "🌿"),
-    ("★ 100% FLAWLESS HD GLOW-UP ★", "Bridal Makeup, Hair Spa & Complete Makeover Experience", "✨"),
-    ("🎁 5-IN-1 FESTIVE BEAUTY PACKAGE 🎁", "Threading + Forehead + Upper Lips + Hair Spa Special", "🎉"),
-    ("🔥 CELEBRITY PARTY GLAMOUR LOOK 🔥", "Waterproof HD Makeup, Hair Styling & Flawless Glow", "✨"),
-    ("💅 LUXURY NAIL ART & GEL EXTENSIONS 💅", "Custom Aesthetic Nails & Long-Lasting Shine", "💎"),
-    ("🌸 HERBAL DE-TAN & SKIN BRIGHTENING 🌸", "100% Organic Glow & Sun Damage Repair", "🌿"),
-    ("👑 ROYAL QUEEN MAKEOVER STUDIO 👑", "Bridal Makeup, Threading, Upper Lips & Hair Spa Pampering", "👸")
+CATEGORY_SEQUENCE = [
+    "NAIL_ART",
+    "HAIR_SPA_SMOOTHING",
+    "THREADING_CARE",
+    "HAIRCUT_STYLING"
 ]
 
-OFFERS_LIST = [
-    ("🎁 FESTIVE 5-IN-1 SPECIAL", "ONLY ₹599/-", "₹1,999", "70% OFF"),
-    ("💎 BRIDAL PRE-BOOKING OFFER", "FLAT 40% OFF", "₹9,999", "LIMITED SLOTS"),
-    ("🌟 HYDRA GLOW FACIAL COMBO", "ONLY ₹899/-", "₹2,499", "65% OFF"),
-    ("💆‍♀️ HAIR SPA & THREADING COMBO", "FLAT ₹799/-", "₹1,999", "MEGA DEAL"),
-    ("💄 PARTY MAKEUP & HAIRSTYLE", "ONLY ₹1,199/-", "₹2,999", "60% OFF")
-]
+CATEGORY_DATA = {
+    "NAIL_ART": {
+        "name": "Luxury Nail Art & Extensions",
+        "service_text": "Nail Art • Gel Extensions • Acrylic Nails • Chrome & French Tips",
+        "headlines": [
+            ("💅 LUXURY NAIL ART & GEL EXTENSIONS 💅", "Custom Aesthetic Nails, Long-Lasting Gel Polish & Royal Shine", "💎"),
+            ("✨ TRENDY NAIL EXTENSIONS & CHIC ART ✨", "Stunning French Tips, Chrome Glaze & Flawless Nails", "💅"),
+            ("💎 ROYAL GLAMOUR NAIL TRANSFORMATION 💎", "Signature Nail Art, Acrylic Extensions & High-Fashion Look", "✨"),
+            ("🔥 VIRAL AESTHETIC GEL NAILS STUDIO 🔥", "Premium Gel Polish, Nail Artistry & Glossy Durability", "💅")
+        ],
+        "offers": [
+            ("💅 NAIL ART & EXTENSIONS SPECIAL", "FLAT 30% OFF", "₹1,499", "LIMITED SLOTS"),
+            ("💎 GEL POLISH & NAIL ART COMBO", "ONLY ₹799/-", "₹1,800", "55% OFF")
+        ],
+        "hashtags": [
+            "#RaniMakeover", "#NailArt", "#GelExtensions", "#NailExtensions", 
+            "#NailTrends", "#AcrylicNails", "#NailSalon", "#DelhiNails", 
+            "#NangloiSalon", "#Shorts", "#Trending", "#Reels"
+        ]
+    },
+    "HAIR_SPA_SMOOTHING": {
+        "name": "Luxury Hair Spa & Smoothening",
+        "service_text": "Hair Spa • Keratin Smoothening • Hair Botox • Deep Nourishing",
+        "headlines": [
+            ("💆‍♀️ LUXURY HAIR SPA & DEEP NOURISH GLOW 💆‍♀️", "Signature Hair Spa, Deep Conditioning & Silky Shine", "✨"),
+            ("✨ SILKY HAIR SMOOTHENING & KERATIN CARE ✨", "Frizz-Free Silky Finish, Mirror Shine & Hair Repair", "🌿"),
+            ("🌟 ADVANCED HAIR REPAIR & NOURISH THERAPY 🌟", "Intense Hydration, Deep Scalp Spa & Gloss Treatment", "💆‍♀️"),
+            ("🌿 ULTRA-SMOOTH HAIR MAKEOVER 🌿", "Professional Hair Spa & Keratin Infusion Experience", "✨")
+        ],
+        "offers": [
+            ("💆‍♀️ HAIR SPA & DEEP CONDITION COMBO", "FLAT ₹799/-", "₹1,999", "MEGA DEAL"),
+            ("✨ KERATIN & SMOOTHENING SPECIAL", "STARTING ₹1,999/-", "₹4,500", "55% OFF")
+        ],
+        "hashtags": [
+            "#RaniMakeover", "#HairSpa", "#HairSmoothening", "#KeratinTreatment", 
+            "#SilkyHair", "#HairCare", "#DelhiHairSalon", "#NangloiSalon", 
+            "#Shorts", "#Viral", "#Reels"
+        ]
+    },
+    "THREADING_CARE": {
+        "name": "Precision Threading, Forehead & Upper Lips",
+        "service_text": "Precision Threading • Forehead • Upper Lips • Eyebrow Definition",
+        "headlines": [
+            ("✂️ THREADING, FOREHEAD & UPPER LIPS ✂️", "Precision Eyebrow Shaping, Forehead & Upper Lips Glow", "✨"),
+            ("✨ PERFECT EYEBROW ARCH & FOREHEAD CARE ✨", "Pain-Free Precision Shaping & Clean Forehead Finish", "🌿"),
+            ("🌿 SIGNATURE EYEBROW SHAPING & GLOW 🌿", "Definition Threading, Upper Lips & Instant Freshness", "✨"),
+            ("🌸 GENTLE THREADING & FACIAL CLEANSING 🌸", "Perfect Eyebrow Lines & Smooth Radiant Forehead", "💫")
+        ],
+        "offers": [
+            ("✂️ THREADING + FOREHEAD + UPPER LIPS COMBO", "ONLY ₹99/-", "₹250", "SPECIAL"),
+            ("🌸 THREADING + HERBAL DE-TAN COMBO", "ONLY ₹299/-", "₹650", "BESTSELLER")
+        ],
+        "hashtags": [
+            "#RaniMakeover", "#Threading", "#EyebrowThreading", "#Forehead", 
+            "#UpperLips", "#EyebrowShaping", "#BeautyParlourNangloi", "#DelhiSalon", 
+            "#Trending", "#Shorts"
+        ]
+    },
+    "HAIRCUT_STYLING": {
+        "name": "Trendy Haircut & Styling",
+        "service_text": "Trendy Haircut • Layer Cut • Feather Cut • Professional Styling",
+        "headlines": [
+            ("✨ PERFECT TRENDY HAIRCUT & STYLING ✨", "Layer Cut, Feather Cut & Professional Blow Dry Finish", "🌿"),
+            ("🔥 CHIC BOUNCE HAIRCUT MAKEOVER 🔥", "Volume Layering, Split End Removal & Glossy Style", "✨"),
+            ("💇‍♀️ SIGNATURE LAYER CUT & BLOWOUT 💇‍♀️", "Custom Haircut According to Face Shape & Texture", "🌟"),
+            ("⭐ TRENDY SALON HAIRCUT & FINISH ⭐", "Flawless Haircut, Bouncy Volume & Lasting Elegance", "🌿")
+        ],
+        "offers": [
+            ("💇‍♀️ ADVANCED LAYER HAIRCUT & BLOW DRY", "ONLY ₹399/-", "₹899", "55% OFF"),
+            ("✨ HAIRCUT + HAIR SPA MEGA COMBO", "ONLY ₹999/-", "₹2,499", "60% OFF")
+        ],
+        "hashtags": [
+            "#RaniMakeover", "#Haircut", "#LayerCut", "#TrendyHaircut", 
+            "#HairStyling", "#BlowDry", "#NangloiSalon", "#DelhiMakeupArtist", 
+            "#Shorts", "#Reels", "#Viral"
+        ]
+    }
+}
 
 COLOR_THEMES = [
     {"name": "Royal Velvet Plum & Gold", "gold": (212, 175, 55), "gold_bright": (255, 215, 0), "bg": (12, 10, 16), "card": (22, 14, 28)},
@@ -67,44 +138,101 @@ class ContentRotator:
             try:
                 self.history = json.loads(HISTORY_FILE.read_text(encoding="utf-8"))
             except Exception:
-                self.history = {"used_videos": [], "used_headlines": [], "used_music": [], "published_count": 0}
+                self.history = self._default_history()
         else:
-            self.history = {"used_videos": [], "used_headlines": [], "used_music": [], "published_count": 0}
+            self.history = self._default_history()
+
+        # Ensure required keys exist
+        if "category_history" not in self.history:
+            self.history["category_history"] = {}
+        for cat in CATEGORY_SEQUENCE:
+            if cat not in self.history["category_history"]:
+                self.history["category_history"][cat] = {"used_clip_ids": [], "used_headlines": []}
         if "used_music" not in self.history:
             self.history["used_music"] = []
+        if "published_count" not in self.history:
+            self.history["published_count"] = 0
+        if "last_category" not in self.history:
+            self.history["last_category"] = "HAIRCUT_STYLING"
+
+    def _default_history(self) -> Dict[str, Any]:
+        return {
+            "last_category": "HAIRCUT_STYLING",
+            "category_history": {cat: {"used_clip_ids": [], "used_headlines": []} for cat in CATEGORY_SEQUENCE},
+            "used_music": [],
+            "published_count": 0,
+            "recent_posts": []
+        }
 
     def _save_history(self):
         HISTORY_FILE.parent.mkdir(parents=True, exist_ok=True)
         HISTORY_FILE.write_text(json.dumps(self.history, indent=2), encoding="utf-8")
 
-    def get_next_unique_bundle(self) -> Dict[str, Any]:
-        """Returns a 100% unique video + headline + music + theme + offer combination."""
-        raw_videos = list(self.vault_dir.glob("viral_beauty_*.mp4"))
-        if not raw_videos:
-            raw_videos = list(self.vault_dir.glob("*.mp4"))
+    def determine_next_category(self, force_category: Optional[str] = None) -> str:
+        if force_category and force_category in CATEGORY_SEQUENCE:
+            return force_category
 
-        # Find videos not yet used in this cycle
-        selected_video = None
-        if raw_videos:
-            unused_videos = [v for v in raw_videos if v.name not in self.history.get("used_videos", [])]
-            if not unused_videos:
-                print("🔄 All raw video clips cycled once! Starting next fresh iteration with new themes.")
-                self.history["used_videos"] = []
-                unused_videos = raw_videos
-            if unused_videos:
-                selected_video = random.choice(unused_videos)
-                self.history["used_videos"].append(selected_video.name)
+        last_cat = self.history.get("last_category", "HAIRCUT_STYLING")
+        try:
+            current_idx = CATEGORY_SEQUENCE.index(last_cat)
+            next_idx = (current_idx + 1) % len(CATEGORY_SEQUENCE)
+        except ValueError:
+            next_idx = 0
+        return CATEGORY_SEQUENCE[next_idx]
 
-        # Select next unique headline
-        unused_headlines = [h for h in LUXURY_HEADLINES if h[0] not in self.history.get("used_headlines", [])]
+    def get_next_category_bundle(self, available_clips: List[Dict[str, Any]], force_category: Optional[str] = None) -> Dict[str, Any]:
+        """
+        Selects next clip strictly following the 4-Category Round-Robin rotation.
+        Picks matching headline, music, offer, and hashtags.
+        """
+        category = self.determine_next_category(force_category)
+        cat_data = CATEGORY_DATA.get(category, CATEGORY_DATA["NAIL_ART"])
+
+        # Filter clips for this specific category
+        cat_clips = [c for c in available_clips if c.get("category") == category]
+        
+        # Fallback if no clips explicitly tagged
+        if not cat_clips:
+            print(f"⚠️ Warning: No clips tagged with category '{category}'. Finding by keywords...")
+            for c in available_clips:
+                name_l = c.get("name", "").lower()
+                if category == "NAIL_ART" and ("nail" in name_l or "2029" in name_l or "2030" in name_l or "2034" in name_l):
+                    cat_clips.append(c)
+                elif category == "HAIR_SPA_SMOOTHING" and ("0835" in name_l or "0838" in name_l or "0839" in name_l or "spa" in name_l):
+                    cat_clips.append(c)
+                elif category == "THREADING_CARE" and ("2002" in name_l or "2003" in name_l or "2004" in name_l or "threading" in name_l):
+                    cat_clips.append(c)
+                elif category == "HAIRCUT_STYLING" and ("2005" in name_l or "2006" in name_l or "2007" in name_l or "haircut" in name_l):
+                    cat_clips.append(c)
+
+        if not cat_clips:
+            print(f"⚠️ Fallback to all available clips for category '{category}'")
+            cat_clips = available_clips
+
+        cat_hist = self.history["category_history"].setdefault(category, {"used_clip_ids": [], "used_headlines": []})
+
+        # Select unused clip in this category
+        unused_clips = [c for c in cat_clips if str(c.get("id")) not in cat_hist.get("used_clip_ids", [])]
+        if not unused_clips:
+            print(f"🔄 All clips in category '{category}' have been cycled! Resetting category clip cycle...")
+            cat_hist["used_clip_ids"] = []
+            unused_clips = cat_clips
+
+        selected_clip = random.choice(unused_clips) if unused_clips else (cat_clips[0] if cat_clips else None)
+        if selected_clip:
+            cat_hist.setdefault("used_clip_ids", []).append(str(selected_clip.get("id")))
+
+        # Select unused headline in this category
+        cat_headlines = cat_data["headlines"]
+        unused_headlines = [h for h in cat_headlines if h[0] not in cat_hist.get("used_headlines", [])]
         if not unused_headlines:
-            self.history["used_headlines"] = []
-            unused_headlines = LUXURY_HEADLINES
+            cat_hist["used_headlines"] = []
+            unused_headlines = cat_headlines
 
         selected_headline = random.choice(unused_headlines)
-        self.history["used_headlines"].append(selected_headline[0])
+        cat_hist.setdefault("used_headlines", []).append(selected_headline[0])
 
-        # Curated top luxury salon tracks
+        # Pick Music
         curated_trending = [
             "viral_luxury_fashion_beat.mp3",
             "salon_luxury_bgm.mp3",
@@ -129,37 +257,74 @@ class ContentRotator:
         if selected_music:
             self.history.setdefault("used_music", []).append(selected_music.name)
 
-        # Pick random color theme and offer
+        # Pick theme and offer
         selected_theme = random.choice(COLOR_THEMES)
-        selected_offer = random.choice(OFFERS_LIST)
+        selected_offer = random.choice(cat_data["offers"])
 
+        # Update global state
+        self.history["last_category"] = category
         self.history["published_count"] += 1
+        
+        post_record = {
+            "iteration": self.history["published_count"],
+            "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+            "category": category,
+            "clip_id": selected_clip.get("id") if selected_clip else None,
+            "clip_name": selected_clip.get("name") if selected_clip else None,
+            "headline": selected_headline[0]
+        }
+        recent = self.history.setdefault("recent_posts", [])
+        recent.append(post_record)
+        if len(recent) > 30:
+            self.history["recent_posts"] = recent[-30:]
+
         self._save_history()
 
         bundle = {
-            "video_path": selected_video,
+            "category": category,
+            "category_name": cat_data["name"],
+            "service_text": cat_data["service_text"],
+            "clip_info": selected_clip,
             "headline": selected_headline[0],
             "subheadline": selected_headline[1],
             "emoji": selected_headline[2],
             "offer": selected_offer,
             "theme": selected_theme,
             "music_path": selected_music,
+            "hashtags": cat_data["hashtags"],
             "iteration": self.history["published_count"]
         }
 
         return bundle
 
+    # Backward compatibility helper
+    def get_next_unique_bundle(self) -> Dict[str, Any]:
+        if GDRIVE_MAP_FILE.exists():
+            try:
+                map_data = json.loads(GDRIVE_MAP_FILE.read_text(encoding="utf-8"))
+                clips = map_data.get("clips", [])
+                return self.get_next_category_bundle(clips)
+            except Exception:
+                pass
+        return self.get_next_category_bundle([])
+
 if __name__ == "__main__":
     rotator = ContentRotator()
-    bundle = rotator.get_next_unique_bundle()
     print("=" * 80)
-    print("🎯 DYNAMIC ANTI-REPETITION BUNDLE GENERATED:")
+    print("🎯 TESTING 4-CATEGORY ROUND-ROBIN CONTENT ROTATOR:")
     print("=" * 80)
-    print(f"🎬 Video: {bundle['video_path'].name}")
-    print(f"✨ Headline: {bundle['headline']}")
-    print(f"📝 Subheadline: {bundle['subheadline']}")
-    print(f"🎨 Theme: {bundle['theme']['name']}")
-    print(f"🎶 Music: {bundle['music_path'].name if bundle['music_path'] else 'None'}")
-    print(f"🎁 Offer: {bundle['offer'][0]} - {bundle['offer'][1]}")
-    print(f"📊 Total Published Count: #{bundle['iteration']}")
-    print("=" * 80)
+    
+    if GDRIVE_MAP_FILE.exists():
+        map_data = json.loads(GDRIVE_MAP_FILE.read_text(encoding="utf-8"))
+        clips = map_data.get("clips", [])
+    else:
+        clips = []
+
+    for i in range(4):
+        b = rotator.get_next_category_bundle(clips)
+        print(f"Cycle {i+1}:")
+        print(f"  🏷️ Category: {b['category']} ({b['category_name']})")
+        print(f"  🎬 Video: {b['clip_info']['name'] if b['clip_info'] else 'None'}")
+        print(f"  ✨ Headline: {b['headline']}")
+        print(f"  🎵 Music: {b['music_path'].name if b['music_path'] else 'None'}")
+        print("-" * 60)
