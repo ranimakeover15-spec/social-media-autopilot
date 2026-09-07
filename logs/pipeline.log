@@ -440,3 +440,11 @@
 2026-09-06 13:38:10 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 60%
 2026-09-06 13:38:10 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 81%
 2026-09-06 13:38:11 | INFO     | AutopilotPipeline | youtube_uploader:142: 🎉 YouTube Short published successfully! URL: https://youtube.com/shorts/sUrvl8XNLPM
+2026-09-07 03:43:13 | INFO     | AutopilotPipeline | youtube_uploader:49: 🔄 Refreshing expired YouTube OAuth token...
+2026-09-07 03:43:13 | INFO     | AutopilotPipeline | youtube_uploader:58: ✅ YouTube OAuth token refreshed successfully.
+2026-09-07 03:43:13 | INFO     | AutopilotPipeline | youtube_uploader:69: ✅ YouTube Data API v3 client initialized.
+2026-09-07 03:43:13 | INFO     | AutopilotPipeline | youtube_uploader:106: 📤 Uploading to YouTube Shorts: 'Rani Makeover • ✨ PERFECT THREADING & HAIRCUT ✨ ✨ #Shorts #Viral #Trending' [public]...
+2026-09-07 03:43:14 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 32%
+2026-09-07 03:43:14 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 64%
+2026-09-07 03:43:14 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 96%
+2026-09-07 03:43:15 | INFO     | AutopilotPipeline | youtube_uploader:142: 🎉 YouTube Short published successfully! URL: https://youtube.com/shorts/kQiIn8eAWnQ
