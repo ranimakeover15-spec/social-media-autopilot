@@ -288,29 +288,30 @@ class CloudGDrivePipeline:
             print(f"Telegram priority check note: {e_tg}")
 
         # ----------------------------------------------------------------------
-        # 2. PRIORITY 2: FALLBACK TO RELEASE ASSETS VAULT IF NO NEW TELEGRAM DATA
+        # 2. PRIORITY 2: STRICT SERVICE CATEGORY ROUND-ROBIN SELECTION
         # ----------------------------------------------------------------------
-        if not downloaded_raw or not downloaded_raw.exists():
-            unused_clips = [c for c in pure_raw_clips if c["id"] not in self.used_history["used_ids"]]
-            if not unused_clips:
-                print("🔄 All 22 pure raw clips cycled! Resetting used history for next fresh iteration...")
-                self.used_history["used_ids"] = []
-                unused_clips = pure_raw_clips
-
-            selected_clip = random.choice(unused_clips)
-            file_id = selected_clip["id"]
-            raw_name = selected_clip["name"]
-
-            print(f"🎯 Selected Fallback Vault Clip: '{raw_name}' (ID: {file_id})")
-            downloaded_raw = TEMP_DIR / f"raw_{file_id}.mp4"
-            self.download_clip_from_gdrive(file_id, downloaded_raw, clip_info=selected_clip)
-
-        # 3. Dynamic Headline, Music & Hook Rotation
         from core.anti_repetition_dynamic_rotator import ContentRotator
         rotator = ContentRotator()
-        bundle = rotator.get_next_unique_bundle()
+
+        if not downloaded_raw or not downloaded_raw.exists():
+            bundle = rotator.get_next_category_bundle(pure_raw_clips)
+            selected_clip = bundle["clip_info"]
+            file_id = str(selected_clip["id"])
+            raw_name = selected_clip["name"]
+
+            print(f"🎯 Selected Category: {bundle['category']} ({bundle['category_name']})")
+            print(f"🎬 Selected Vault Clip: '{raw_name}' (ID: {file_id})")
+            downloaded_raw = TEMP_DIR / f"raw_{file_id}.mp4"
+            self.download_clip_from_gdrive(file_id, downloaded_raw, clip_info=selected_clip)
+        else:
+            # Client provided video via Telegram: determine best matching category
+            t_cat = "NAIL_ART" if "nail" in str(raw_name).lower() else None
+            bundle = rotator.get_next_category_bundle(pure_raw_clips, force_category=t_cat)
+
         headline = bundle["headline"]
         subheadline = bundle["subheadline"]
+        service_text = bundle.get("service_text", "Bridal Makeup • Hair Spa • Hydra Facial • Threading")
+        hashtags_str = " ".join(bundle.get("hashtags", ["#RaniMakeover", "#Shorts", "#Trending"]))
 
         # 4. Brand Master Short using Master Engine with 320k Audio & RM Golden Logo
         from core.ultimate_master_reel_engine import UltimateRaniMasterEngine
@@ -330,13 +331,13 @@ class CloudGDrivePipeline:
         yt_title = f"Rani Makeover • {headline} ✨ #Shorts #Viral #Trending"[:100]
         yt_desc = (
             f"{subheadline}\n\n"
-            "✨ Services: Bridal Makeup • Hair Spa • Hydra Facial • Threading, Forehead, Upper Lips 👑💄\n\n"
+            f"✨ Speciality: {service_text} 👑💄\n\n"
             "📞 Call / WhatsApp For Appointments: +91 9334668807\n"
             "📍 Address: Shop No. G-38, RC Plaza, Kirari Chowk, Nangloi, Delhi - 110086\n"
             "📸 Follow Instagram: https://www.instagram.com/lovelyrani53/\n\n"
-            "#RaniMakeover #Threading #Forehead #UpperLips #HairSpa #HydraFacial #BeautySalon #BridalGlow #NangloiSalon #DelhiMakeupArtist #Shorts #Viral #Trending"
+            f"{hashtags_str}"
         )
-        yt_tags = ["Rani Makeover", "Threading", "Forehead", "Upper Lips", "Hydra Facial", "Hair Spa", "Beauty Parlour Nangloi", "Delhi Salon", "Bridal Makeup Delhi", "Shorts", "Trending"]
+        yt_tags = ["Rani Makeover", bundle.get("category_name", "Beauty Salon"), "Nangloi Salon", "Delhi Salon", "Bridal Makeup Delhi", "Shorts", "Trending"]
 
         # 6. Publish to YouTube Shorts
         yt_url = ""
@@ -375,10 +376,10 @@ class CloudGDrivePipeline:
                 caption = (
                     f"{headline}\n\n"
                     f"{subheadline}\n\n"
-                    "✨ Services: Bridal Makeup • Hair Spa • Hydra Facial • Threading, Forehead, Upper Lips 👑💄\n\n"
+                    f"✨ Speciality: {service_text} 👑💄\n\n"
                     "📞 Bookings / WhatsApp: +91 9334668807\n"
                     "📍 Location: Shop No. G-38, RC Plaza, Kirari Chowk, Nangloi, Delhi - 110086\n\n"
-                    "#RaniMakeover #Threading #Forehead #UpperLips #HairSpa #HydraFacial #BeautySalon #BridalGlow #NangloiSalon #DelhiMakeupArtist #TrendingReels #InstaReels #ViralReels"
+                    f"{hashtags_str}"
                 )
                 
                 print("📸 [INSTAGRAM AUTO-POST] Uploading Reel to @Lovelyrani53 with Facebook cross-post...")
