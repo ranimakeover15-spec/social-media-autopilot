@@ -17,17 +17,9 @@
     "\ud83d\udc86\u200d\u2640\ufe0f LUXURY HAIR SPA & DEEP NOURISH GLOW \ud83d\udc86\u200d\u2640\ufe0f",
     "\u2702\ufe0f THREADING, FOREHEAD & UPPER LIPS \u2702\ufe0f"
   ],
-  "published_count": 19,
+  "published_count": 20,
   "used_music": [
-    "instagram_viral_beauty_lounge.mp3",
-    "salon_luxury_bgm.mp3",
-    "19_Slam Funk.mp3",
-    "14_Wiggle.mp3",
-    "salon_energetic_glam.mp3",
-    "salon_aesthetic_bg.mp3",
-    "viral_luxury_fashion_beat.mp3",
-    "08_BABES FOREVER.mp3",
-    "01_Audionautix Acoustic.mp3"
+    "salon_aesthetic_bg.mp3"
   ],
   "category_history": {
     "NAIL_ART": {
@@ -40,9 +32,12 @@
     },
     "HAIR_SPA_SMOOTHING": {
       "used_clip_ids": [
-        "540487585"
+        "540487585",
+        "540488002"
       ],
-      "used_headlines": []
+      "used_headlines": [
+        "\ud83c\udf3f ULTRA-SMOOTH HAIR MAKEOVER \ud83c\udf3f"
+      ]
     },
     "THREADING_CARE": {
       "used_clip_ids": [
@@ -57,7 +52,7 @@
       "used_headlines": []
     }
   },
-  "last_category": "NAIL_ART",
+  "last_category": "HAIR_SPA_SMOOTHING",
   "recent_posts": [
     {
       "iteration": 12,
@@ -78,6 +73,14 @@
       "clip_id": "548971262",
       "clip_name": "client_raw_IMG_2034.mp4",
       "headline": "\ud83d\udc85 LUXURY NAIL ART & GEL EXTENSIONS \ud83d\udc85"
+    },
+    {
+      "iteration": 20,
+      "timestamp": "2026-09-08 08:45:23",
+      "category": "HAIR_SPA_SMOOTHING",
+      "clip_id": "540488002",
+      "clip_name": "IMG_0838.MOV",
+      "headline": "\ud83c\udf3f ULTRA-SMOOTH HAIR MAKEOVER \ud83c\udf3f"
     }
   ]
 }
