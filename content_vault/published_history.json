@@ -17,23 +17,29 @@
     "\ud83d\udc86\u200d\u2640\ufe0f LUXURY HAIR SPA & DEEP NOURISH GLOW \ud83d\udc86\u200d\u2640\ufe0f",
     "\u2702\ufe0f THREADING, FOREHEAD & UPPER LIPS \u2702\ufe0f"
   ],
-  "published_count": 20,
+  "published_count": 19,
   "used_music": [
-    "salon_aesthetic_bg.mp3"
+    "salon_aesthetic_bg.mp3",
+    "salon_luxury_bgm.mp3",
+    "19_Slam Funk.mp3"
   ],
   "category_history": {
     "NAIL_ART": {
       "used_clip_ids": [
-        "548971262"
+        "548971262",
+        "548971209"
       ],
       "used_headlines": [
-        "\ud83d\udc85 LUXURY NAIL ART & GEL EXTENSIONS \ud83d\udc85"
+        "\u2728 TRENDY NAIL EXTENSIONS & CHIC ART \u2728",
+        "\ud83d\udc8e ROYAL GLAMOUR NAIL TRANSFORMATION \ud83d\udc8e",
+        "\ud83d\udd25 VIRAL AESTHETIC GEL NAILS STUDIO \ud83d\udd25"
       ]
     },
     "HAIR_SPA_SMOOTHING": {
       "used_clip_ids": [
         "540487585",
-        "540488002"
+        "540488002",
+        "540488124"
       ],
       "used_headlines": [
         "\ud83c\udf3f ULTRA-SMOOTH HAIR MAKEOVER \ud83c\udf3f"
@@ -52,7 +58,7 @@
       "used_headlines": []
     }
   },
-  "last_category": "HAIR_SPA_SMOOTHING",
+  "last_category": "HAIRCUT_STYLING",
   "recent_posts": [
     {
       "iteration": 12,
@@ -65,22 +71,6 @@
       "timestamp": "2026-09-07 19:00:00",
       "category": "HAIRCUT_STYLING",
       "headline": "\u2728 PERFECT THREADING & HAIRCUT \u2728"
-    },
-    {
-      "iteration": 19,
-      "timestamp": "2026-09-08 03:42:35",
-      "category": "NAIL_ART",
-      "clip_id": "548971262",
-      "clip_name": "client_raw_IMG_2034.mp4",
-      "headline": "\ud83d\udc85 LUXURY NAIL ART & GEL EXTENSIONS \ud83d\udc85"
-    },
-    {
-      "iteration": 20,
-      "timestamp": "2026-09-08 08:45:23",
-      "category": "HAIR_SPA_SMOOTHING",
-      "clip_id": "540488002",
-      "clip_name": "IMG_0838.MOV",
-      "headline": "\ud83c\udf3f ULTRA-SMOOTH HAIR MAKEOVER \ud83c\udf3f"
     }
   ]
 }

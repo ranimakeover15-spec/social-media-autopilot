@@ -40,19 +40,20 @@ def ensure_cloud_credentials():
                 print(f"GDrive restore error: {e}")
 
     # 3. Instagram Session
-    if not ig_session.exists() or ig_session.stat().st_size == 0:
+    raw_ig = None
+    if EMBEDDED_IG_B64:
+        try:
+            raw_ig = base64.b64decode(EMBEDDED_IG_B64).decode("utf-8")
+        except Exception:
+            pass
+    if not raw_ig:
         raw_ig = os.getenv("INSTAGRAM_SESSION")
-        if not raw_ig and EMBEDDED_IG_B64:
-            try:
-                raw_ig = base64.b64decode(EMBEDDED_IG_B64).decode("utf-8")
-            except Exception:
-                pass
-        if raw_ig:
-            try:
-                ig_session.write_text(raw_ig, encoding="utf-8")
-                print("Instagram session restored from embedded vault.")
-            except Exception as e:
-                print(f"Instagram restore error: {e}")
+    if raw_ig:
+        try:
+            ig_session.write_text(raw_ig, encoding="utf-8")
+            print("Instagram session restored from embedded vault.")
+        except Exception as e:
+            print(f"Instagram restore error: {e}")
 
 if __name__ == "__main__":
     ensure_cloud_credentials()

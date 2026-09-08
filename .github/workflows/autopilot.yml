@@ -55,6 +55,7 @@ jobs:
           if [ -n "$INSTAGRAM_SESSION" ]; then
             echo "$INSTAGRAM_SESSION" > instagram_session.json
           fi
+          python core/cloud_credentials_vault.py
 
       - name: 🚀 Run 100% Cloud-Native GDrive Stream & Publishing Pipeline
         run: |

@@ -45,8 +45,11 @@ TEMP_DIR.mkdir(parents=True, exist_ok=True)
 EXCLUDED_BRANDED_KEYWORDS = [
     "branded", "master", "demo_", "scheduled_", "live_publish_", 
     "auto_reel_", "perfect_", "raksha_bandhan", "rani_makeover_",
-    "final_reel", "output", "client_reel", "exact_reference"
+    "final_reel", "output", "client_reel", "exact_reference",
+    "0835", "0838", "0839"
 ]
+
+BLACKLISTED_CLIP_IDS = ["540487585", "540488002", "540488124"]
 
 def get_current_ist_time() -> datetime:
     """Returns current Indian Standard Time (UTC + 5:30)."""
@@ -235,8 +238,8 @@ class CloudGDrivePipeline:
         map_data = json.loads(GDRIVE_MAP_FILE.read_text(encoding="utf-8"))
         all_clips = map_data.get("clips", [])
 
-        # Filter strictly for unbranded pure raw clips
-        pure_raw_clips = [c for c in all_clips if is_valid_raw_clip(c["name"])]
+        # Filter strictly for unbranded pure raw clips and exclude blacklisted IDs
+        pure_raw_clips = [c for c in all_clips if is_valid_raw_clip(c["name"]) and str(c.get("id")) not in BLACKLISTED_CLIP_IDS]
         if not pure_raw_clips:
             print("⚠️ No valid raw clips found in map!")
             return
@@ -396,8 +399,20 @@ class CloudGDrivePipeline:
             session_file = BASE_DIR / "instagram_session.json"
             if session_file.exists():
                 cl = Client()
-                # Use authentic Chrome Desktop User-Agent matching session cookies (Zero-detection)
-                cl.set_user_agent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36")
+                # Set authentic Samsung Galaxy S21 Ultra Android device settings & user agent
+                cl.set_device({
+                    "app_version": "312.0.0.35.111",
+                    "android_version": 33,
+                    "android_release": "13.0",
+                    "dpi": "480dpi",
+                    "resolution": "1080x2400",
+                    "manufacturer": "Samsung",
+                    "device": "SM-G998B",
+                    "model": "Galaxy S21 Ultra 5G",
+                    "cpu": "exynos2100",
+                    "version_code": "312000351"
+                })
+                cl.set_user_agent("Instagram 312.0.0.35.111 Android (33/13.0; 480dpi; 1080x2400; Samsung; SM-G998B; SM-G998B; exynos2100; en_IN; 312000351)")
                 cl.load_settings(session_file)
                 cl.delay_range = [3, 6]
 
