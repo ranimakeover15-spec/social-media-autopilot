@@ -6,7 +6,7 @@ import sys
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-token = "8997636217:AAGnU3XP9GgmiS60zitBnxe_4vy99n-F-ug"
+token = "8997636217:AAGEh7io8hW6hk30T6p_bFgHREd6LjnR6FI"
 url = f"https://api.telegram.org/bot{token}/getUpdates"
 
 req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})

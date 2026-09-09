@@ -33,7 +33,7 @@ sys.path.insert(0, str(BASE_DIR))
 from core.logger import logger
 from core.telegram_priority_unified_pipeline import TelegramPriorityPipeline
 
-BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "8997636217:AAGnU3XP9GgmiS60zitBnxe_4vy99n-F-ug")
+BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "8997636217:AAGEh7io8hW6hk30T6p_bFgHREd6LjnR6FI")
 API_URL = f"https://api.telegram.org/bot{BOT_TOKEN}"
 
 # ------------------------------------------------------------------------------

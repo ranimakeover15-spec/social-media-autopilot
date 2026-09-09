@@ -25,7 +25,7 @@ if hasattr(sys.stderr, "reconfigure"):
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BASE_DIR))
 
-TELEGRAM_TOKEN = "8997636217:AAGnU3XP9GgmiS60zitBnxe_4vy99n-F-ug"
+TELEGRAM_TOKEN = "8997636217:AAGEh7io8hW6hk30T6p_bFgHREd6LjnR6FI"
 TELEGRAM_API_URL = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}"
 
 class TelegramPriorityPipeline:

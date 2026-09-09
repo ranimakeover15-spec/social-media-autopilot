@@ -21,7 +21,7 @@ PROCESSED_VOICE_FILE = LOGS_DIR / "processed_voice_notes.json"
 CLIENT_PROMOS_FILE = BASE_DIR / "content_vault" / "client_custom_promos.json"
 CLIENT_PROMOS_FILE.parent.mkdir(parents=True, exist_ok=True)
 
-TELEGRAM_BOT_TOKEN = "8997636217:AAGnU3XP9GgmiS60zitBnxe_4vy99n-F-ug"
+TELEGRAM_BOT_TOKEN = "8997636217:AAGEh7io8hW6hk30T6p_bFgHREd6LjnR6FI"
 
 class ClientVoiceListener:
     def __init__(self, bot_token: str = TELEGRAM_BOT_TOKEN):

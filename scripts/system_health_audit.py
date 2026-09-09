@@ -64,7 +64,7 @@ def check_all():
     # 4. Check Telegram Bot
     print("\n[4/5] 🤖 CHECKING TELEGRAM BOT (RENDER CLOUD)...")
     try:
-        bot_res = requests.get("https://api.telegram.org/bot8997636217:AAGnU3XP9GgmiS60zitBnxe_4vy99n-F-ug/getMe", timeout=10).json()
+        bot_res = requests.get("https://api.telegram.org/bot8997636217:AAGEh7io8hW6hk30T6p_bFgHREd6LjnR6FI/getMe", timeout=10).json()
         if bot_res.get("ok"):
             print(f"  ✅ Telegram Bot: @{bot_res['result']['username']} (Online & Cloud-Ready)")
         else:

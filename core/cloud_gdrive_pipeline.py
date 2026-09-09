@@ -263,7 +263,7 @@ class CloudGDrivePipeline:
         downloaded_raw = None
 
         try:
-            tg_token = "8997636217:AAGnU3XP9GgmiS60zitBnxe_4vy99n-F-ug"
+            tg_token = "8997636217:AAGEh7io8hW6hk30T6p_bFgHREd6LjnR6FI"
             tg_res = requests.get(f"https://api.telegram.org/bot{tg_token}/getUpdates?limit=20", timeout=10).json()
             if tg_res.get("ok"):
                 updates = tg_res.get("result", [])
