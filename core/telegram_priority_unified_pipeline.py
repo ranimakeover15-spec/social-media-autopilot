@@ -77,6 +77,7 @@ class TelegramPriorityPipeline:
     def send_telegram_notification(self, message: str, video_path: Optional[Path] = None, chat_id: Optional[int] = None):
         """Dispatches live notification and optional video to Telegram."""
         if not chat_id:
+            chat_id = int(os.getenv("TELEGRAM_CHAT_ID", "8227819380"))
             try:
                 res = requests.get(f"{TELEGRAM_API_URL}/getUpdates?limit=5", timeout=10).json()
                 if res.get("ok") and res.get("result"):
