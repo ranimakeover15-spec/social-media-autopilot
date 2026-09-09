@@ -296,8 +296,36 @@ class CloudGDrivePipeline:
         from core.anti_repetition_dynamic_rotator import ContentRotator
         rotator = ContentRotator()
 
+        # Check for client voice/text custom instructions from Telegram
+        promos_file = BASE_DIR / "content_vault" / "client_custom_promos.json"
+        voice_force_cat = None
+        custom_promo_badge = ""
+        if promos_file.exists():
+            try:
+                promos = json.loads(promos_file.read_text(encoding="utf-8"))
+                focus = promos.get("primary_focus", "").upper()
+                if "HAIRCUT" in focus:
+                    voice_force_cat = "HAIRCUT_STYLING"
+                elif "NAIL" in focus:
+                    voice_force_cat = "NAIL_ART"
+                elif "THREADING" in focus:
+                    voice_force_cat = "THREADING_CARE"
+                elif "HAIR" in focus:
+                    voice_force_cat = "HAIR_SPA_SMOOTHING"
+
+                badges = []
+                if promos.get("custom_price_badge"):
+                    badges.append(promos["custom_price_badge"])
+                if promos.get("custom_discount_badge"):
+                    badges.append(promos["custom_discount_badge"])
+                if badges:
+                    custom_promo_badge = " • " + " | ".join(badges)
+                print(f"🎙️ [CLIENT VOICE/TEXT INSTRUCTION DETECTED] Focus: {voice_force_cat or 'Auto'} | Badges: {custom_promo_badge}")
+            except Exception as e_p:
+                print(f"Custom promo read note: {e_p}")
+
         if not downloaded_raw or not downloaded_raw.exists():
-            bundle = rotator.get_next_category_bundle(pure_raw_clips)
+            bundle = rotator.get_next_category_bundle(pure_raw_clips, force_category=voice_force_cat)
             selected_clip = bundle["clip_info"]
             file_id = str(selected_clip["id"])
             raw_name = selected_clip["name"]
@@ -308,11 +336,11 @@ class CloudGDrivePipeline:
             self.download_clip_from_gdrive(file_id, downloaded_raw, clip_info=selected_clip)
         else:
             # Client provided video via Telegram: determine best matching category
-            t_cat = "NAIL_ART" if "nail" in str(raw_name).lower() else None
+            t_cat = "NAIL_ART" if "nail" in str(raw_name).lower() else voice_force_cat
             bundle = rotator.get_next_category_bundle(pure_raw_clips, force_category=t_cat)
 
         headline = bundle["headline"]
-        subheadline = bundle["subheadline"]
+        subheadline = bundle["subheadline"] + custom_promo_badge
         service_text = bundle.get("service_text", "Bridal Makeup • Hair Spa • Hydra Facial • Threading")
         hashtags_str = " ".join(bundle.get("hashtags", ["#RaniMakeover", "#Shorts", "#Trending"]))
 
