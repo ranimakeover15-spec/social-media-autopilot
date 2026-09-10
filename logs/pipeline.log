@@ -509,3 +509,9 @@
 2026-09-09 13:42:15 | INFO     | AutopilotPipeline | youtube_uploader:106: 📤 Uploading to YouTube Shorts: 'Rani Makeover • ✨ PERFECT TRENDY HAIRCUT & STYLING ✨ ✨ #Shorts #Viral #Trending' [public]...
 2026-09-09 13:42:16 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 50%
 2026-09-09 13:42:16 | INFO     | AutopilotPipeline | youtube_uploader:142: 🎉 YouTube Short published successfully! URL: https://youtube.com/shorts/uoquy0-E1xM
+2026-09-10 03:42:30 | INFO     | AutopilotPipeline | youtube_uploader:49: 🔄 Refreshing expired YouTube OAuth token...
+2026-09-10 03:42:30 | INFO     | AutopilotPipeline | youtube_uploader:58: ✅ YouTube OAuth token refreshed successfully.
+2026-09-10 03:42:30 | INFO     | AutopilotPipeline | youtube_uploader:69: ✅ YouTube Data API v3 client initialized.
+2026-09-10 03:42:30 | INFO     | AutopilotPipeline | youtube_uploader:106: 📤 Uploading to YouTube Shorts: 'Rani Makeover • 💎 ROYAL GLAMOUR NAIL TRANSFORMATION 💎 ✨ #Shorts #Viral #Trending' [public]...
+2026-09-10 03:42:31 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 58%
+2026-09-10 03:42:32 | INFO     | AutopilotPipeline | youtube_uploader:142: 🎉 YouTube Short published successfully! URL: https://youtube.com/shorts/8BCuqk19WkI
