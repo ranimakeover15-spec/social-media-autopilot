@@ -442,6 +442,7 @@ class CloudGDrivePipeline:
                 })
                 cl.set_user_agent("Instagram 312.0.0.35.111 Android (33/13.0; 480dpi; 1080x2400; Samsung; SM-G998B; SM-G998B; exynos2100; en_IN; 312000351)")
                 cl.load_settings(session_file)
+                cl.expose = lambda *args, **kwargs: {}
                 cl.delay_range = [3, 6]
 
                 # Realistic human jitter delay

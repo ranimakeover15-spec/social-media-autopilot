@@ -28,6 +28,7 @@ class DirectInstagramUploader:
         if SESSION_FILE.exists():
             try:
                 self.cl.load_settings(SESSION_FILE)
+                self.cl.expose = lambda *args, **kwargs: {}
                 self.is_configured = True
             except Exception as e:
                 print(f"Error loading Instagram session: {e}")
