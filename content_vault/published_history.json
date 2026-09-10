@@ -17,7 +17,7 @@
     "\ud83d\udc86\u200d\u2640\ufe0f LUXURY HAIR SPA & DEEP NOURISH GLOW \ud83d\udc86\u200d\u2640\ufe0f",
     "\u2702\ufe0f THREADING, FOREHEAD & UPPER LIPS \u2702\ufe0f"
   ],
-  "published_count": 24,
+  "published_count": 25,
   "used_music": [
     "salon_aesthetic_bg.mp3",
     "salon_luxury_bgm.mp3",
@@ -26,7 +26,8 @@
     "instagram_viral_beauty_lounge.mp3",
     "14_Wiggle.mp3",
     "viral_luxury_fashion_beat.mp3",
-    "08_BABES FOREVER.mp3"
+    "08_BABES FOREVER.mp3",
+    "01_Audionautix Acoustic.mp3"
   ],
   "category_history": {
     "NAIL_ART": {
@@ -42,11 +43,13 @@
         "540487585",
         "540488002",
         "540488124",
-        "540488320"
+        "540488320",
+        "540489000"
       ],
       "used_headlines": [
         "\ud83c\udf3f ULTRA-SMOOTH HAIR MAKEOVER \ud83c\udf3f",
-        "\ud83d\udc86\u200d\u2640\ufe0f LUXURY HAIR SPA & DEEP NOURISH GLOW \ud83d\udc86\u200d\u2640\ufe0f"
+        "\ud83d\udc86\u200d\u2640\ufe0f LUXURY HAIR SPA & DEEP NOURISH GLOW \ud83d\udc86\u200d\u2640\ufe0f",
+        "\u2728 SILKY HAIR SMOOTHENING & KERATIN CARE \u2728"
       ]
     },
     "THREADING_CARE": {
@@ -68,7 +71,7 @@
       ]
     }
   },
-  "last_category": "NAIL_ART",
+  "last_category": "HAIR_SPA_SMOOTHING",
   "recent_posts": [
     {
       "iteration": 12,
@@ -121,6 +124,14 @@
       "clip_id": "548971136",
       "clip_name": "client_raw_IMG_2029.mov",
       "headline": "\ud83d\udc8e ROYAL GLAMOUR NAIL TRANSFORMATION \ud83d\udc8e"
+    },
+    {
+      "iteration": 25,
+      "timestamp": "2026-09-10 08:43:33",
+      "category": "HAIR_SPA_SMOOTHING",
+      "clip_id": "540489000",
+      "clip_name": "IMG_2005.MOV",
+      "headline": "\u2728 SILKY HAIR SMOOTHENING & KERATIN CARE \u2728"
     }
   ]
 }
