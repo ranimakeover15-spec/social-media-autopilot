@@ -18,13 +18,14 @@
     "\ud83d\udc86\u200d\u2640\ufe0f LUXURY HAIR SPA & DEEP NOURISH GLOW \ud83d\udc86\u200d\u2640\ufe0f",
     "\u2702\ufe0f THREADING, FOREHEAD & UPPER LIPS \u2702\ufe0f"
   ],
-  "published_count": 22,
+  "published_count": 23,
   "used_music": [
     "salon_aesthetic_bg.mp3",
     "salon_luxury_bgm.mp3",
     "19_Slam Funk.mp3",
     "salon_energetic_glam.mp3",
-    "viral_luxury_fashion_beat.mp3"
+    "viral_luxury_fashion_beat.mp3",
+    "instagram_viral_beauty_lounge.mp3"
   ],
   "category_history": {
     "NAIL_ART": {
@@ -61,12 +62,15 @@
     },
     "HAIRCUT_STYLING": {
       "used_clip_ids": [
-        "540489000"
+        "540489000",
+        "540489134"
       ],
-      "used_headlines": []
+      "used_headlines": [
+        "\ud83d\udc87\u200d\u2640\ufe0f SIGNATURE LAYER CUT & BLOWOUT \ud83d\udc87\u200d\u2640\ufe0f"
+      ]
     }
   },
-  "last_category": "THREADING_CARE",
+  "last_category": "HAIRCUT_STYLING",
   "recent_posts": [
     {
       "iteration": 12,
@@ -103,6 +107,14 @@
       "clip_id": "540488437",
       "clip_name": "IMG_2003.MOV",
       "headline": "\ud83c\udf3f SIGNATURE EYEBROW SHAPING & GLOW \ud83c\udf3f"
+    },
+    {
+      "iteration": 23,
+      "timestamp": "2026-09-11 13:40:59",
+      "category": "HAIRCUT_STYLING",
+      "clip_id": "540489134",
+      "clip_name": "IMG_2006.MOV",
+      "headline": "\ud83d\udc87\u200d\u2640\ufe0f SIGNATURE LAYER CUT & BLOWOUT \ud83d\udc87\u200d\u2640\ufe0f"
     }
   ]
 }
