@@ -536,3 +536,7 @@
 2026-09-11 03:42:16 | INFO     | AutopilotPipeline | youtube_uploader:106: 📤 Uploading to YouTube Shorts: 'Rani Makeover • 🌟 ADVANCED HAIR REPAIR & NOURISH THERAPY 🌟 ✨ #Shorts #Viral #Trending' [public]...
 2026-09-11 03:42:17 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 52%
 2026-09-11 03:42:17 | INFO     | AutopilotPipeline | youtube_uploader:142: 🎉 YouTube Short published successfully! URL: https://youtube.com/shorts/L8fLgnFhGdg
+2026-09-11 08:43:55 | INFO     | AutopilotPipeline | youtube_uploader:49: 🔄 Refreshing expired YouTube OAuth token...
+2026-09-11 08:43:55 | ERROR    | AutopilotPipeline | youtube_uploader:60: ❌ Failed to refresh YouTube OAuth token: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})
+2026-09-11 08:43:55 | WARNING  | AutopilotPipeline | youtube_uploader:64: ⚠️ No valid YouTube credentials found. Run 'python scripts/generate_youtube_token.py' locally.
+2026-09-11 08:43:55 | ERROR    | AutopilotPipeline | youtube_uploader:80: YouTube service is not authenticated. Skipping YouTube upload.
