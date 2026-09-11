@@ -530,3 +530,9 @@
 2026-09-10 13:41:04 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 34%
 2026-09-10 13:41:04 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 69%
 2026-09-10 13:41:05 | INFO     | AutopilotPipeline | youtube_uploader:142: 🎉 YouTube Short published successfully! URL: https://youtube.com/shorts/Mq9HOzB0CsM
+2026-09-11 03:42:15 | INFO     | AutopilotPipeline | youtube_uploader:49: 🔄 Refreshing expired YouTube OAuth token...
+2026-09-11 03:42:16 | INFO     | AutopilotPipeline | youtube_uploader:58: ✅ YouTube OAuth token refreshed successfully.
+2026-09-11 03:42:16 | INFO     | AutopilotPipeline | youtube_uploader:69: ✅ YouTube Data API v3 client initialized.
+2026-09-11 03:42:16 | INFO     | AutopilotPipeline | youtube_uploader:106: 📤 Uploading to YouTube Shorts: 'Rani Makeover • 🌟 ADVANCED HAIR REPAIR & NOURISH THERAPY 🌟 ✨ #Shorts #Viral #Trending' [public]...
+2026-09-11 03:42:17 | INFO     | AutopilotPipeline | youtube_uploader:130: ⏳ YouTube upload progress: 52%
+2026-09-11 03:42:17 | INFO     | AutopilotPipeline | youtube_uploader:142: 🎉 YouTube Short published successfully! URL: https://youtube.com/shorts/L8fLgnFhGdg
