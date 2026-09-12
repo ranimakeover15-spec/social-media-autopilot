@@ -4,7 +4,8 @@
     "NAIL_ART",
     "HAIR_SPA_SMOOTHING",
     "THREADING_CARE",
-    "HAIRCUT_STYLING"
+    "HAIRCUT_STYLING",
+    "BRIDAL_MAKEUP_MEHNDI"
   ],
   "clips": [
     {
@@ -28,7 +29,6 @@
       "type": "video",
       "category": "NAIL_ART"
     },
-
     {
       "id": "540488320",
       "name": "IMG_2002.MOV",
@@ -68,6 +68,132 @@
       "id": "540489178",
       "name": "IMG_2007.MOV",
       "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/IMG_2007.MOV",
+      "type": "video",
+      "category": "HAIRCUT_STYLING"
+    },
+    {
+      "id": "558647909",
+      "name": "IMG_1894.MP4",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/IMG_1894.MP4",
+      "type": "video",
+      "category": "NAIL_ART"
+    },
+    {
+      "id": "558648434",
+      "name": "IMG_1896.mp4",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/IMG_1896.mp4",
+      "type": "video",
+      "category": "NAIL_ART"
+    },
+    {
+      "id": "558648626",
+      "name": "IMG_1897.mp4",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/IMG_1897.mp4",
+      "type": "video",
+      "category": "NAIL_ART"
+    },
+    {
+      "id": "558648763",
+      "name": "IMG_1899.mp4",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/IMG_1899.mp4",
+      "type": "video",
+      "category": "NAIL_ART"
+    },
+    {
+      "id": "558648912",
+      "name": "IMG_1901.mp4",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/IMG_1901.mp4",
+      "type": "video",
+      "category": "NAIL_ART"
+    },
+    {
+      "id": "558648996",
+      "name": "IMG_1902.mp4",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/IMG_1902.mp4",
+      "type": "video",
+      "category": "NAIL_ART"
+    },
+    {
+      "id": "558649164",
+      "name": "IMG_1907.mp4",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/IMG_1907.mp4",
+      "type": "video",
+      "category": "BRIDAL_MAKEUP_MEHNDI"
+    },
+    {
+      "id": "558649374",
+      "name": "IMG_1909.mp4",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/IMG_1909.mp4",
+      "type": "video",
+      "category": "NAIL_ART"
+    },
+    {
+      "id": "558649505",
+      "name": "IMG_1911.mp4",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/IMG_1911.mp4",
+      "type": "video",
+      "category": "NAIL_ART"
+    },
+    {
+      "id": "558649652",
+      "name": "video_AgADxyMAAqNUeFQ_6302.mp4",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/video_AgADxyMAAqNUeFQ_6302.mp4",
+      "type": "video",
+      "category": "HAIRCUT_STYLING"
+    },
+    {
+      "id": "558649964",
+      "name": "7754410-hd_1080_1920_30fps.mp4",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/7754410-hd_1080_1920_30fps.mp4",
+      "type": "video",
+      "category": "HAIR_SPA_SMOOTHING"
+    },
+    {
+      "id": "558650045",
+      "name": "7754411-hd_1080_1920_30fps.mp4",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/7754411-hd_1080_1920_30fps.mp4",
+      "type": "video",
+      "category": "HAIR_SPA_SMOOTHING"
+    },
+    {
+      "id": "558650094",
+      "name": "7754412-hd_1080_1920_30fps.mp4",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/7754412-hd_1080_1920_30fps.mp4",
+      "type": "video",
+      "category": "HAIR_SPA_SMOOTHING"
+    },
+    {
+      "id": "558650177",
+      "name": "7754482-hd_1080_1920_30fps.mp4",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/7754482-hd_1080_1920_30fps.mp4",
+      "type": "video",
+      "category": "THREADING_CARE"
+    },
+    {
+      "id": "558650264",
+      "name": "7754496-hd_1080_1920_30fps.mp4",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/7754496-hd_1080_1920_30fps.mp4",
+      "type": "video",
+      "category": "HAIRCUT_STYLING"
+    },
+    {
+      "id": "558650391",
+      "name": "7754502-hd_1080_1920_30fps.mp4",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/7754502-hd_1080_1920_30fps.mp4",
+      "type": "video",
+      "category": "HAIR_SPA_SMOOTHING"
+    },
+    {
+      "id": "558650457",
+      "name": "7754507-hd_1080_1920_30fps.mp4",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/7754507-hd_1080_1920_30fps.mp4",
+      "type": "video",
+      "category": "THREADING_CARE"
+    },
+    {
+      "id": "558650538",
+      "name": "7754508-hd_1080_1920_30fps.mp4",
+      "download_url": "https://github.com/ranimakeover15-spec/social-media-autopilot/releases/download/v1.0-raw-vault/7754508-hd_1080_1920_30fps.mp4",
       "type": "video",
       "category": "HAIRCUT_STYLING"
     }

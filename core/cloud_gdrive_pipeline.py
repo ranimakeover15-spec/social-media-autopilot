@@ -326,9 +326,52 @@ class CloudGDrivePipeline:
 
         if not downloaded_raw or not downloaded_raw.exists():
             bundle = rotator.get_next_category_bundle(pure_raw_clips, force_category=voice_force_cat)
-            selected_clip = bundle["clip_info"]
+            selected_clip = bundle.get("clip_info")
+
+            # HARD SAFETY CHECK: If no fresh clips exist, halt immediately!
+            if selected_clip is None:
+                print("🛑 [HARD STOP] All raw clips in vault have already been published once!")
+                print("🛡️ [ZERO DUPLICATE POLICY] Aborting cloud run to protect Rani Mam's Instagram and YouTube from duplicate posting.")
+                try:
+                    from core.telegram_priority_unified_pipeline import TelegramPriorityPipeline
+                    tg = TelegramPriorityPipeline()
+                    tg.send_telegram_notification(
+                        message=(
+                            "🛡️ <b>RANI MAKEOVER ZERO-REPETITION SHIELD ACTIVE</b> 👑\n\n"
+                            "⚠️ <b>Notice:</b> All raw salon clips in the vault have completed their one-time publishing.\n"
+                            "🚫 <b>No Duplicate Videos:</b> Autopilot halted safely to protect Rani Mam's Instagram and YouTube from any duplicate posts.\n\n"
+                            "📲 <b>Next Steps:</b> Please upload fresh salon raw videos to this Telegram bot or the vault to resume automatic 3x daily posting!"
+                        ),
+                        chat_id=8273074560
+                    )
+                except Exception as e_tg_alert:
+                    print(f"Telegram notice error: {e_tg_alert}")
+                return
+
             file_id = str(selected_clip["id"])
             raw_name = selected_clip["name"]
+
+            # HARD DEDUPLICATION GATE: Verify against all historical records
+            all_used_ids = set(self.used_history.get("used_ids", []))
+            all_used_names = [str(n).lower() for n in self.used_history.get("used_videos", [])]
+
+            if file_id in all_used_ids or raw_name.lower() in all_used_names:
+                print(f"🛑 [HARD DEDUPLICATION GATE TRIGGERED] Clip '{raw_name}' (ID: {file_id}) was ALREADY published!")
+                print("🚫 Immediate abort. Zero duplicate videos will ever be posted.")
+                try:
+                    from core.telegram_priority_unified_pipeline import TelegramPriorityPipeline
+                    tg = TelegramPriorityPipeline()
+                    tg.send_telegram_notification(
+                        message=(
+                            f"🛡️ <b>DEDUPLICATION INTERCEPT TRIGGERED</b>\n\n"
+                            f"Attempted to post already-published clip: <code>{raw_name}</code>\n"
+                            "Cloud Autopilot safely blocked upload. Zero duplicate posts guaranteed!"
+                        ),
+                        chat_id=8273074560
+                    )
+                except Exception:
+                    pass
+                return
 
             print(f"🎯 Selected Category: {bundle['category']} ({bundle['category_name']})")
             print(f"🎬 Selected Vault Clip: '{raw_name}' (ID: {file_id})")
@@ -481,8 +524,13 @@ class CloudGDrivePipeline:
             print(f"Instagram publishing note: {e}")
 
         # 8. Record Deduplication History & Lock Current Slot
-        self.used_history["used_ids"].append(file_id)
-        self.used_history["published_count"] += 1
+        if file_id not in self.used_history.get("used_ids", []):
+            self.used_history.setdefault("used_ids", []).append(file_id)
+        if "used_videos" not in self.used_history:
+            self.used_history["used_videos"] = []
+        if raw_name not in self.used_history["used_videos"]:
+            self.used_history["used_videos"].append(raw_name)
+        self.used_history["published_count"] = self.used_history.get("published_count", 0) + 1
         self._save_used_reels()
         self.mark_slot_completed()
 

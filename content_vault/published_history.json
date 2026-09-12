@@ -1,6 +1,14 @@
 {
   "used_videos": [
+    "client_raw_IMG_2029.mov",
+    "client_raw_IMG_2030.mov",
     "client_raw_IMG_2034.mp4",
+    "IMG_2002.MOV",
+    "IMG_2003.MOV",
+    "IMG_2004.MOV",
+    "IMG_2005.MOV",
+    "IMG_2006.MOV",
+    "IMG_2007.MOV",
     "custom_tg_montage_1789059933"
   ],
   "used_headlines": [
@@ -18,62 +26,56 @@
     "\ud83d\udc86\u200d\u2640\ufe0f LUXURY HAIR SPA & DEEP NOURISH GLOW \ud83d\udc86\u200d\u2640\ufe0f",
     "\u2702\ufe0f THREADING, FOREHEAD & UPPER LIPS \u2702\ufe0f"
   ],
-  "published_count": 24,
+  "published_count": 25,
   "used_music": [
     "salon_aesthetic_bg.mp3",
     "salon_luxury_bgm.mp3",
     "19_Slam Funk.mp3",
     "salon_energetic_glam.mp3",
-    "viral_luxury_fashion_beat.mp3",
-    "instagram_viral_beauty_lounge.mp3",
-    "01_Audionautix Acoustic.mp3"
+    "01_Audionautix Acoustic.mp3",
+    "08_BABES FOREVER.mp3",
+    "14_Wiggle.mp3",
+    "instagram_viral_beauty_lounge.mp3"
   ],
   "category_history": {
     "NAIL_ART": {
       "used_clip_ids": [
-        "548971262",
+        "548971136",
         "548971209",
-        "548971136"
+        "548971262"
       ],
-      "used_headlines": [
-        "\u2728 TRENDY NAIL EXTENSIONS & CHIC ART \u2728",
-        "\ud83d\udc8e ROYAL GLAMOUR NAIL TRANSFORMATION \ud83d\udc8e",
-        "\ud83d\udd25 VIRAL AESTHETIC GEL NAILS STUDIO \ud83d\udd25",
-        "\ud83d\udc85 LUXURY NAIL ART & GEL EXTENSIONS \ud83d\udc85"
-      ]
+      "used_headlines": []
     },
     "HAIR_SPA_SMOOTHING": {
       "used_clip_ids": [
         "540487585",
         "540488002",
-        "540488124",
-        "548971262"
+        "540488124"
       ],
-      "used_headlines": [
-        "\ud83c\udf3f ULTRA-SMOOTH HAIR MAKEOVER \ud83c\udf3f",
-        "\ud83c\udf1f ADVANCED HAIR REPAIR & NOURISH THERAPY \ud83c\udf1f"
-      ]
+      "used_headlines": []
     },
     "THREADING_CARE": {
       "used_clip_ids": [
         "540488320",
-        "540488437"
+        "540488437",
+        "540488768"
       ],
-      "used_headlines": [
-        "\ud83c\udf3f SIGNATURE EYEBROW SHAPING & GLOW \ud83c\udf3f"
-      ]
+      "used_headlines": []
     },
     "HAIRCUT_STYLING": {
       "used_clip_ids": [
         "540489000",
-        "540489134"
+        "540489134",
+        "540489178"
       ],
-      "used_headlines": [
-        "\ud83d\udc87\u200d\u2640\ufe0f SIGNATURE LAYER CUT & BLOWOUT \ud83d\udc87\u200d\u2640\ufe0f"
-      ]
+      "used_headlines": []
+    },
+    "BRIDAL_MAKEUP_MEHNDI": {
+      "used_clip_ids": [],
+      "used_headlines": []
     }
   },
-  "last_category": "NAIL_ART",
+  "last_category": "BRIDAL_MAKEUP_MEHNDI",
   "recent_posts": [
     {
       "iteration": 12,
@@ -97,34 +99,42 @@
     },
     {
       "iteration": 21,
-      "timestamp": "2026-09-11 03:42:04",
+      "timestamp": "2026-09-12 10:35:20",
       "category": "HAIR_SPA_SMOOTHING",
-      "clip_id": "548971262",
-      "clip_name": "client_raw_IMG_2034.mp4",
-      "headline": "\ud83c\udf1f ADVANCED HAIR REPAIR & NOURISH THERAPY \ud83c\udf1f"
+      "clip_id": "558649964",
+      "clip_name": "7754410-hd_1080_1920_30fps.mp4",
+      "headline": "\ud83d\udc86\u200d\u2640\ufe0f LUXURY HAIR SPA & DEEP NOURISH GLOW \ud83d\udc86\u200d\u2640\ufe0f"
     },
     {
       "iteration": 22,
-      "timestamp": "2026-09-11 08:43:37",
+      "timestamp": "2026-09-12 10:35:20",
       "category": "THREADING_CARE",
-      "clip_id": "540488437",
-      "clip_name": "IMG_2003.MOV",
+      "clip_id": "558650457",
+      "clip_name": "7754507-hd_1080_1920_30fps.mp4",
       "headline": "\ud83c\udf3f SIGNATURE EYEBROW SHAPING & GLOW \ud83c\udf3f"
     },
     {
       "iteration": 23,
-      "timestamp": "2026-09-11 13:40:59",
+      "timestamp": "2026-09-12 10:35:20",
       "category": "HAIRCUT_STYLING",
-      "clip_id": "540489134",
-      "clip_name": "IMG_2006.MOV",
-      "headline": "\ud83d\udc87\u200d\u2640\ufe0f SIGNATURE LAYER CUT & BLOWOUT \ud83d\udc87\u200d\u2640\ufe0f"
+      "clip_id": "558650538",
+      "clip_name": "7754508-hd_1080_1920_30fps.mp4",
+      "headline": "\u2728 PERFECT TRENDY HAIRCUT & STYLING \u2728"
     },
     {
       "iteration": 24,
-      "timestamp": "2026-09-12 03:41:01",
+      "timestamp": "2026-09-12 10:35:20",
+      "category": "BRIDAL_MAKEUP_MEHNDI",
+      "clip_id": "558649164",
+      "clip_name": "IMG_1907.mp4",
+      "headline": "\ud83c\udf3a SIGNATURE BRIDAL MEHNDI & MAKEOVER \ud83c\udf3a"
+    },
+    {
+      "iteration": 25,
+      "timestamp": "2026-09-12 10:35:20",
       "category": "NAIL_ART",
-      "clip_id": "548971136",
-      "clip_name": "client_raw_IMG_2029.mov",
+      "clip_id": "558649374",
+      "clip_name": "IMG_1909.mp4",
       "headline": "\ud83d\udc85 LUXURY NAIL ART & GEL EXTENSIONS \ud83d\udc85"
     }
   ]
