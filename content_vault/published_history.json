@@ -10,7 +10,8 @@
     "IMG_2006.MOV",
     "IMG_2007.MOV",
     "custom_tg_montage_1789059933",
-    "IMG_1909.mp4"
+    "IMG_1909.mp4",
+    "7754412-hd_1080_1920_30fps.mp4"
   ],
   "used_headlines": [
     "\u2728 SIGNATURE SMOKEY & HOODED EYE GLAM \u2728",
@@ -27,16 +28,8 @@
     "\ud83d\udc86\u200d\u2640\ufe0f LUXURY HAIR SPA & DEEP NOURISH GLOW \ud83d\udc86\u200d\u2640\ufe0f",
     "\u2702\ufe0f THREADING, FOREHEAD & UPPER LIPS \u2702\ufe0f"
   ],
-  "published_count": 26,
+  "published_count": 27,
   "used_music": [
-    "salon_aesthetic_bg.mp3",
-    "salon_luxury_bgm.mp3",
-    "19_Slam Funk.mp3",
-    "salon_energetic_glam.mp3",
-    "01_Audionautix Acoustic.mp3",
-    "08_BABES FOREVER.mp3",
-    "14_Wiggle.mp3",
-    "instagram_viral_beauty_lounge.mp3",
     "viral_luxury_fashion_beat.mp3"
   ],
   "category_history": {
@@ -56,9 +49,12 @@
       "used_clip_ids": [
         "540487585",
         "540488002",
-        "540488124"
+        "540488124",
+        "558650094"
       ],
-      "used_headlines": []
+      "used_headlines": [
+        "\ud83c\udf1f ADVANCED HAIR REPAIR & NOURISH THERAPY \ud83c\udf1f"
+      ]
     },
     "THREADING_CARE": {
       "used_clip_ids": [
@@ -81,7 +77,7 @@
       "used_headlines": []
     }
   },
-  "last_category": "NAIL_ART",
+  "last_category": "HAIR_SPA_SMOOTHING",
   "recent_posts": [
     {
       "iteration": 12,
@@ -150,6 +146,14 @@
       "clip_id": "558649374",
       "clip_name": "IMG_1909.mp4",
       "headline": "\ud83d\udc8e ROYAL GLAMOUR NAIL TRANSFORMATION \ud83d\udc8e"
+    },
+    {
+      "iteration": 27,
+      "timestamp": "2026-09-12 13:37:06",
+      "category": "HAIR_SPA_SMOOTHING",
+      "clip_id": "558650094",
+      "clip_name": "7754412-hd_1080_1920_30fps.mp4",
+      "headline": "\ud83c\udf1f ADVANCED HAIR REPAIR & NOURISH THERAPY \ud83c\udf1f"
     }
   ]
 }
