@@ -9,7 +9,8 @@
     "IMG_2005.MOV",
     "IMG_2006.MOV",
     "IMG_2007.MOV",
-    "custom_tg_montage_1789059933"
+    "custom_tg_montage_1789059933",
+    "IMG_1909.mp4"
   ],
   "used_headlines": [
     "\u2728 SIGNATURE SMOKEY & HOODED EYE GLAM \u2728",
@@ -26,7 +27,7 @@
     "\ud83d\udc86\u200d\u2640\ufe0f LUXURY HAIR SPA & DEEP NOURISH GLOW \ud83d\udc86\u200d\u2640\ufe0f",
     "\u2702\ufe0f THREADING, FOREHEAD & UPPER LIPS \u2702\ufe0f"
   ],
-  "published_count": 25,
+  "published_count": 26,
   "used_music": [
     "salon_aesthetic_bg.mp3",
     "salon_luxury_bgm.mp3",
@@ -35,16 +36,21 @@
     "01_Audionautix Acoustic.mp3",
     "08_BABES FOREVER.mp3",
     "14_Wiggle.mp3",
-    "instagram_viral_beauty_lounge.mp3"
+    "instagram_viral_beauty_lounge.mp3",
+    "viral_luxury_fashion_beat.mp3"
   ],
   "category_history": {
     "NAIL_ART": {
       "used_clip_ids": [
         "548971136",
         "548971209",
-        "548971262"
+        "548971262",
+        "custom_tg_montage_1789059933",
+        "558649374"
       ],
-      "used_headlines": []
+      "used_headlines": [
+        "\ud83d\udc8e ROYAL GLAMOUR NAIL TRANSFORMATION \ud83d\udc8e"
+      ]
     },
     "HAIR_SPA_SMOOTHING": {
       "used_clip_ids": [
@@ -75,7 +81,7 @@
       "used_headlines": []
     }
   },
-  "last_category": "BRIDAL_MAKEUP_MEHNDI",
+  "last_category": "NAIL_ART",
   "recent_posts": [
     {
       "iteration": 12,
@@ -136,6 +142,14 @@
       "clip_id": "558649374",
       "clip_name": "IMG_1909.mp4",
       "headline": "\ud83d\udc85 LUXURY NAIL ART & GEL EXTENSIONS \ud83d\udc85"
+    },
+    {
+      "iteration": 26,
+      "timestamp": "2026-09-12 08:41:35",
+      "category": "NAIL_ART",
+      "clip_id": "558649374",
+      "clip_name": "IMG_1909.mp4",
+      "headline": "\ud83d\udc8e ROYAL GLAMOUR NAIL TRANSFORMATION \ud83d\udc8e"
     }
   ]
 }
