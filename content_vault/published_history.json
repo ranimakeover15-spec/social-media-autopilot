@@ -13,7 +13,8 @@
     "IMG_1909.mp4",
     "7754412-hd_1080_1920_30fps.mp4",
     "7754482-hd_1080_1920_30fps.mp4",
-    "video_AgADxyMAAqNUeFQ_6302.mp4"
+    "video_AgADxyMAAqNUeFQ_6302.mp4",
+    "IMG_1907.mp4"
   ],
   "used_headlines": [
     "\u2728 SIGNATURE SMOKEY & HOODED EYE GLAM \u2728",
@@ -30,11 +31,12 @@
     "\ud83d\udc86\u200d\u2640\ufe0f LUXURY HAIR SPA & DEEP NOURISH GLOW \ud83d\udc86\u200d\u2640\ufe0f",
     "\u2702\ufe0f THREADING, FOREHEAD & UPPER LIPS \u2702\ufe0f"
   ],
-  "published_count": 29,
+  "published_count": 30,
   "used_music": [
     "viral_luxury_fashion_beat.mp3",
     "14_Wiggle.mp3",
-    "19_Slam Funk.mp3"
+    "19_Slam Funk.mp3",
+    "01_Audionautix Acoustic.mp3"
   ],
   "category_history": {
     "NAIL_ART": {
@@ -83,11 +85,15 @@
       ]
     },
     "BRIDAL_MAKEUP_MEHNDI": {
-      "used_clip_ids": [],
-      "used_headlines": []
+      "used_clip_ids": [
+        "558649164"
+      ],
+      "used_headlines": [
+        "\u2728 LUXURY BRIDAL MAKEUP & DESIGNER MEHNDI \u2728"
+      ]
     }
   },
-  "last_category": "HAIRCUT_STYLING",
+  "last_category": "BRIDAL_MAKEUP_MEHNDI",
   "recent_posts": [
     {
       "iteration": 12,
@@ -180,6 +186,14 @@
       "clip_id": "558649652",
       "clip_name": "video_AgADxyMAAqNUeFQ_6302.mp4",
       "headline": "\ud83d\udd25 CHIC BOUNCE HAIRCUT MAKEOVER \ud83d\udd25"
+    },
+    {
+      "iteration": 30,
+      "timestamp": "2026-09-13 13:37:50",
+      "category": "BRIDAL_MAKEUP_MEHNDI",
+      "clip_id": "558649164",
+      "clip_name": "IMG_1907.mp4",
+      "headline": "\u2728 LUXURY BRIDAL MAKEUP & DESIGNER MEHNDI \u2728"
     }
   ]
 }
