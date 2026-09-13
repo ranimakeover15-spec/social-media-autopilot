@@ -12,7 +12,8 @@
     "custom_tg_montage_1789059933",
     "IMG_1909.mp4",
     "7754412-hd_1080_1920_30fps.mp4",
-    "7754482-hd_1080_1920_30fps.mp4"
+    "7754482-hd_1080_1920_30fps.mp4",
+    "video_AgADxyMAAqNUeFQ_6302.mp4"
   ],
   "used_headlines": [
     "\u2728 SIGNATURE SMOKEY & HOODED EYE GLAM \u2728",
@@ -29,10 +30,11 @@
     "\ud83d\udc86\u200d\u2640\ufe0f LUXURY HAIR SPA & DEEP NOURISH GLOW \ud83d\udc86\u200d\u2640\ufe0f",
     "\u2702\ufe0f THREADING, FOREHEAD & UPPER LIPS \u2702\ufe0f"
   ],
-  "published_count": 28,
+  "published_count": 29,
   "used_music": [
     "viral_luxury_fashion_beat.mp3",
-    "14_Wiggle.mp3"
+    "14_Wiggle.mp3",
+    "19_Slam Funk.mp3"
   ],
   "category_history": {
     "NAIL_ART": {
@@ -73,16 +75,19 @@
       "used_clip_ids": [
         "540489000",
         "540489134",
-        "540489178"
+        "540489178",
+        "558649652"
       ],
-      "used_headlines": []
+      "used_headlines": [
+        "\ud83d\udd25 CHIC BOUNCE HAIRCUT MAKEOVER \ud83d\udd25"
+      ]
     },
     "BRIDAL_MAKEUP_MEHNDI": {
       "used_clip_ids": [],
       "used_headlines": []
     }
   },
-  "last_category": "THREADING_CARE",
+  "last_category": "HAIRCUT_STYLING",
   "recent_posts": [
     {
       "iteration": 12,
@@ -167,6 +172,14 @@
       "clip_id": "558650177",
       "clip_name": "7754482-hd_1080_1920_30fps.mp4",
       "headline": "\ud83c\udf3f SIGNATURE EYEBROW SHAPING & GLOW \ud83c\udf3f"
+    },
+    {
+      "iteration": 29,
+      "timestamp": "2026-09-13 08:41:48",
+      "category": "HAIRCUT_STYLING",
+      "clip_id": "558649652",
+      "clip_name": "video_AgADxyMAAqNUeFQ_6302.mp4",
+      "headline": "\ud83d\udd25 CHIC BOUNCE HAIRCUT MAKEOVER \ud83d\udd25"
     }
   ]
 }
