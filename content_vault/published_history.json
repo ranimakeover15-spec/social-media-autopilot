@@ -15,7 +15,8 @@
     "7754482-hd_1080_1920_30fps.mp4",
     "video_AgADxyMAAqNUeFQ_6302.mp4",
     "IMG_1907.mp4",
-    "IMG_1897.mp4"
+    "IMG_1897.mp4",
+    "7754502-hd_1080_1920_30fps.mp4"
   ],
   "used_headlines": [
     "\u2728 SIGNATURE SMOKEY & HOODED EYE GLAM \u2728",
@@ -32,13 +33,14 @@
     "\ud83d\udc86\u200d\u2640\ufe0f LUXURY HAIR SPA & DEEP NOURISH GLOW \ud83d\udc86\u200d\u2640\ufe0f",
     "\u2702\ufe0f THREADING, FOREHEAD & UPPER LIPS \u2702\ufe0f"
   ],
-  "published_count": 31,
+  "published_count": 32,
   "used_music": [
     "viral_luxury_fashion_beat.mp3",
     "14_Wiggle.mp3",
     "19_Slam Funk.mp3",
     "01_Audionautix Acoustic.mp3",
-    "instagram_viral_beauty_lounge.mp3"
+    "instagram_viral_beauty_lounge.mp3",
+    "salon_energetic_glam.mp3"
   ],
   "category_history": {
     "NAIL_ART": {
@@ -60,10 +62,12 @@
         "540487585",
         "540488002",
         "540488124",
-        "558650094"
+        "558650094",
+        "558650391"
       ],
       "used_headlines": [
-        "\ud83c\udf1f ADVANCED HAIR REPAIR & NOURISH THERAPY \ud83c\udf1f"
+        "\ud83c\udf1f ADVANCED HAIR REPAIR & NOURISH THERAPY \ud83c\udf1f",
+        "\ud83d\udc86\u200d\u2640\ufe0f LUXURY HAIR SPA & DEEP NOURISH GLOW \ud83d\udc86\u200d\u2640\ufe0f"
       ]
     },
     "THREADING_CARE": {
@@ -97,7 +101,7 @@
       ]
     }
   },
-  "last_category": "NAIL_ART",
+  "last_category": "HAIR_SPA_SMOOTHING",
   "recent_posts": [
     {
       "iteration": 12,
@@ -206,6 +210,14 @@
       "clip_id": "558648626",
       "clip_name": "IMG_1897.mp4",
       "headline": "\ud83d\udc85 LUXURY NAIL ART & GEL EXTENSIONS \ud83d\udc85"
+    },
+    {
+      "iteration": 32,
+      "timestamp": "2026-09-14 08:44:31",
+      "category": "HAIR_SPA_SMOOTHING",
+      "clip_id": "558650391",
+      "clip_name": "7754502-hd_1080_1920_30fps.mp4",
+      "headline": "\ud83d\udc86\u200d\u2640\ufe0f LUXURY HAIR SPA & DEEP NOURISH GLOW \ud83d\udc86\u200d\u2640\ufe0f"
     }
   ]
 }
