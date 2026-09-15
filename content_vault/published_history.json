@@ -18,7 +18,8 @@
     "IMG_1897.mp4",
     "7754502-hd_1080_1920_30fps.mp4",
     "7754507-hd_1080_1920_30fps.mp4",
-    "7754508-hd_1080_1920_30fps.mp4"
+    "7754508-hd_1080_1920_30fps.mp4",
+    "IMG_1899.mp4"
   ],
   "used_headlines": [
     "\u2728 SIGNATURE SMOKEY & HOODED EYE GLAM \u2728",
@@ -35,7 +36,7 @@
     "\ud83d\udc86\u200d\u2640\ufe0f LUXURY HAIR SPA & DEEP NOURISH GLOW \ud83d\udc86\u200d\u2640\ufe0f",
     "\u2702\ufe0f THREADING, FOREHEAD & UPPER LIPS \u2702\ufe0f"
   ],
-  "published_count": 34,
+  "published_count": 35,
   "used_music": [
     "viral_luxury_fashion_beat.mp3",
     "14_Wiggle.mp3",
@@ -44,7 +45,8 @@
     "instagram_viral_beauty_lounge.mp3",
     "salon_energetic_glam.mp3",
     "08_BABES FOREVER.mp3",
-    "salon_aesthetic_bg.mp3"
+    "salon_aesthetic_bg.mp3",
+    "salon_luxury_bgm.mp3"
   ],
   "category_history": {
     "NAIL_ART": {
@@ -54,11 +56,13 @@
         "548971262",
         "custom_tg_montage_1789059933",
         "558649374",
-        "558648626"
+        "558648626",
+        "558648763"
       ],
       "used_headlines": [
         "\ud83d\udc8e ROYAL GLAMOUR NAIL TRANSFORMATION \ud83d\udc8e",
-        "\ud83d\udc85 LUXURY NAIL ART & GEL EXTENSIONS \ud83d\udc85"
+        "\ud83d\udc85 LUXURY NAIL ART & GEL EXTENSIONS \ud83d\udc85",
+        "\ud83d\udd25 VIRAL AESTHETIC GEL NAILS STUDIO \ud83d\udd25"
       ]
     },
     "HAIR_SPA_SMOOTHING": {
@@ -109,7 +113,7 @@
       ]
     }
   },
-  "last_category": "HAIRCUT_STYLING",
+  "last_category": "NAIL_ART",
   "recent_posts": [
     {
       "iteration": 12,
@@ -242,6 +246,14 @@
       "clip_id": "558650538",
       "clip_name": "7754508-hd_1080_1920_30fps.mp4",
       "headline": "\u2b50 TRENDY SALON HAIRCUT & FINISH \u2b50"
+    },
+    {
+      "iteration": 35,
+      "timestamp": "2026-09-15 08:45:23",
+      "category": "NAIL_ART",
+      "clip_id": "558648763",
+      "clip_name": "IMG_1899.mp4",
+      "headline": "\ud83d\udd25 VIRAL AESTHETIC GEL NAILS STUDIO \ud83d\udd25"
     }
   ]
 }
