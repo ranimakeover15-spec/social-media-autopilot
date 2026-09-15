@@ -1,48 +1,44 @@
 {
     "uuids": {
-        "phone_id": "23432202-5804-4E0D-99E9-516582FD823E",
-        "uuid": "23432202-5804-4E0D-99E9-516582FD823E",
-        "client_session_id": "23432202-5804-4E0D-99E9-516582FD823E",
-        "advertising_id": "23432202-5804-4E0D-99E9-516582FD823E",
-        "android_device_id": "android-154e07ee04c83669",
-        "request_id": "17615b2d-c419-4471-a029-cfae19335d4d",
-        "tray_session_id": "2bda4ffe-b7b2-4090-bfce-03de6bdad33f"
+        "phone_id": "3a41375e-4a8b-4276-842b-866248030461",
+        "uuid": "56910d67-61e4-4d86-842e-27dea76fff86",
+        "client_session_id": "a73d4dc2-40ec-4aa2-8f89-044b693b4b47",
+        "advertising_id": "2c7a3c18-ecf9-4f49-83a4-d484258cf392",
+        "android_device_id": "android-4eb07d4ac08be54c",
+        "request_id": "91f18504-7e4a-4847-92ca-3d673147626c",
+        "tray_session_id": "70dbd450-341a-4b9a-9dbd-3b230502f17b"
     },
     "mid": "ao879gALAAG6mJnQKdse3cWy6eY8",
     "ig_u_rur": null,
     "ig_www_claim": null,
     "authorization_data": {
-        "sessionid": "37979168548:BbUo1PBK3oASZZ:1:AYjmGUPy6uzspSrTpwvNahZGVKUrkqVOqDCRgSw9tg",
-        "ds_user_id": "37979168548"
+        "ds_user_id": "37979168548",
+        "sessionid": "37979168548:uM7oR780vUrX5u:24:AYm3cQo8K5IQyKBWCK9UkM29omL_NSbCFYu-S4kpIQ",
+        "should_use_header_over_cookies": true
     },
     "cookies": {
-        "csrftoken": "a4forb76mVGZX3H7mSBQOePm6lCpUE8r",
-        "datr": "9juPavhJb4it082UnnCosuIt",
-        "dpr": "1.25",
+        "sessionid": "37979168548:uM7oR780vUrX5u:24:AYm3cQo8K5IQyKBWCK9UkM29omL_NSbCFYu-S4kpIQ",
         "ds_user_id": "37979168548",
-        "ig_did": "23432202-5804-4E0D-99E9-516582FD823E",
+        "rur": "KND,17841437936447396,1790674826:01ffef43b7eef4f440ddeeb4b980f2a22135e8abaecd0e006410332fb13e7d9d02ed609d",
+        "csrftoken": "p48E1XOH9uAtMVtDO3Czqv2CZ3CeNJbc",
         "mid": "ao879gALAAG6mJnQKdse3cWy6eY8",
-        "ps_l": "1",
-        "ps_n": "1",
-        "rur": "NHA,17841437936447396,1789715037:01ff231dd04f64997bab3bd7cba9c7db8e92d7ad2ca0a61be318d046ea29f30f41ae978f",
-        "sessionid": "37979168548:BbUo1PBK3oASZZ:1:AYjmGUPy6uzspSrTpwvNahZGVKUrkqVOqDCRgSw9tg",
-        "wd": "790x706"
+        "ig_did": "23432202-5804-4E0D-99E9-516582FD823E",
+        "datr": "9juPavhJb4it082UnnCosuIt"
     },
     "last_login": null,
     "device_settings": {
-        "android_version": 34,
-        "android_release": "14",
+        "android_version": 33,
+        "android_release": "13.0",
         "dpi": "480dpi",
-        "resolution": "1344x2992",
-        "manufacturer": "Google/google",
-        "device": "husky",
-        "model": "Pixel 8 Pro",
-        "cpu": "husky",
-        "app_version": "428.0.0.47.67",
-        "version_code": "961145276",
-        "bloks_versioning_id": "7189b949425f9bf80ea8bd880cf5a3080b292d9b1c4b38a18d112f7c4b71e7a8"
+        "resolution": "1080x2400",
+        "manufacturer": "Samsung",
+        "device": "SM-G998B",
+        "model": "Galaxy S21 Ultra 5G",
+        "cpu": "exynos2100",
+        "app_version": "312.0.0.35.111",
+        "version_code": "312000351"
     },
-    "user_agent": "Instagram 428.0.0.47.67 Android (34/14; 480dpi; 1344x2992; Google/google; Pixel 8 Pro; husky; husky; en_US; 961145276)",
+    "user_agent": "Instagram 312.0.0.35.111 Android (33/13.0; 480dpi; 1080x2400; Samsung; Galaxy S21 Ultra 5G; SM-G998B; exynos2100; en_US; 312000351)",
     "country": "US",
     "country_code": 1,
     "locale": "en_US",
