@@ -12,7 +12,8 @@
     "custom_tg_montage_1789059933",
     "IMG_1899.mp4",
     "7754412-hd_1080_1920_30fps.mp4",
-    "7754482-hd_1080_1920_30fps.mp4"
+    "7754482-hd_1080_1920_30fps.mp4",
+    "7754508-hd_1080_1920_30fps.mp4"
   ],
   "used_headlines": [
     "\u2728 SIGNATURE SMOKEY & HOODED EYE GLAM \u2728",
@@ -29,10 +30,11 @@
     "\ud83d\udc86\u200d\u2640\ufe0f LUXURY HAIR SPA & DEEP NOURISH GLOW \ud83d\udc86\u200d\u2640\ufe0f",
     "\u2702\ufe0f THREADING, FOREHEAD & UPPER LIPS \u2702\ufe0f"
   ],
-  "published_count": 28,
+  "published_count": 29,
   "used_music": [
     "19_Slam Funk.mp3",
-    "salon_energetic_glam.mp3"
+    "salon_energetic_glam.mp3",
+    "instagram_viral_beauty_lounge.mp3"
   ],
   "category_history": {
     "NAIL_ART": {
@@ -73,16 +75,19 @@
       "used_clip_ids": [
         "540489000",
         "540489134",
-        "540489178"
+        "540489178",
+        "558650538"
       ],
-      "used_headlines": []
+      "used_headlines": [
+        "\u2b50 TRENDY SALON HAIRCUT & FINISH \u2b50"
+      ]
     },
     "BRIDAL_MAKEUP_MEHNDI": {
       "used_clip_ids": [],
       "used_headlines": []
     }
   },
-  "last_category": "THREADING_CARE",
+  "last_category": "HAIRCUT_STYLING",
   "recent_posts": [
     {
       "iteration": 12,
@@ -167,6 +172,14 @@
       "clip_id": "558650177",
       "clip_name": "7754482-hd_1080_1920_30fps.mp4",
       "headline": "\u2728 PERFECT EYEBROW ARCH & FOREHEAD CARE \u2728"
+    },
+    {
+      "iteration": 29,
+      "timestamp": "2026-09-16 08:44:18",
+      "category": "HAIRCUT_STYLING",
+      "clip_id": "558650538",
+      "clip_name": "7754508-hd_1080_1920_30fps.mp4",
+      "headline": "\u2b50 TRENDY SALON HAIRCUT & FINISH \u2b50"
     }
   ]
 }
