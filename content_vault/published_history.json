@@ -16,7 +16,8 @@
     "7754508-hd_1080_1920_30fps.mp4",
     "IMG_1907.mp4",
     "IMG_1896.mp4",
-    "7754410-hd_1080_1920_30fps.mp4"
+    "7754410-hd_1080_1920_30fps.mp4",
+    "7754507-hd_1080_1920_30fps.mp4"
   ],
   "used_headlines": [
     "\u2728 SIGNATURE SMOKEY & HOODED EYE GLAM \u2728",
@@ -33,14 +34,15 @@
     "\ud83d\udc86\u200d\u2640\ufe0f LUXURY HAIR SPA & DEEP NOURISH GLOW \ud83d\udc86\u200d\u2640\ufe0f",
     "\u2702\ufe0f THREADING, FOREHEAD & UPPER LIPS \u2702\ufe0f"
   ],
-  "published_count": 32,
+  "published_count": 33,
   "used_music": [
     "19_Slam Funk.mp3",
     "salon_energetic_glam.mp3",
     "instagram_viral_beauty_lounge.mp3",
     "08_BABES FOREVER.mp3",
     "01_Audionautix Acoustic.mp3",
-    "viral_luxury_fashion_beat.mp3"
+    "viral_luxury_fashion_beat.mp3",
+    "salon_aesthetic_bg.mp3"
   ],
   "category_history": {
     "NAIL_ART": {
@@ -75,10 +77,12 @@
         "540488320",
         "540488437",
         "540488768",
-        "558650177"
+        "558650177",
+        "558650457"
       ],
       "used_headlines": [
-        "\u2728 PERFECT EYEBROW ARCH & FOREHEAD CARE \u2728"
+        "\u2728 PERFECT EYEBROW ARCH & FOREHEAD CARE \u2728",
+        "\ud83c\udf38 GENTLE THREADING & FACIAL CLEANSING \ud83c\udf38"
       ]
     },
     "HAIRCUT_STYLING": {
@@ -101,7 +105,7 @@
       ]
     }
   },
-  "last_category": "HAIR_SPA_SMOOTHING",
+  "last_category": "THREADING_CARE",
   "recent_posts": [
     {
       "iteration": 12,
@@ -218,6 +222,14 @@
       "clip_id": "558649964",
       "clip_name": "7754410-hd_1080_1920_30fps.mp4",
       "headline": "\ud83c\udf3f ULTRA-SMOOTH HAIR MAKEOVER \ud83c\udf3f"
+    },
+    {
+      "iteration": 33,
+      "timestamp": "2026-09-17 13:40:13",
+      "category": "THREADING_CARE",
+      "clip_id": "558650457",
+      "clip_name": "7754507-hd_1080_1920_30fps.mp4",
+      "headline": "\ud83c\udf38 GENTLE THREADING & FACIAL CLEANSING \ud83c\udf38"
     }
   ]
 }
