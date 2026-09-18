@@ -17,7 +17,8 @@
     "IMG_1907.mp4",
     "IMG_1896.mp4",
     "7754410-hd_1080_1920_30fps.mp4",
-    "7754507-hd_1080_1920_30fps.mp4"
+    "7754507-hd_1080_1920_30fps.mp4",
+    "video_AgADxyMAAqNUeFQ_6302.mp4"
   ],
   "used_headlines": [
     "\u2728 SIGNATURE SMOKEY & HOODED EYE GLAM \u2728",
@@ -34,7 +35,7 @@
     "\ud83d\udc86\u200d\u2640\ufe0f LUXURY HAIR SPA & DEEP NOURISH GLOW \ud83d\udc86\u200d\u2640\ufe0f",
     "\u2702\ufe0f THREADING, FOREHEAD & UPPER LIPS \u2702\ufe0f"
   ],
-  "published_count": 33,
+  "published_count": 34,
   "used_music": [
     "19_Slam Funk.mp3",
     "salon_energetic_glam.mp3",
@@ -42,7 +43,8 @@
     "08_BABES FOREVER.mp3",
     "01_Audionautix Acoustic.mp3",
     "viral_luxury_fashion_beat.mp3",
-    "salon_aesthetic_bg.mp3"
+    "salon_aesthetic_bg.mp3",
+    "salon_luxury_bgm.mp3"
   ],
   "category_history": {
     "NAIL_ART": {
@@ -90,10 +92,12 @@
         "540489000",
         "540489134",
         "540489178",
-        "558650538"
+        "558650538",
+        "558649652"
       ],
       "used_headlines": [
-        "\u2b50 TRENDY SALON HAIRCUT & FINISH \u2b50"
+        "\u2b50 TRENDY SALON HAIRCUT & FINISH \u2b50",
+        "\u2728 PERFECT TRENDY HAIRCUT & STYLING \u2728"
       ]
     },
     "BRIDAL_MAKEUP_MEHNDI": {
@@ -105,7 +109,7 @@
       ]
     }
   },
-  "last_category": "THREADING_CARE",
+  "last_category": "HAIRCUT_STYLING",
   "recent_posts": [
     {
       "iteration": 12,
@@ -230,6 +234,14 @@
       "clip_id": "558650457",
       "clip_name": "7754507-hd_1080_1920_30fps.mp4",
       "headline": "\ud83c\udf38 GENTLE THREADING & FACIAL CLEANSING \ud83c\udf38"
+    },
+    {
+      "iteration": 34,
+      "timestamp": "2026-09-18 03:41:46",
+      "category": "HAIRCUT_STYLING",
+      "clip_id": "558649652",
+      "clip_name": "video_AgADxyMAAqNUeFQ_6302.mp4",
+      "headline": "\u2728 PERFECT TRENDY HAIRCUT & STYLING \u2728"
     }
   ]
 }
