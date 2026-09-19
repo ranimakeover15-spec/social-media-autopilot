@@ -22,7 +22,8 @@
     "IMG_1902.mp4",
     "7754502-hd_1080_1920_30fps.mp4",
     "7754496-hd_1080_1920_30fps.mp4",
-    "IMG_1897.mp4"
+    "IMG_1897.mp4",
+    "7754411-hd_1080_1920_30fps.mp4"
   ],
   "used_headlines": [
     "\u2728 SIGNATURE SMOKEY & HOODED EYE GLAM \u2728",
@@ -39,11 +40,12 @@
     "\ud83d\udc86\u200d\u2640\ufe0f LUXURY HAIR SPA & DEEP NOURISH GLOW \ud83d\udc86\u200d\u2640\ufe0f",
     "\u2702\ufe0f THREADING, FOREHEAD & UPPER LIPS \u2702\ufe0f"
   ],
-  "published_count": 38,
+  "published_count": 39,
   "used_music": [
     "salon_aesthetic_bg.mp3",
     "14_Wiggle.mp3",
-    "08_BABES FOREVER.mp3"
+    "08_BABES FOREVER.mp3",
+    "salon_energetic_glam.mp3"
   ],
   "category_history": {
     "NAIL_ART": {
@@ -71,12 +73,14 @@
         "540488124",
         "558650094",
         "558649964",
-        "558650391"
+        "558650391",
+        "558650045"
       ],
       "used_headlines": [
         "\ud83d\udc86\u200d\u2640\ufe0f LUXURY HAIR SPA & DEEP NOURISH GLOW \ud83d\udc86\u200d\u2640\ufe0f",
         "\ud83c\udf3f ULTRA-SMOOTH HAIR MAKEOVER \ud83c\udf3f",
-        "\u2728 SILKY HAIR SMOOTHENING & KERATIN CARE \u2728"
+        "\u2728 SILKY HAIR SMOOTHENING & KERATIN CARE \u2728",
+        "\ud83c\udf1f ADVANCED HAIR REPAIR & NOURISH THERAPY \ud83c\udf1f"
       ]
     },
     "THREADING_CARE": {
@@ -116,7 +120,7 @@
       ]
     }
   },
-  "last_category": "NAIL_ART",
+  "last_category": "HAIR_SPA_SMOOTHING",
   "recent_posts": [
     {
       "iteration": 12,
@@ -281,6 +285,14 @@
       "clip_id": "558648626",
       "clip_name": "IMG_1897.mp4",
       "headline": "\u2728 TRENDY NAIL EXTENSIONS & CHIC ART \u2728"
+    },
+    {
+      "iteration": 39,
+      "timestamp": "2026-09-19 13:37:41",
+      "category": "HAIR_SPA_SMOOTHING",
+      "clip_id": "558650045",
+      "clip_name": "7754411-hd_1080_1920_30fps.mp4",
+      "headline": "\ud83c\udf1f ADVANCED HAIR REPAIR & NOURISH THERAPY \ud83c\udf1f"
     }
   ]
 }
